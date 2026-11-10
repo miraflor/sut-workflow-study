@@ -1,0 +1,241 @@
+industry_code,industry_name,group
+001,Growing of palay,agriculture
+002,Growing of corn,agriculture
+003,Growing of coconut including copra,agriculture
+004,Growing of sugarcane including muscovado sugar-making in the farm,agriculture
+005,Growing of banana,agriculture
+006,Growing of mango,agriculture
+007,Growing of pineapple,agriculture
+008,Growing of coffee,agriculture
+009,Growing of cassava,agriculture
+010,Growing of rubber,agriculture
+011,Growing of cocoa,agriculture
+012,Growing of abaca,agriculture
+013,Growing of tobacco,agriculture
+014,Growing of sweet potato,agriculture
+015,Growing of citrus fruits,agriculture
+016,Growing of papaya,agriculture
+017,"Growing of other fruits, n.e.c.",agriculture
+018,Growing of leafy and stem vegetables,agriculture
+019,Growing of fruit bearing vegetables,agriculture
+020,Growing of onion,agriculture
+021,Growing of horticultural specialties and nursery products,agriculture
+022,"Growing of other agricultural crops, n.e.c.",agriculture
+023,Hog farming,agriculture
+024,Cattle farming,agriculture
+025,Carabao farming,agriculture
+026,Goat farming,agriculture
+027,Dairy farming,agriculture
+028,Chicken production,agriculture
+029,Egg production,agriculture
+030,"Other poultry, livestock and animals, n.e.c.",agriculture
+031,Forestry and logging,agriculture
+032,Ocean fishing (including fish corals),agriculture
+033,Inland and coastal fishing,agriculture
+034,Prawn culture and Operation of fish farms and nurseries,agriculture
+035,Pearl culture and pearl shell gathering,agriculture
+036,Seaweeds farming,agriculture
+037,"Mollusks and other crustacean farm operations (except prawn farm operations) and other fishing activities, n.e.c",agriculture
+038,"Support activities to agriculture, forestry and fishing",agriculture
+039,Mining of coal and ligmite,mining
+040,Extraction of crude petroleum and natural gas,mining
+041,Mining of gold and other precious metal ores,mining
+042,Nickel ore mining,mining
+043,Copper ore mining,mining
+044,"Quarrying of stone, clay, gravel and sand",mining
+045,Other mining and quarrying,mining
+046,Slaughtering and meat packing,manufacturing
+047,"Production, processing and preserving of meat and meat products",manufacturing
+048,Canning/packing of fish and other marine products,manufacturing
+049,Other types of processing of fish and other marine products,manufacturing
+050,Processing and preserving of fruits and vegetables,manufacturing
+051,"Manufacture of virgin coconut oil, dessicated coconut, and nata de coco",manufacturing
+052,"Manufacture of vegetable and animal oils and fats, n.e.c.",manufacturing
+053,Processing of milk and cream,manufacturing
+054,"Manufacture of butter, cheese and curd",manufacturing
+055,"Manufacture of ice cream and sherbet, ice drop, ice candy and other flavored ices",manufacturing
+056,"Manufacture of other dairy products, n.e.c.",manufacturing
+057,Rice/corn milling,manufacturing
+058,"Manufacture of grain and vegetable mill products, except rice and corn",manufacturing
+059,Manufacture of starches and starch products,manufacturing
+060,Manufacture of bakery products,manufacturing
+061,Manufacture of sugar other sugarcane products,manufacturing
+062,"Manufacture of cocoa, chocolate and sugar confectionery",manufacturing
+063,"Manufacture of macaroni, noodles, couscous and similar farinaceous products",manufacturing
+064,Manufactured of prepared meals and dishes,manufacturing
+065,Manufacture of food supplements from herbs and other plants,manufacturing
+066,Coffee roasting and processing,manufacturing
+067,"Manufacture of food products, n.e.c.",manufacturing
+068,Manufacture of animal feeds,manufacturing
+069,Alcoholic liquors and wine,manufacturing
+070,Malt liquors and malt,manufacturing
+071,Manufacture of soft drinks,manufacturing
+072,"Manufacture of drinks flavored with fruit juices, syrups or other materials",manufacturing
+073,Manufacture of drinking water and mineral water,manufacturing
+074,"Manufacture of other beverages, n.e.c.",manufacturing
+075,Manufacture of cigarettes,manufacturing
+076,"Manufacture of cigars and chewing and smoking tobacco, snuff",manufacturing
+077,"Tobacco leaf flue-curing and re-drying and other tobacco manufacturing, n.e.c.",manufacturing
+078,"Spinning, texturizing, weaving and finishing of textiles",manufacturing
+079,Manufacture of knitted and crocheted fabrics,manufacturing
+080,"Manufacture of knitted or crocheted hosiery, underwear and outerwear when knitted or crocheted directly into shape",manufacturing
+081,"Manufacture of knitted and crocheted fabrics, n.e.c.",manufacturing
+082,"Manufacture of made-up textile articles, except wearing apparel",manufacturing
+083,Manufacture of carpets and rugs,manufacturing
+084,"Manufacture of cordage, rope, twine and netting",manufacturing
+085,Manufacture of embroidered fabrics,manufacturing
+086,"Manufacture of other textiles, n.e.c.",manufacturing
+087,Ready-made garments manufacturing (excluding embroidered garments),manufacturing
+088,Ready-made embroidered garments manufacturing,manufacturing
+089,Custom tailoring and dressmaking,manufacturing
+090,"Manufacture of other wearing apparel, n.e.c.",manufacturing
+091,Tanning and dressing of leather,manufacturing
+092,Manufacture of products of leather and imitation leather,manufacturing
+093,Manufacture of shoes,manufacturing
+094,"Manufacture of other footwear, n.e.c.",manufacturing
+095,Sawmilling and planing of wood,manufacturing
+096,Manufacture of veneer sheets and plywoods,manufacturing
+097,"Manufacture of laminboard, particle board and other panels and board",manufacturing
+098,Manufacture of builders' carpentry and joinery; millworking,manufacturing
+099,Manufacture of wood carvings,manufacturing
+100,"Manufacture of products of bamboo, cane, rattan and the like, and plaiting materials except furniture",manufacturing
+101,"Manufacture of other products of wood, except furniture, n.e.c.",manufacturing
+102,"Manufacture of pulp, paper and paperboard",manufacturing
+103,Manufacture of containers and boxes of paper and paperboard,manufacturing
+104,Manufacture of other articles of paper and paperboard,manufacturing
+105,"Printing, and service activities related to printing",manufacturing
+106,Reproduction of recorded media,manufacturing
+107,Manufacture of refined petroleum products,manufacturing
+108,Manufacture of other petroleum products,manufacturing
+109,Manufacture of basic chemicals except fertilizers and nitrogen compounds,manufacturing
+110,Manufacture of fertilizers and nitrogen compounds,manufacturing
+111,Manufacture of plastics in primary forms and of synthetic rubber,manufacturing
+112,Manufacture of pesticides and other agro- chemical products,manufacturing
+113,"Manufacture of paints, varnishes and similar coatings, printing ink and mastics",manufacturing
+114,"Manufacture of soap and detergents, cleaning and polishing preparations, perfumes and toilet preparations",manufacturing
+115,"Manufacture of other chemical products, n.e.c.",manufacturing
+116,Manufacture of basic pharmaceutical products and pharmaceutical preparations,manufacturing
+117,Manufacture of rubber products,manufacturing
+118,Manufacture of plastic products,manufacturing
+119,Manufacture of flat glass (including float glass),manufacturing
+120,Manufacture of glass and glass products,manufacturing
+121,Manufacture of cement,manufacturing
+122,"Manufacture of other non-metallic mineral products, n.e.c.",manufacturing
+123,Manufacture of basic iron and steel,manufacturing
+124,Casting/foundry of iron and steel,manufacturing
+125,Manufacture of basic precious and non-ferrous metals,manufacturing
+126,Non-ferrous metal casting,manufacturing
+127,Manufacture of structural metal products,manufacturing
+128,Manufacture of metal containers,manufacturing
+129,"Forging, pressing, stamping and roll-forming of metal; powder metallurgy",manufacturing
+130,"Manufacture of cutlery, hand tools and general hardware",manufacturing
+131,"Manufacture of other fabricated metal products, n.e.c.",manufacturing
+132,Manufacture of electronic valves and tubes,manufacturing
+133,Manufacture of semi-conductor devices and other electronic components,manufacturing
+134,Manufacture of computers and peripheral equipment and accessories,manufacturing
+135,Manufacture of communication equipment,manufacturing
+136,Manufacture of consumer electronics,manufacturing
+137,"Manufacture of measuring, testing, navigating and control equipment",manufacturing
+138,Manufacture of watches and clocks,manufacturing
+139,"Manufacture of irradiation, electromedical and electrotherapeutic equipment",manufacturing
+140,Manufacture of optical instruments and photographic equipment,manufacturing
+141,Manufacture of magnetic and optical media,manufacturing
+142,"Manufacture of electric motors, generators and transformers and electric generating sets",manufacturing
+143,Manufacture of batteries and accumulators,manufacturing
+144,Manufacture of wiring and wiring devices,manufacturing
+145,Manufacture of electric lighting equipment,manufacturing
+146,Manufacture of domestic appliances,manufacturing
+147,Manufacture of other electrical equipment,manufacturing
+148,"Manufacture of engines and turbines, except aircraft, vehicle and cycle engines",manufacturing
+149,"Manufacture of pumps, compressors, taps and valves",manufacturing
+150,Manufacture of office machinery and equipment (except computers and peripheral equipment),manufacturing
+151,Manufacture of other general purpose machinery,manufacturing
+152,Manufacture of agricultural and forestry machinery,manufacturing
+153,"Manufacture of machinery for mining, quarrying and construction",manufacturing
+154,Manufacture of other special purpose machinery,manufacturing
+155,"Manufacture of Motor Vehicles, Trailers and Semi-Trailers",manufacturing
+156,Building of ships and boats,manufacturing
+157,Manufacture of railway locomotive and rolling stock,manufacturing
+158,Manufacture of air and spacecraft and related machinery,manufacturing
+159,Manufacture of motorcyles,manufacturing
+160,Manufacture of bicycles and invalid carriages,manufacturing
+161,"Manufacture of other transport equipment, n.e.c.",manufacturing
+162,"Manufacture of wood and rattan furniture (reed, wicker, and cane)",manufacturing
+163,Manufacture of plastic furniture,manufacturing
+164,Manufacture of furniture and fixtures of metal,manufacturing
+165,"Manufacture of other furniture and fixtures,n.e.c.",manufacturing
+166,"Manufacture of jewelry, bijouterie and related articles",manufacturing
+167,Manufacture of musical instruments,manufacturing
+168,Manufacture of sports goods,manufacturing
+169,Manufacture of games and toys,manufacturing
+170,Manufacture of medical and dental instruments and supplies,manufacturing
+171,"Other manufacturing, n.e.c.",manufacturing
+172,"Electric power generation, transmission and distribution",utilities
+173,Steam and hot water supply; and manufacture and distribution of gas,utilities
+174,"Water collection, treatment and supply",utilities
+175,"Sewerage, and waste management and remediation activities",utilities
+176,Construction,construction
+177,"Wholesale trade, except of motor vehicles and motorcycles",services
+178,"Retail trade, except of motor vehicles and motorcycles",services
+179,Sale and repair of motor vehicles and motorcycles,services
+180,Railway transport,services
+181,Bus line operation,services
+182,Tourist buses and cars including chartered and rent-a-car,services
+183,Public utility cars and taxicab operation,services
+184,Jeepney and other land transport services,services
+185,Road freight transport,services
+186,Water transport,services
+187,Air transport,services
+188,Warehousing and storage,services
+189,Support activities for transportation,services
+190,Postal and courier activities,services
+191,Short term acommodation activities,services
+192,Other accommodation,services
+193,Food and beverage service activities,services
+194,Publishing activities,services
+195,"Motion picture, video and television programme activities",services
+196,Sound recording and music publishing activities,services
+197,Programming and broadcasting activities,services
+198,Wired telecommunications activities,services
+199,Wireless telecommunications activities,services
+200,Satellite telecommunications activities,services
+201,"Other telecommunications activities, n.e.c.",services
+202,"Computer programming, consultancy and related activities",services
+203,Information service,services
+204,Banking Institutions,services
+205,Non-banks,services
+206,Life insurance,services
+207,Non-life and other insurance activities,services
+208,Activities auxiliary to financial intermediation,services
+209,Real estate activities,services
+210,Ownership of dwellings,services
+211,Legal activities,services
+212,"Accounting, bookeeping and auditing activities; tax consultancy",services
+213,Activities of head offices; management consultancy activities,services
+214,Architecture and engineering activities; technical testing and analysis,services
+215,Scientific research and development,services
+216,Advertising,services
+217,Market research and public opinion polling,services
+218,Specialized design activities,services
+219,Photographic activities,services
+220,"Other professional, scientific and technical activities, n.e.c.",services
+221,Veterinary activities,services
+222,Rental and leasing activities,services
+223,Employment activities,services
+224,"Travel agency, tour operator, reservation service and related activities",services
+225,Security and investigation activities,services
+226,Call center and related activities,services
+227,"Other administrative and support service activities, n.e.c.",services
+228,Public Administration and Defense; Compulsory social security,services
+229,Public education,services
+230,Private education,services
+231,Public human health,services
+232,Private human health,services
+233,Social work activities,services
+234,"Arts, entertainment, and recreation",services
+235,Repair of computers and personal and household goods,services
+236,"Spa, steam bath, slendering, and body building activities",services
+237,"Beauty treatment, personal grooming activities and other wellness activities, n.e.c.",services
+238,Laundry services,services
+239,Funeral and related activities,services
+240,Other personal service activities,services

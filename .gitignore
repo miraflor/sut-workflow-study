@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Results of run.py (made again by running it)
+results*/
+
+# Other
+.DS_Store
+~$*.xlsx

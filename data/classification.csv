@@ -1,0 +1,241 @@
+code_240,name_240,code_80,name_80,code_16,name_16
+001,Growing of palay,01,Palay,01,"Agriculture, forestry, and fishing"
+002,Growing of corn,02,Corn,01,"Agriculture, forestry, and fishing"
+003,Growing of coconut including copra,03,Coconut including copra,01,"Agriculture, forestry, and fishing"
+004,Growing of sugarcane including muscovado sugar-making in the farm,04,Sugarcane including muscovado sugar-making in the farm,01,"Agriculture, forestry, and fishing"
+005,Growing of banana,05,Banana,01,"Agriculture, forestry, and fishing"
+006,Growing of mango,06,Mango,01,"Agriculture, forestry, and fishing"
+007,Growing of pineapple,07,Pineapple,01,"Agriculture, forestry, and fishing"
+008,Growing of coffee,08,Coffee,01,"Agriculture, forestry, and fishing"
+009,Growing of cassava,09,Cassava,01,"Agriculture, forestry, and fishing"
+010,Growing of rubber,10,Rubber,01,"Agriculture, forestry, and fishing"
+011,Growing of cocoa,11,Cacao,01,"Agriculture, forestry, and fishing"
+012,Growing of abaca,12,Abaca,01,"Agriculture, forestry, and fishing"
+013,Growing of tobacco,13,Tobacco,01,"Agriculture, forestry, and fishing"
+014,Growing of sweet potato,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+015,Growing of citrus fruits,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+016,Growing of papaya,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+017,"Growing of other fruits, n.e.c.",14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+018,Growing of leafy and stem vegetables,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+019,Growing of fruit bearing vegetables,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+020,Growing of onion,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+021,Growing of horticultural specialties and nursery products,14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+022,"Growing of other agricultural crops, n.e.c.",14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing"
+023,Hog farming,15,Livestock,01,"Agriculture, forestry, and fishing"
+024,Cattle farming,15,Livestock,01,"Agriculture, forestry, and fishing"
+025,Carabao farming,15,Livestock,01,"Agriculture, forestry, and fishing"
+026,Goat farming,15,Livestock,01,"Agriculture, forestry, and fishing"
+027,Dairy farming,15,Livestock,01,"Agriculture, forestry, and fishing"
+028,Chicken production,16,Poultry and egg production,01,"Agriculture, forestry, and fishing"
+029,Egg production,16,Poultry and egg production,01,"Agriculture, forestry, and fishing"
+030,"Other poultry, livestock and animals, n.e.c.",17,Other animal production,01,"Agriculture, forestry, and fishing"
+031,Forestry and logging,18,Forestry and logging,01,"Agriculture, forestry, and fishing"
+032,Ocean fishing (including fish corals),19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+033,Inland and coastal fishing,19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+034,Prawn culture and Operation of fish farms and nurseries,19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+035,Pearl culture and pearl shell gathering,19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+036,Seaweeds farming,19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+037,"Mollusks and other crustacean farm operations (except prawn farm operations) and other fishing activities, n.e.c",19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing"
+038,"Support activities to agriculture, forestry and fishing",20,"Support activities to agriculture, forestry and fishing",01,"Agriculture, forestry, and fishing"
+039,Mining of coal and ligmite,21,Mining of coal,02,Mining and quarrying
+040,Extraction of crude petroleum and natural gas,22,Extraction of crude petroleum and natural gas,02,Mining and quarrying
+041,Mining of gold and other precious metal ores,23,Mining of gold and other precious metal ores,02,Mining and quarrying
+042,Nickel ore mining,24,Mining of nickel ores,02,Mining and quarrying
+043,Copper ore mining,25,Mining of copper ores,02,Mining and quarrying
+044,"Quarrying of stone, clay, gravel and sand",26,"Stone quarrying, and other mining and quarrying",02,Mining and quarrying
+045,Other mining and quarrying,26,"Stone quarrying, and other mining and quarrying",02,Mining and quarrying
+046,Slaughtering and meat packing,27,Manufacture of food products,03,Manufacturing
+047,"Production, processing and preserving of meat and meat products",27,Manufacture of food products,03,Manufacturing
+048,Canning/packing of fish and other marine products,27,Manufacture of food products,03,Manufacturing
+049,Other types of processing of fish and other marine products,27,Manufacture of food products,03,Manufacturing
+050,Processing and preserving of fruits and vegetables,27,Manufacture of food products,03,Manufacturing
+051,"Manufacture of virgin coconut oil, dessicated coconut, and nata de coco",27,Manufacture of food products,03,Manufacturing
+052,"Manufacture of vegetable and animal oils and fats, n.e.c.",27,Manufacture of food products,03,Manufacturing
+053,Processing of milk and cream,27,Manufacture of food products,03,Manufacturing
+054,"Manufacture of butter, cheese and curd",27,Manufacture of food products,03,Manufacturing
+055,"Manufacture of ice cream and sherbet, ice drop, ice candy and other flavored ices",27,Manufacture of food products,03,Manufacturing
+056,"Manufacture of other dairy products, n.e.c.",27,Manufacture of food products,03,Manufacturing
+057,Rice/corn milling,27,Manufacture of food products,03,Manufacturing
+058,"Manufacture of grain and vegetable mill products, except rice and corn",27,Manufacture of food products,03,Manufacturing
+059,Manufacture of starches and starch products,27,Manufacture of food products,03,Manufacturing
+060,Manufacture of bakery products,27,Manufacture of food products,03,Manufacturing
+061,Manufacture of sugar other sugarcane products,27,Manufacture of food products,03,Manufacturing
+062,"Manufacture of cocoa, chocolate and sugar confectionery",27,Manufacture of food products,03,Manufacturing
+063,"Manufacture of macaroni, noodles, couscous and similar farinaceous products",27,Manufacture of food products,03,Manufacturing
+064,Manufactured of prepared meals and dishes,27,Manufacture of food products,03,Manufacturing
+065,Manufacture of food supplements from herbs and other plants,27,Manufacture of food products,03,Manufacturing
+066,Coffee roasting and processing,27,Manufacture of food products,03,Manufacturing
+067,"Manufacture of food products, n.e.c.",27,Manufacture of food products,03,Manufacturing
+068,Manufacture of animal feeds,27,Manufacture of food products,03,Manufacturing
+069,Alcoholic liquors and wine,28,Manufacture of beverages,03,Manufacturing
+070,Malt liquors and malt,28,Manufacture of beverages,03,Manufacturing
+071,Manufacture of soft drinks,28,Manufacture of beverages,03,Manufacturing
+072,"Manufacture of drinks flavored with fruit juices, syrups or other materials",28,Manufacture of beverages,03,Manufacturing
+073,Manufacture of drinking water and mineral water,28,Manufacture of beverages,03,Manufacturing
+074,"Manufacture of other beverages, n.e.c.",28,Manufacture of beverages,03,Manufacturing
+075,Manufacture of cigarettes,29,Manufacture of tobacco products,03,Manufacturing
+076,"Manufacture of cigars and chewing and smoking tobacco, snuff",29,Manufacture of tobacco products,03,Manufacturing
+077,"Tobacco leaf flue-curing and re-drying and other tobacco manufacturing, n.e.c.",29,Manufacture of tobacco products,03,Manufacturing
+078,"Spinning, texturizing, weaving and finishing of textiles",30,Manufacture of textiles,03,Manufacturing
+079,Manufacture of knitted and crocheted fabrics,30,Manufacture of textiles,03,Manufacturing
+080,"Manufacture of knitted or crocheted hosiery, underwear and outerwear when knitted or crocheted directly into shape",30,Manufacture of textiles,03,Manufacturing
+081,"Manufacture of knitted and crocheted fabrics, n.e.c.",30,Manufacture of textiles,03,Manufacturing
+082,"Manufacture of made-up textile articles, except wearing apparel",30,Manufacture of textiles,03,Manufacturing
+083,Manufacture of carpets and rugs,30,Manufacture of textiles,03,Manufacturing
+084,"Manufacture of cordage, rope, twine and netting",30,Manufacture of textiles,03,Manufacturing
+085,Manufacture of embroidered fabrics,30,Manufacture of textiles,03,Manufacturing
+086,"Manufacture of other textiles, n.e.c.",30,Manufacture of textiles,03,Manufacturing
+087,Ready-made garments manufacturing (excluding embroidered garments),31,Manufacture of wearing apparel,03,Manufacturing
+088,Ready-made embroidered garments manufacturing,31,Manufacture of wearing apparel,03,Manufacturing
+089,Custom tailoring and dressmaking,31,Manufacture of wearing apparel,03,Manufacturing
+090,"Manufacture of other wearing apparel, n.e.c.",31,Manufacture of wearing apparel,03,Manufacturing
+091,Tanning and dressing of leather,32,"Manufacture of leather and related products, including footwear",03,Manufacturing
+092,Manufacture of products of leather and imitation leather,32,"Manufacture of leather and related products, including footwear",03,Manufacturing
+093,Manufacture of shoes,32,"Manufacture of leather and related products, including footwear",03,Manufacturing
+094,"Manufacture of other footwear, n.e.c.",32,"Manufacture of leather and related products, including footwear",03,Manufacturing
+095,Sawmilling and planing of wood,33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+096,Manufacture of veneer sheets and plywoods,33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+097,"Manufacture of laminboard, particle board and other panels and board",33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+098,Manufacture of builders' carpentry and joinery; millworking,33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+099,Manufacture of wood carvings,33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+100,"Manufacture of products of bamboo, cane, rattan and the like, and plaiting materials except furniture",33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+101,"Manufacture of other products of wood, except furniture, n.e.c.",33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing
+102,"Manufacture of pulp, paper and paperboard",34,Manufacture of paper and paper products,03,Manufacturing
+103,Manufacture of containers and boxes of paper and paperboard,34,Manufacture of paper and paper products,03,Manufacturing
+104,Manufacture of other articles of paper and paperboard,34,Manufacture of paper and paper products,03,Manufacturing
+105,"Printing, and service activities related to printing",35,Printing and reproduction of recorded media,03,Manufacturing
+106,Reproduction of recorded media,35,Printing and reproduction of recorded media,03,Manufacturing
+107,Manufacture of refined petroleum products,36,Manufacture of coke and refined petroleum products,03,Manufacturing
+108,Manufacture of other petroleum products,36,Manufacture of coke and refined petroleum products,03,Manufacturing
+109,Manufacture of basic chemicals except fertilizers and nitrogen compounds,37,Manufacture of chemical and chemical products,03,Manufacturing
+110,Manufacture of fertilizers and nitrogen compounds,37,Manufacture of chemical and chemical products,03,Manufacturing
+111,Manufacture of plastics in primary forms and of synthetic rubber,37,Manufacture of chemical and chemical products,03,Manufacturing
+112,Manufacture of pesticides and other agro- chemical products,37,Manufacture of chemical and chemical products,03,Manufacturing
+113,"Manufacture of paints, varnishes and similar coatings, printing ink and mastics",37,Manufacture of chemical and chemical products,03,Manufacturing
+114,"Manufacture of soap and detergents, cleaning and polishing preparations, perfumes and toilet preparations",37,Manufacture of chemical and chemical products,03,Manufacturing
+115,"Manufacture of other chemical products, n.e.c.",37,Manufacture of chemical and chemical products,03,Manufacturing
+116,Manufacture of basic pharmaceutical products and pharmaceutical preparations,38,Manufacture of basic pharmaceutical products and pharmaceutical preparations,03,Manufacturing
+117,Manufacture of rubber products,39,Manufacture of rubber and plastic products,03,Manufacturing
+118,Manufacture of plastic products,39,Manufacture of rubber and plastic products,03,Manufacturing
+119,Manufacture of flat glass (including float glass),40,Manufacture of other non-metallic mineral products,03,Manufacturing
+120,Manufacture of glass and glass products,40,Manufacture of other non-metallic mineral products,03,Manufacturing
+121,Manufacture of cement,40,Manufacture of other non-metallic mineral products,03,Manufacturing
+122,"Manufacture of other non-metallic mineral products, n.e.c.",40,Manufacture of other non-metallic mineral products,03,Manufacturing
+123,Manufacture of basic iron and steel,41,Manufacture of basic metals,03,Manufacturing
+124,Casting/foundry of iron and steel,42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+125,Manufacture of basic precious and non-ferrous metals,42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+126,Non-ferrous metal casting,42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+127,Manufacture of structural metal products,42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+128,Manufacture of metal containers,42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+129,"Forging, pressing, stamping and roll-forming of metal; powder metallurgy",42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+130,"Manufacture of cutlery, hand tools and general hardware",42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+131,"Manufacture of other fabricated metal products, n.e.c.",42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing
+132,Manufacture of electronic valves and tubes,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+133,Manufacture of semi-conductor devices and other electronic components,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+134,Manufacture of computers and peripheral equipment and accessories,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+135,Manufacture of communication equipment,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+136,Manufacture of consumer electronics,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+137,"Manufacture of measuring, testing, navigating and control equipment",43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+138,Manufacture of watches and clocks,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+139,"Manufacture of irradiation, electromedical and electrotherapeutic equipment",43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+140,Manufacture of optical instruments and photographic equipment,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+141,Manufacture of magnetic and optical media,43,"Manufacture of computer, electronic and optical products",03,Manufacturing
+142,"Manufacture of electric motors, generators and transformers and electric generating sets",44,Manufacture of electrical equipment,03,Manufacturing
+143,Manufacture of batteries and accumulators,44,Manufacture of electrical equipment,03,Manufacturing
+144,Manufacture of wiring and wiring devices,44,Manufacture of electrical equipment,03,Manufacturing
+145,Manufacture of electric lighting equipment,44,Manufacture of electrical equipment,03,Manufacturing
+146,Manufacture of domestic appliances,44,Manufacture of electrical equipment,03,Manufacturing
+147,Manufacture of other electrical equipment,44,Manufacture of electrical equipment,03,Manufacturing
+148,"Manufacture of engines and turbines, except aircraft, vehicle and cycle engines",45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+149,"Manufacture of pumps, compressors, taps and valves",45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+150,Manufacture of office machinery and equipment (except computers and peripheral equipment),45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+151,Manufacture of other general purpose machinery,45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+152,Manufacture of agricultural and forestry machinery,45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+153,"Manufacture of machinery for mining, quarrying and construction",45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+154,Manufacture of other special purpose machinery,45,Manufacture of machinery and equipment except electrical,03,Manufacturing
+155,"Manufacture of Motor Vehicles, Trailers and Semi-Trailers",46,Manufacture of transport equipment,03,Manufacturing
+156,Building of ships and boats,46,Manufacture of transport equipment,03,Manufacturing
+157,Manufacture of railway locomotive and rolling stock,46,Manufacture of transport equipment,03,Manufacturing
+158,Manufacture of air and spacecraft and related machinery,46,Manufacture of transport equipment,03,Manufacturing
+159,Manufacture of motorcyles,46,Manufacture of transport equipment,03,Manufacturing
+160,Manufacture of bicycles and invalid carriages,46,Manufacture of transport equipment,03,Manufacturing
+161,"Manufacture of other transport equipment, n.e.c.",46,Manufacture of transport equipment,03,Manufacturing
+162,"Manufacture of wood and rattan furniture (reed, wicker, and cane)",47,Manufacture of furniture,03,Manufacturing
+163,Manufacture of plastic furniture,47,Manufacture of furniture,03,Manufacturing
+164,Manufacture of furniture and fixtures of metal,47,Manufacture of furniture,03,Manufacturing
+165,"Manufacture of other furniture and fixtures,n.e.c.",47,Manufacture of furniture,03,Manufacturing
+166,"Manufacture of jewelry, bijouterie and related articles",48,Other manufacturing,03,Manufacturing
+167,Manufacture of musical instruments,48,Other manufacturing,03,Manufacturing
+168,Manufacture of sports goods,48,Other manufacturing,03,Manufacturing
+169,Manufacture of games and toys,48,Other manufacturing,03,Manufacturing
+170,Manufacture of medical and dental instruments and supplies,48,Other manufacturing,03,Manufacturing
+171,"Other manufacturing, n.e.c.",48,Other manufacturing,03,Manufacturing
+172,"Electric power generation, transmission and distribution",49,Electricity,04,"Electricity, steam, water and waste management"
+173,Steam and hot water supply; and manufacture and distribution of gas,50,Steam,04,"Electricity, steam, water and waste management"
+174,"Water collection, treatment and supply",51,Water supply,04,"Electricity, steam, water and waste management"
+175,"Sewerage, and waste management and remediation activities",52,"Sewerage, and waste management and remediation activities",04,"Electricity, steam, water and waste management"
+176,Construction,53,Construction,05,Construction
+177,"Wholesale trade, except of motor vehicles and motorcycles",54,"Wholesale trade, except of motor vehicles and motorcycles",06,Wholesale and retail trade; repair of motor vehicles and motorcycles
+178,"Retail trade, except of motor vehicles and motorcycles",55,"Retail trade, except of motor vehicles and motorcycles",06,Wholesale and retail trade; repair of motor vehicles and motorcycles
+179,Sale and repair of motor vehicles and motorcycles,56,Sale and repair of motor vehicles and motorcycles,06,Wholesale and retail trade; repair of motor vehicles and motorcycles
+180,Railway transport,57,Land transport,07,Transportation and storage
+181,Bus line operation,57,Land transport,07,Transportation and storage
+182,Tourist buses and cars including chartered and rent-a-car,57,Land transport,07,Transportation and storage
+183,Public utility cars and taxicab operation,57,Land transport,07,Transportation and storage
+184,Jeepney and other land transport services,57,Land transport,07,Transportation and storage
+185,Road freight transport,57,Land transport,07,Transportation and storage
+186,Water transport,58,Water transport,07,Transportation and storage
+187,Air transport,59,Air transport,07,Transportation and storage
+188,Warehousing and storage,60,"Warehousing and storage, and support activities for transportation",07,Transportation and storage
+189,Support activities for transportation,60,"Warehousing and storage, and support activities for transportation",07,Transportation and storage
+190,Postal and courier activities,61,Postal and courier activities,07,Transportation and storage
+191,Short term acommodation activities,62,Accommodation,08,Accommodation and food service activities
+192,Other accommodation,62,Accommodation,08,Accommodation and food service activities
+193,Food and beverage service activities,63,Food and beverage service activities,08,Accommodation and food service activities
+194,Publishing activities,64,Information and publishing,09,Information and communication
+195,"Motion picture, video and television programme activities",64,Information and publishing,09,Information and communication
+196,Sound recording and music publishing activities,64,Information and publishing,09,Information and communication
+197,Programming and broadcasting activities,64,Information and publishing,09,Information and communication
+198,Wired telecommunications activities,65,Communication,09,Information and communication
+199,Wireless telecommunications activities,65,Communication,09,Information and communication
+200,Satellite telecommunications activities,65,Communication,09,Information and communication
+201,"Other telecommunications activities, n.e.c.",65,Communication,09,Information and communication
+202,"Computer programming, consultancy and related activities",65,Communication,09,Information and communication
+203,Information service,65,Communication,09,Information and communication
+204,Banking Institutions,66,Banking institutions,10,Financial and insurance activities
+205,Non-banks,67,Non-banks,10,Financial and insurance activities
+206,Life insurance,68,Insurance and pension funding except compulsory social security,10,Financial and insurance activities
+207,Non-life and other insurance activities,68,Insurance and pension funding except compulsory social security,10,Financial and insurance activities
+208,Activities auxiliary to financial intermediation,69,Activities auxiliary to financial services activities,10,Financial and insurance activities
+209,Real estate activities,70,Real estate,11,Real estate and ownership of dwellings
+210,Ownership of dwellings,71,Ownership of dwellings,11,Real estate and ownership of dwellings
+211,Legal activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+212,"Accounting, bookeeping and auditing activities; tax consultancy",72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+213,Activities of head offices; management consultancy activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+214,Architecture and engineering activities; technical testing and analysis,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+215,Scientific research and development,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+216,Advertising,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+217,Market research and public opinion polling,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+218,Specialized design activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+219,Photographic activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+220,"Other professional, scientific and technical activities, n.e.c.",72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+221,Veterinary activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+222,Rental and leasing activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+223,Employment activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+224,"Travel agency, tour operator, reservation service and related activities",72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+225,Security and investigation activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+226,Call center and related activities,72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+227,"Other administrative and support service activities, n.e.c.",72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services
+228,Public Administration and Defense; Compulsory social security,73,Public Administration and Defense; Compulsory social security,13,Public Administration and Defense; Compulsory social security
+229,Public education,74,Public education,14,Education
+230,Private education,75,Private education,14,Education
+231,Public human health,76,Public human health,15,Human health and social work activities
+232,Private human health,77,Private human health,15,Human health and social work activities
+233,Social work activities,78,Social work activities,15,Human health and social work activities
+234,"Arts, entertainment, and recreation",79,"Arts, entertainment and recreation",16,Other services
+235,Repair of computers and personal and household goods,80,Other service activities,16,Other services
+236,"Spa, steam bath, slendering, and body building activities",80,Other service activities,16,Other services
+237,"Beauty treatment, personal grooming activities and other wellness activities, n.e.c.",80,Other service activities,16,Other services
+238,Laundry services,80,Other service activities,16,Other services
+239,Funeral and related activities,80,Other service activities,16,Other services
+240,Other personal service activities,80,Other service activities,16,Other services

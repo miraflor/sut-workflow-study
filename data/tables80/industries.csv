@@ -1,0 +1,81 @@
+industry_code,industry_name,code_16,name_16,codes_240
+01,Palay,01,"Agriculture, forestry, and fishing",1
+02,Corn,01,"Agriculture, forestry, and fishing",1
+03,Coconut including copra,01,"Agriculture, forestry, and fishing",1
+04,Sugarcane including muscovado sugar-making in the farm,01,"Agriculture, forestry, and fishing",1
+05,Banana,01,"Agriculture, forestry, and fishing",1
+06,Mango,01,"Agriculture, forestry, and fishing",1
+07,Pineapple,01,"Agriculture, forestry, and fishing",1
+08,Coffee,01,"Agriculture, forestry, and fishing",1
+09,Cassava,01,"Agriculture, forestry, and fishing",1
+10,Rubber,01,"Agriculture, forestry, and fishing",1
+11,Cacao,01,"Agriculture, forestry, and fishing",1
+12,Abaca,01,"Agriculture, forestry, and fishing",1
+13,Tobacco,01,"Agriculture, forestry, and fishing",1
+14,"Other agricultural crops, n.e.c.",01,"Agriculture, forestry, and fishing",9
+15,Livestock,01,"Agriculture, forestry, and fishing",5
+16,Poultry and egg production,01,"Agriculture, forestry, and fishing",2
+17,Other animal production,01,"Agriculture, forestry, and fishing",1
+18,Forestry and logging,01,"Agriculture, forestry, and fishing",1
+19,Fishing and aquaculture,01,"Agriculture, forestry, and fishing",6
+20,"Support activities to agriculture, forestry and fishing",01,"Agriculture, forestry, and fishing",1
+21,Mining of coal,02,Mining and quarrying,1
+22,Extraction of crude petroleum and natural gas,02,Mining and quarrying,1
+23,Mining of gold and other precious metal ores,02,Mining and quarrying,1
+24,Mining of nickel ores,02,Mining and quarrying,1
+25,Mining of copper ores,02,Mining and quarrying,1
+26,"Stone quarrying, and other mining and quarrying",02,Mining and quarrying,2
+27,Manufacture of food products,03,Manufacturing,23
+28,Manufacture of beverages,03,Manufacturing,6
+29,Manufacture of tobacco products,03,Manufacturing,3
+30,Manufacture of textiles,03,Manufacturing,9
+31,Manufacture of wearing apparel,03,Manufacturing,4
+32,"Manufacture of leather and related products, including footwear",03,Manufacturing,4
+33,"Manufacture of wood, bamboo, cane, rattan articles and related products",03,Manufacturing,7
+34,Manufacture of paper and paper products,03,Manufacturing,3
+35,Printing and reproduction of recorded media,03,Manufacturing,2
+36,Manufacture of coke and refined petroleum products,03,Manufacturing,2
+37,Manufacture of chemical and chemical products,03,Manufacturing,7
+38,Manufacture of basic pharmaceutical products and pharmaceutical preparations,03,Manufacturing,1
+39,Manufacture of rubber and plastic products,03,Manufacturing,2
+40,Manufacture of other non-metallic mineral products,03,Manufacturing,4
+41,Manufacture of basic metals,03,Manufacturing,1
+42,"Manufacture of fabricated metal products, except machinery and equipment",03,Manufacturing,8
+43,"Manufacture of computer, electronic and optical products",03,Manufacturing,10
+44,Manufacture of electrical equipment,03,Manufacturing,6
+45,Manufacture of machinery and equipment except electrical,03,Manufacturing,7
+46,Manufacture of transport equipment,03,Manufacturing,7
+47,Manufacture of furniture,03,Manufacturing,4
+48,Other manufacturing,03,Manufacturing,6
+49,Electricity,04,"Electricity, steam, water and waste management",1
+50,Steam,04,"Electricity, steam, water and waste management",1
+51,Water supply,04,"Electricity, steam, water and waste management",1
+52,"Sewerage, and waste management and remediation activities",04,"Electricity, steam, water and waste management",1
+53,Construction,05,Construction,1
+54,"Wholesale trade, except of motor vehicles and motorcycles",06,Wholesale and retail trade; repair of motor vehicles and motorcycles,1
+55,"Retail trade, except of motor vehicles and motorcycles",06,Wholesale and retail trade; repair of motor vehicles and motorcycles,1
+56,Sale and repair of motor vehicles and motorcycles,06,Wholesale and retail trade; repair of motor vehicles and motorcycles,1
+57,Land transport,07,Transportation and storage,6
+58,Water transport,07,Transportation and storage,1
+59,Air transport,07,Transportation and storage,1
+60,"Warehousing and storage, and support activities for transportation",07,Transportation and storage,2
+61,Postal and courier activities,07,Transportation and storage,1
+62,Accommodation,08,Accommodation and food service activities,2
+63,Food and beverage service activities,08,Accommodation and food service activities,1
+64,Information and publishing,09,Information and communication,4
+65,Communication,09,Information and communication,6
+66,Banking institutions,10,Financial and insurance activities,1
+67,Non-banks,10,Financial and insurance activities,1
+68,Insurance and pension funding except compulsory social security,10,Financial and insurance activities,2
+69,Activities auxiliary to financial services activities,10,Financial and insurance activities,1
+70,Real estate,11,Real estate and ownership of dwellings,1
+71,Ownership of dwellings,11,Real estate and ownership of dwellings,1
+72,"Professional, Scientific and Technical Activities; Administrative and Support Service Activities",12,Professional and business services,17
+73,Public Administration and Defense; Compulsory social security,13,Public Administration and Defense; Compulsory social security,1
+74,Public education,14,Education,1
+75,Private education,14,Education,1
+76,Public human health,15,Human health and social work activities,1
+77,Private human health,15,Human health and social work activities,1
+78,Social work activities,15,Human health and social work activities,1
+79,"Arts, entertainment and recreation",16,Other services,1
+80,Other service activities,16,Other services,6
