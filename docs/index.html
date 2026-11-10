@@ -1,4 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Completing a Production Year</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Preliminary results: the 2018 Philippine Supply and Use Tables simulated as a Petri net, one batch at a time.">
@@ -333,6 +337,25 @@ details.tbl summary { cursor: pointer; font-family: var(--font-head); font-size:
 
 /* q2 */
 .q2tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+#q2-view { min-height: 340px; position: relative; overflow: hidden; }
+.q2-indlab { display: flex; flex: 1 1 180px; min-width: 0; }
+.q2-indlab select { flex: 1; min-width: 0; width: 100%; }
+#q2-extra .mini-label select { min-width: 0; width: 100%; }
+#q2-view svg { display: block; width: 100%; overflow: visible; }
+#q2-view text { font-family: var(--font-head); }
+.q2-wait { height: 300px; display: grid; place-items: center; font-family: var(--font-head); color: var(--muted); font-size: .95rem; text-align: center; padding: 0 20px; }
+.q2-extra { min-height: 0; margin: 6px 0 2px; }
+.q2-extra:empty { display: none; }
+.q2-read { font-family: var(--font-head); font-size: .9rem; line-height: 1.45; color: var(--ink-2); margin-top: 8px; min-height: 4.2em; }
+.q2-read b { color: var(--ink); }
+.q2-read .mono { font-size: .84rem; color: var(--ink); }
+.q2-table { overflow-x: auto; padding-top: 10px; }
+.q2-table table.t td { vertical-align: top; }
+.q2-table table.t td:first-child { font-family: var(--font-head); font-size: .86rem; white-space: normal; }
+.q2-table table.t th { font-size: .74rem; }
+.q2-table .sub { font-family: var(--font-head); font-size: .74rem; color: var(--muted); }
+@media (max-width: 899px) { .q2-table .sub { display: none; } .q2-table table.t th, .q2-table table.t td { padding: 3px 4px; font-size: .68rem; } .q2-table table.t td:first-child { font-size: .74rem; }
+  #q2-view { min-height: 270px; } .q2-wait { height: 240px; } .q2-read { font-size: .8rem; min-height: 0; max-height: 9.5em; overflow-y: auto; } #q2-fig .chip { height: 26px; font-size: .72rem; } }
 @media (max-width: 899px) { .q2tiles { grid-template-columns: 1fr 1fr; } }
 .method { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 26px; margin: 18px 0; }
 .method div { border-top: 1px solid var(--rule); padding-top: 10px; font-size: .95rem; color: var(--ink-2); }
@@ -353,8 +376,10 @@ ul.plain li { margin-bottom: 8px; }
 footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); margin-top: 56px; color: var(--muted); font-family: var(--font-head); font-size: .92rem; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
-</head><body>
 
+
+</head>
+<body>
 <header class="top">
   <div class="wrap">
     <div class="brand">SUT 2018 as a Petri net <span>· preliminary</span></div>
@@ -681,14 +706,14 @@ footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); margin-top: 56
 <section class="block" id="q2">
   <div class="wrap">
     <div class="prose">
-      <p class="eyebrow">7 · Results for Q2</p>
-      <h2>Do the completed years share an order?</h2>
+      <p class="eyebrow">7 · Q2: the order of industries</p>
+      <h2>How the order is tested, and what was found</h2>
       <p class="question">In the years that complete, do some industries tend to run earlier than others?</p>
     </div>
     <div class="two">
       <div class="prose">
         <p>The small example gives a case where they do. At <span class="mono">(6, 6, 8)</span>, the Power plant's n-th batch comes before the Factory's n-th batch in more than half of the completed years. At <span class="mono">(10, 10, 13)</span>, every share is 50%.</p>
-        <p>The study asks the same of the 1,000 completed years at w* = 26.14 weeks (the years of the check above), compared with 1,000 reference years at 52 weeks.</p>
+        <p>The study asks the same of the 2018 net. The figure below goes through each step of the test (Section 7 of the paper) on years that your browser simulates now: 100 completed years with 9 weeks of stock, where industries often wait, and 100 reference years with 52 weeks of stock, where nothing waits. These are not the study's years; the study's results come at the end of this section.</p>
       </div>
       <div class="card" style="padding: 14px 16px">
         <div class="fig-title" style="margin-bottom: 4px">Small example: Power plant's n-th batch before Factory's n-th batch</div>
@@ -696,11 +721,81 @@ footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); margin-top: 56
         <div id="order-mini"></div>
       </div>
     </div>
-    <div class="method">
-      <div><b>Moment</b>For each batch, the step at which it ran divided by the number of steps in the year: 0 is the start, 1 is the end.</div>
-      <div><b>Earlier or later</b>An industry is clearly earlier or later if its average moment differs from the reference years by more than chance: Welch's t-test, with a false-discovery rate of 0.05 over the 80 industries (Benjamini and Hochberg, 1995).</div>
-      <div><b>Links</b>Two industries are linked if the n-th batch of one comes before the n-th batch of the other more often than chance. There are 3,160 pairs.</div>
-      <div><b>Stability</b>Rank the industries by their early batches in half of the years, and by their late batches in the other half. Kendall's τ near 0 means there is no stable order.</div>
+    <div class="scrolly" id="q2-scrolly">
+      <div class="figure card" id="q2-fig">
+        <div class="fig-head"><div class="fig-title" id="q2-title">The test, step by step</div><div class="fig-sub" id="q2-status"></div></div>
+        <div class="row" style="margin-bottom: 6px">
+          <div class="chips" id="q2-sets" role="group" aria-label="Stock of the simulated years"><button class="chip" type="button" data-set="nine" aria-pressed="true">9 weeks</button><button class="chip" type="button" data-set="wstar" aria-pressed="false">w* 26.14 weeks</button></div>
+          <label class="mini-label q2-indlab">Industry <select class="sel" id="q2-ind"></select></label>
+        </div>
+        <div id="q2-view" class="q2-view"></div>
+        <div class="row q2-extra" id="q2-extra"></div>
+        <div class="q2-read" id="q2-read" aria-live="polite"></div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h3>When in the year does a batch run?</h3>
+          <p>Take one simulated year with 9 weeks of stock, and one industry, Manufacture of food products. Its 52 batches run at different steps of the year; each tick in the figure is one batch.</p>
+          <p>The <b>moment</b> of a batch is its step divided by the 7,644 firings of the year: 0 is the start of the year, 1 is the end. In a reference year (52 weeks of stock), nothing waits, and the batches spread evenly over the year.</p>
+          <p>Choose another industry above the figure, or another year below it.</p>
+        </div>
+        <div class="step" data-step="1">
+          <h3>One number per year</h3>
+          <p>For every year, the average moment of the industry's 52 batches is one number. The top row has one dot per simulated year at 9 weeks. The bottom row has one dot per reference year; each of its dots averages all 80 industries, because in the reference years all industries behave alike.</p>
+          <p>The difference between the two rows, in weeks, is the industry's <b>lead</b>: positive means later than the reference, negative means earlier.</p>
+        </div>
+        <div class="step" data-step="2">
+          <h3>Is the difference larger than chance?</h3>
+          <p>Another set of 100 years would give a slightly different difference. The <b>standard error</b> (se) measures how much. It adds the uncertainty of the two averages, each from its own row: se = √(s₁²/n₁ + s₂²/n₂), where s is the spread of a row and n its number of years.</p>
+          <p>The <b>t-score</b> counts how many standard errors the difference lies from zero: t = d / se. <b>Welch's t-test</b> keeps the two spreads separate, because here they are very different: the bottom row is much narrower than the top row.</p>
+          <p>Move the slider under the figure: with fewer years, the standard error grows, the 95% interval widens, and t falls.</p>
+        </div>
+        <div class="step" data-step="3">
+          <h3>What does chance alone give?</h3>
+          <p>How large can t be when there is no order? The page cuts the reference years into two random halves 2,000 times, and each time compares a random industry in one half with the reference in the other half. No industry has an order there, so these t-scores show chance alone.</p>
+          <p>They pile up between about −2 and 2, and follow Student's t-distribution (the black curve), which the test uses. The <b>p-value</b> is the area of that curve beyond the observed t, on both sides: the chance of a t-score at least this far from 0 when there is no order.</p>
+        </div>
+        <div class="step" data-step="4">
+          <h3>80 tests at once</h3>
+          <p>The test runs for each of the 80 industries. Even with no order at all, about 4 of 80 tests would give p &lt; 0.05 by chance.</p>
+          <p>The <b>false-discovery rate</b> controls this (Benjamini and Hochberg, 1995): sort the 80 p-values, compare the k-th smallest with 0.05 × k/80 (the black line), and keep as findings all the tests up to the last one below the line. Then, on average, at most 5% of the findings are false.</p>
+          <p>The button "check" runs the same tests on the reference years against themselves, as the paper does. It should find nothing.</p>
+        </div>
+        <div class="step" data-step="5">
+          <h3>Is the ranking the same early and late in the year?</h3>
+          <p>An order of industries should look the same in the first and in the second half of the batches. The page ranks the 80 industries by their early batches (1 to 26) in the even-numbered years, and by their late batches (27 to 52) in the odd-numbered years. Using different years keeps chance from making the two rankings agree.</p>
+          <p><b>Kendall's τ</b> compares the two rankings pair by pair: +1 if every pair of industries has the same order in both rankings, 0 if pairs agree as often as they disagree.</p>
+        </div>
+        <div class="step" data-step="6">
+          <h3>Who runs before whom?</h3>
+          <p>For two industries a and b: in what share of the 52 batches does a's n-th batch run before b's n-th batch? Without an order, about one half. The figure shows this share for every year.</p>
+          <p>A t-test of the yearly shares against 0.5, for all 3,160 pairs of industries, with the false-discovery rate of 0.05, decides which pairs get a <b>link</b> a → b. If the links contain no cycle, they form a <b>DAG</b> (directed acyclic graph): an order in which some pairs stay unordered.</p>
+        </div>
+        <div class="step" data-step="7">
+          <h3>What the study found</h3>
+          <p>The study ran the same steps on 1,000 years at w* = 26.14 weeks, where only 0.6% of the years had any waiting. It found no industry earlier or later than the reference, τ = 0.017, and no link.</p>
+          <p>The table compares this with the years simulated on this page. At w*, they also show no order. At 9 weeks, where industries wait, the same steps can find a difference; the table shows what they find in these 100 years. The study has not yet run this case: it is the next step of the paper.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top: 60px">
+      <h3>The terms, now that the steps show them</h3>
+    </div>
+    <div class="terms">
+      <div class="term"><b>Moment</b><span>The step at which a batch ran, divided by the number of firings in the year: 0 is the start, 1 is the end.</span></div>
+      <div class="term"><b>Lead</b><span>An industry's average moment minus the reference years' average moment, in weeks (negative = earlier).</span></div>
+      <div class="term"><b>Standard error</b><span>How much a difference of two averages changes from one set of years to another.</span></div>
+      <div class="term"><b>t-score</b><span>The difference divided by its standard error.</span></div>
+      <div class="term"><b>Degrees of freedom</b><span>The number that sets how heavy the tails of the t-distribution are. Welch's formula makes it close to the number of years of the row with more spread.</span></div>
+      <div class="term"><b>p-value</b><span>The chance of a t-score at least as far from 0 as the observed one, if there is no order.</span></div>
+      <div class="term"><b>False-discovery rate</b><span>The expected share of false findings among the findings. A test's q-value is the smallest rate at which it counts as a finding.</span></div>
+      <div class="term"><b>Kendall's τ</b><span>The share of pairs in the same order in two rankings, minus the share in the opposite order.</span></div>
+      <div class="term"><b>Link and DAG</b><span>a → b when a's batches come first clearly more often than half of the time. A DAG is a set of links with no cycle.</span></div>
+    </div>
+
+    <div class="prose" style="margin-top: 50px">
+      <h3>The study's results at w* = 26.14 weeks</h3>
     </div>
     <div class="q2tiles">
       <div class="tile"><div class="tag">Waiting</div><div class="big">0.6%</div><p>of the completed years had any step with a waiting industry; 0.01% of steps on average.</p></div>
@@ -948,6 +1043,183 @@ function toyExact(z0) {
   };
 }
 if (typeof module !== "undefined") module.exports = { TOY, toyCanRun, toyFire, toyExact };
+
+</script>
+<script>
+// Section 7 of the paper, in JavaScript: the same computations as firing_stats.py and part2_analysis.py.
+// moments: one Float32Array per completed year, of length n * N; moment of industry j's batch n is at j * N + n.
+
+function momentsOfYear(order, nInd, N, total) {   // (step + 1) / total of every industry's n-th firing
+  const m = new Float32Array(nInd * N), count = new Int16Array(nInd);
+  for (let s = 0; s < total; s++) {
+    const f = order[s];
+    if (f < nInd) { m[f * N + count[f]] = (s + 1) / total; count[f]++; }
+  }
+  return m;
+}
+
+// --- distributions -------------------------------------------------------------------
+function lgamma(x) {                               // Lanczos approximation
+  const g = 7, c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313,
+    -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+  if (x < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * x)) - lgamma(1 - x);
+  x -= 1;
+  let a = c[0];
+  const t = x + g + 0.5;
+  for (let i = 1; i < g + 2; i++) a += c[i] / (x + i);
+  return 0.5 * Math.log(2 * Math.PI) + (x + 0.5) * Math.log(t) - t + Math.log(a);
+}
+function betacf(a, b, x) {                         // continued fraction for the incomplete beta function
+  const MAXIT = 300, EPS = 3e-16, FPMIN = 1e-300;
+  let qab = a + b, qap = a + 1, qam = a - 1, c = 1, d = 1 - qab * x / qap;
+  if (Math.abs(d) < FPMIN) d = FPMIN;
+  d = 1 / d;
+  let h = d;
+  for (let m = 1; m <= MAXIT; m++) {
+    const m2 = 2 * m;
+    let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+    d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN;
+    c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN;
+    d = 1 / d; h *= d * c;
+    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+    d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN;
+    c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN;
+    d = 1 / d;
+    const del = d * c;
+    h *= del;
+    if (Math.abs(del - 1) < EPS) break;
+  }
+  return h;
+}
+function betai(a, b, x) {                          // regularized incomplete beta I_x(a, b)
+  if (x <= 0) return 0;
+  if (x >= 1) return 1;
+  const bt = Math.exp(lgamma(a + b) - lgamma(a) - lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+  return x < (a + 1) / (a + b + 2) ? bt * betacf(a, b, x) / a : 1 - bt * betacf(b, a, 1 - x) / b;
+}
+function tTwoSided(t, df) {                        // P(|T| >= |t|) for Student's t with df degrees of freedom
+  if (!isFinite(t)) return 0;
+  return betai(df / 2, 0.5, df / (df + t * t));
+}
+function tDensity(t, df) {
+  return Math.exp(lgamma((df + 1) / 2) - lgamma(df / 2) - 0.5 * Math.log(df * Math.PI) - (df + 1) / 2 * Math.log(1 + t * t / df));
+}
+function tQuantile975(df) {                        // t such that P(T <= t) = 0.975
+  let lo = 0, hi = 50;
+  for (let k = 0; k < 80; k++) { const mid = (lo + hi) / 2; if (tTwoSided(mid, df) > 0.05) lo = mid; else hi = mid; }
+  return (lo + hi) / 2;
+}
+function normalTwoSided(z) {                       // P(|Z| >= |z|), via the complementary error function
+  const x = Math.abs(z) / Math.SQRT2, t = 1 / (1 + 0.5 * x);
+  const erfc = t * Math.exp(-x * x - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806 +
+    t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+  return Math.min(1, erfc);
+}
+
+// --- tests -----------------------------------------------------------------------------
+function meanVar(v) {
+  let s = 0;
+  for (const x of v) s += x;
+  const mean = s / v.length;
+  let q = 0;
+  for (const x of v) q += (x - mean) * (x - mean);
+  return { mean, variance: v.length > 1 ? q / (v.length - 1) : 0, n: v.length };
+}
+function welch(x, r) {                             // Welch's two-sample t-test, as in earliness()
+  const a = meanVar(x), b = meanVar(r);
+  const v1 = a.variance / a.n, v2 = b.variance / b.n, se = Math.sqrt(v1 + v2), diff = a.mean - b.mean;
+  let df = (v1 + v2) ** 2 / (v1 * v1 / (a.n - 1) + v2 * v2 / (b.n - 1));
+  if (!isFinite(df)) df = a.n + b.n - 2;
+  const t = se > 0 ? diff / se : 0;
+  return { diff, se, df, t, p: tTwoSided(t, df), half: tQuantile975(df) * se, a, b };
+}
+function oneSample(v, target) {                    // t-test of the mean of v against target, as in t_test()
+  const a = meanVar(v), se = Math.sqrt(a.variance / a.n);
+  const t = se > 0 ? (a.mean - target) / se : 0;
+  return { mean: a.mean, t, p: tTwoSided(t, a.n - 1), df: a.n - 1 };
+}
+function benjaminiHochberg(p) {                    // q-values, as in benjamini_hochberg()
+  const m = p.length, idx = Array.from(p.keys()).sort((i, j) => p[i] - p[j]);
+  const q = new Float64Array(m);
+  let run = 1;
+  for (let k = m - 1; k >= 0; k--) { run = Math.min(run, p[idx[k]] * m / (k + 1)); q[idx[k]] = Math.min(run, 1); }
+  return q;
+}
+function kendallTau(x, y) {                        // Kendall's tau-b and its p-value (normal approximation, no ties)
+  const n = x.length;
+  let s = 0, tx = 0, ty = 0, pairs = 0;
+  for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+    const a = Math.sign(x[i] - x[j]), b = Math.sign(y[i] - y[j]);
+    if (a === 0) tx++;
+    if (b === 0) ty++;
+    s += a * b; pairs++;
+  }
+  const tau = s / Math.sqrt((pairs - tx) * (pairs - ty));
+  const z = 3 * tau * Math.sqrt(n * (n - 1)) / Math.sqrt(2 * (2 * n + 5));
+  return { tau, p: normalTwoSided(z) };
+}
+
+// --- the analysis of Section 7 ---------------------------------------------------------------
+function yearAverages(moments, nInd, N) {          // years x industries: average moment of the firings
+  return moments.map(m => { const a = new Float64Array(nInd); for (let j = 0; j < nInd; j++) { let s = 0; for (let n = 0; n < N; n++) s += m[j * N + n]; a[j] = s / N; } return a; });
+}
+function pooledAverages(moments) {                 // one value per year: the average over all industries and batches
+  return moments.map(m => { let s = 0; for (const v of m) s += v; return s / m.length; });
+}
+function earliness(moments, refMoments, nInd, N) { // lead (weeks), half-width (weeks), p, q for every industry
+  const x = yearAverages(moments, nInd, N), r = pooledAverages(refMoments);
+  const out = [];
+  for (let j = 0; j < nInd; j++) {
+    const w = welch(x.map(v => v[j]), r);
+    out.push({ j, lead: w.diff * 52, half: w.half * 52, t: w.t, df: w.df, p: w.p, test: w });
+  }
+  const q = benjaminiHochberg(out.map(o => o.p));
+  out.forEach((o, k) => { o.q = q[k]; });
+  return out;
+}
+function stability(moments, nInd, N) {             // ranking from early firings (even years) vs late firings (odd years)
+  const early = new Float64Array(nInd), late = new Float64Array(nInd);
+  let ne = 0, nl = 0;
+  moments.forEach((m, y) => {
+    if (y % 2 === 0) { ne++; for (let j = 0; j < nInd; j++) for (let n = 0; n < N / 2; n++) early[j] += m[j * N + n]; }
+    else { nl++; for (let j = 0; j < nInd; j++) for (let n = N / 2; n < N; n++) late[j] += m[j * N + n]; }
+  });
+  for (let j = 0; j < nInd; j++) { early[j] /= ne * (N / 2); late[j] /= nl * (N - N / 2); }
+  return { early, late, ...kendallTau(Array.from(early), Array.from(late)) };
+}
+function pairwise(moments, nInd, N) {              // share[a][b], t, p: a's n-th firing before b's n-th firing
+  const years = moments.length, share = [], t = [], p = [];
+  const per = new Float64Array(years);
+  for (let a = 0; a < nInd; a++) { share.push(new Float64Array(nInd).fill(0.5)); t.push(new Float64Array(nInd)); p.push(new Float64Array(nInd).fill(1)); }
+  for (let a = 0; a < nInd; a++) for (let b = 0; b < nInd; b++) {
+    if (a === b) continue;
+    for (let y = 0; y < years; y++) {
+      const m = moments[y];
+      let c = 0;
+      for (let n = 0; n < N; n++) if (m[a * N + n] < m[b * N + n]) c++;
+      per[y] = c / N;
+    }
+    const r = oneSample(per, 0.5);
+    share[a][b] = r.mean; t[a][b] = r.t; p[a][b] = r.p;
+  }
+  return { share, t, p };
+}
+function dagLinks(pw, nInd, fdr) {                 // links a -> b with q < fdr over all pairs, as in dag_links()
+  const pairs = [];
+  for (let a = 0; a < nInd; a++) for (let b = a + 1; b < nInd; b++) pairs.push([a, b]);
+  const q = benjaminiHochberg(pairs.map(([a, b]) => pw.p[a][b]));
+  const links = [];
+  pairs.forEach(([a, b], k) => {
+    if (q[k] < fdr) {
+      const [f, s] = pw.share[a][b] > 0.5 ? [a, b] : [b, a];
+      links.push({ from: f, to: s, share: pw.share[f][s], q: q[k] });
+    }
+  });
+  return links;
+}
+
+if (typeof module !== "undefined") module.exports = { momentsOfYear, lgamma, betai, tTwoSided, tDensity, tQuantile975, normalTwoSided,
+  meanVar, welch, oneSample, benjaminiHochberg, kendallTau, yearAverages, pooledAverages, earliness, stability, pairwise, dagLinks };
 
 </script>
 <script>
@@ -1920,6 +2192,7 @@ if (typeof module !== "undefined") module.exports = { TOY, toyCanRun, toyFire, t
   addScrolly("toy-scrolly", Toy.onStep);
   addScrolly("run-scrolly", Run.onStep);
   addScrolly("q1-scrolly", Q1.onStep);
+  window.__SUT = { M, plan, fmt, pct, REDUCE, ease, weeksLabel, WSTAR, addScrolly, checkScrollies };
   themeListeners.push(() => { Run.draw(); Exp.draw(); });
   let rT = 0;
   window.addEventListener("resize", () => {
@@ -1931,5 +2204,508 @@ if (typeof module !== "undefined") module.exports = { TOY, toyCanRun, toyFire, t
 })();
 
 </script>
+<script>
+(function () {
+  "use strict";
+  const U = window.__SUT;
+  const { M, plan, fmt, pct, REDUCE, ease, weeksLabel, WSTAR } = U;
+  const $ = s => document.querySelector(s);
+  const NI = M.n, NB = M.N, TOTAL = NB * (NI + M.imported.length);
+  const FOOD = plan.names.indexOf("Manufacture of food products");
+  const PALAY = plan.names.indexOf("Palay");
+  const YEARS = 100;
+  const short = j => plan.names[j].length > 34 ? plan.names[j].slice(0, 32) + "…" : plan.names[j];
+  const sup = x => {                               // 2.3e-10 -> 2.3 × 10⁻¹⁰
+    if (x >= 0.001) return x.toFixed(3);
+    if (x <= 0) return "below 10⁻¹⁵";
+    const e = Math.floor(Math.log10(x)), m = x / Math.pow(10, e);
+    const map = { "-": "⁻", 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
+    return m.toFixed(1) + " × 10" + String(e).split("").map(c => map[c]).join("");
+  };
+  const wk = m => (m * 52).toFixed(1);             // a moment as a week of the year
 
-</body></html>
+  // ---------------------------------------------------------------- data: years simulated in the browser
+  const SETS = {
+    nine: { weeks: 9, seed: 800000, label: "9 weeks" },
+    wstar: { weeks: WSTAR, seed: 900000, label: "w* = 26.14 weeks" },
+    ref: { weeks: 52, seed: 700000, label: "reference, 52 weeks" },
+  };
+  for (const k in SETS) Object.assign(SETS[k], { years: [], avg: [], pooled: [], tried: 0, waited: 0, done: false, cache: {} });
+  let queue = [], running = false;
+  function want(name) { if (!SETS[name].done && !queue.includes(name)) { queue.push(name); pump(); } }
+  function pump() {
+    if (running || !queue.length) return;
+    running = true;
+    const name = queue[0], S = SETS[name], z0 = openingStock(M, S.weeks);
+    function chunk() {
+      const t0 = performance.now();
+      while (S.years.length < YEARS && performance.now() - t0 < 24) {
+        const r = simulateYear(M, z0, mulberry32(S.seed + S.tried), true);
+        S.tried++;
+        if (!r.finished) continue;
+        if (r.blocked > 0) S.waited++;
+        const m = momentsOfYear(r.order, NI, NB, TOTAL);
+        S.years.push(m);
+        const a = new Float64Array(NI);
+        let tot = 0;
+        for (let j = 0; j < NI; j++) { let s = 0; for (let n = 0; n < NB; n++) s += m[j * NB + n]; a[j] = s / NB; tot += s; }
+        S.avg.push(a);
+        S.pooled.push(tot / (NI * NB));
+      }
+      if (S.years.length >= YEARS) { S.done = true; queue.shift(); running = false; }
+      status();
+      View.dataChanged(name);
+      if (running) setTimeout(chunk, 0); else pump();
+    }
+    chunk();
+  }
+  function status() {
+    const parts = ["nine", "ref", "wstar"].filter(k => SETS[k].years.length || queue.includes(k)).map(k => {
+      const S = SETS[k];
+      return (k === "ref" ? "52 weeks" : k === "nine" ? "9 weeks" : "w*") + " " + S.years.length + "/" + YEARS;
+    });
+    const busy = queue.length ? "simulating in your browser: " : "browser years: ";
+    $("#q2-status").textContent = busy + parts.join(" · ");
+  }
+  function analysis(name) {                         // cached results of Section 7 for one set against the reference
+    const S = SETS[name], R = SETS.ref;
+    if (!S.done || !R.done) return null;
+    const c = S.cache;
+    if (!c.early) {
+      c.early = earliness(S.years, R.years, NI, NB);
+      c.check = earliness(R.years.filter((_, y) => y % 2 === 0), R.years.filter((_, y) => y % 2 === 1), NI, NB);
+      c.stab = stability(S.years, NI, NB);
+    }
+    return c;
+  }
+  function pairs(name) {
+    const c = SETS[name].cache;
+    if (!c.pw && SETS[name].done) { c.pw = pairwise(SETS[name].years, NI, NB); c.links = dagLinks(c.pw, NI, 0.05); }
+    return c.pw ? c : null;
+  }
+  let nullT = null;                                  // t-scores when there is no order: random halves of the reference years
+  function nullScores() {
+    if (nullT || !SETS.ref.done) return nullT;
+    const R = SETS.ref, rng = mulberry32(4242), n = R.years.length, idx = Array.from({ length: n }, (_, i) => i);
+    nullT = new Float64Array(2000);
+    for (let k = 0; k < nullT.length; k++) {
+      for (let i = n - 1; i > 0; i--) { const r = Math.floor(rng() * (i + 1)); [idx[i], idx[r]] = [idx[r], idx[i]]; }
+      const j = Math.floor(rng() * NI), h = n >> 1;
+      nullT[k] = welch(idx.slice(0, h).map(y => R.avg[y][j]), idx.slice(h).map(y => R.pooled[y])).t;
+    }
+    return nullT;
+  }
+
+  // ---------------------------------------------------------------- the figure
+  const box = $("#q2-view"), read = $("#q2-read"), extra = $("#q2-extra"), title = $("#q2-title");
+  const tip = document.createElement("div");
+  tip.className = "tip"; tip.hidden = true;
+  const state = { step: -1, set: "nine", ind: FOOD, other: PALAY, yearIdx: null, used: YEARS, testData: "stock" };
+  let anim = 0, gen = 0;
+  function size() { const W = Math.max(280, box.clientWidth), small = W < 520; return { W, H: small ? 270 : 340, small }; }
+  function svgOpen(W, H, label) { return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}">`; }
+  function run(dur, frame) {                         // a simple animation: frame(u) for u from 0 to 1
+    const my = ++gen;
+    cancelAnimationFrame(anim);
+    if (REDUCE) { frame(1); return; }
+    const t0 = performance.now();
+    const f = now => { if (my !== gen) return; const u = Math.min(1, (now - t0) / dur); frame(u); if (u < 1) anim = requestAnimationFrame(f); };
+    anim = requestAnimationFrame(f);
+  }
+  function waiting(msg) { box.innerHTML = `<div class="q2-wait">${msg || "Simulating years in your browser…"}</div>`; }
+  function setTitle(t) { title.textContent = t; }
+  const setName = () => (state.set === "nine" ? "9 weeks" : "w* = 26.14 weeks");
+
+  // view 0: the moments of one industry's 52 batches in one year
+  function viewMoments() {
+    const S = SETS[state.set], R = SETS.ref, j = state.ind;
+    setTitle("Moments: when each batch ran");
+    extra.innerHTML = `<button class="btn" id="q2-next-year" type="button">Another year</button>`;
+    if (!S.years.length || !R.years.length) { waiting(); return; }
+    if (state.yearIdx === null) {                     // start with a typical year: its average is closest to the industry's mean
+      const v = S.avg.map(a => a[j]), mean = v.reduce((x, y) => x + y, 0) / v.length;
+      state.yearIdx = v.reduce((best, x, y) => Math.abs(x - mean) < Math.abs(v[best] - mean) ? y : best, 0);
+    }
+    $("#q2-next-year").onclick = () => { state.yearIdx++; viewMoments(); };
+    const k = state.yearIdx;
+    const ys = S.years[k % S.years.length], yr = R.years[k % R.years.length];
+    const a = Array.from(ys.subarray(j * NB, j * NB + NB)), b = Array.from(yr.subarray(j * NB, j * NB + NB));
+    const ma = a.reduce((s, v) => s + v, 0) / NB, mb = b.reduce((s, v) => s + v, 0) / NB;
+    const { W, H, small } = size(), l = 14, r = 14, X = m => l + m * (W - l - r);
+    const rows = [{ y: H * 0.3, v: a, mean: ma, col: "var(--blue)", lab: small ? `year ${k % S.years.length + 1} at ${setName()}` : `${short(j)} · year ${k % S.years.length + 1} at ${setName()}` },
+                  { y: H * 0.72, v: b, mean: mb, col: "var(--muted)", lab: small ? `reference year ${k % R.years.length + 1} (52 weeks)` : `${short(j)} · reference year ${k % R.years.length + 1} (52 weeks)` }];
+    function draw(u) {
+      let s = svgOpen(W, H, "Moments of the 52 batches of one industry in one year");
+      [0, 13, 26, 39, 52].forEach(w => {
+        const x = X(w / 52);
+        s += `<line x1="${x}" x2="${x}" y1="${H * 0.12}" y2="${H - 26}" class="ax"/><text x="${x}" y="${H - 8}" text-anchor="middle" class="tick">week ${w}</text>`;
+      });
+      for (const row of rows) {
+        s += `<text x="${l}" y="${row.y - 30}" class="ann">${row.lab}</text>`;
+        s += `<line x1="${X(0)}" x2="${X(1)}" y1="${row.y}" y2="${row.y}" class="ax0"/>`;
+        row.v.forEach((m, n) => { if (m <= u) s += `<line x1="${X(m)}" x2="${X(m)}" y1="${row.y - 14}" y2="${row.y + 2}" stroke="${row.col}" stroke-width="2"><title>batch ${n + 1}: moment ${m.toFixed(3)} (week ${wk(m)})</title></line>`; });
+        if (u >= 1) {
+          const x = X(row.mean);
+          s += `<path d="M${x},${row.y + 6} l-6,10 h12 z" fill="var(--ink)"/><text x="${x}" y="${row.y + 30}" text-anchor="middle" class="ann">average: week ${wk(row.mean)}</text>`;
+        }
+      }
+      if (u < 1) { const x = X(u); s += `<line x1="${x}" x2="${x}" y1="${H * 0.12}" y2="${H - 26}" stroke="var(--ink)" stroke-width="1" stroke-dasharray="2 3"/>`; }
+      box.innerHTML = s + "</svg>";
+    }
+    run(2200, u => draw(u));
+    read.innerHTML = `Each tick is one batch. A batch that ran at step <i>s</i> of the year's 7,644 firings has the moment <i>s</i>/7,644: 0 is the start of the year, 1 is the end. The scale shows the moment as a week (moment × 52). ` +
+      `Average moment: <b>week ${wk(ma)}</b> in this year at ${setName()}, <b>week ${wk(mb)}</b> in the reference year.`;
+  }
+
+  // view 1 and 2: one number per year, and Welch's t-test
+  function dotRows(W, H, S, R, j, used, withTest) {
+    const xs = S.avg.slice(0, used).map(a => a[j]), rs = R.pooled.slice(0, used);
+    const all = S.avg.map(a => a[j]).concat(R.pooled);
+    let lo = Math.min(...all), hi = Math.max(...all);
+    const pad = (hi - lo) * 0.08 + 0.002;
+    lo -= pad; hi += pad;
+    const l = 16, r = 16, X = m => l + (m - lo) / (hi - lo) * (W - l - r);
+    const yA = withTest ? H * 0.2 : H * 0.3, yB = withTest ? H * 0.47 : H * 0.68, band = withTest ? 34 : 50;
+    const jit = k => (((k * 2654435761) >>> 0) % 1000) / 1000 - 0.5;
+    let s = "";
+    const pxWeek = (W - l - r) / ((hi - lo) * 52), stepW = [1, 2, 4, 5, 10].find(v => v * pxWeek >= 46) || 10;
+    const t0 = Math.ceil(lo * 52 / stepW) * stepW, t1 = Math.floor(hi * 52);
+    for (let w = t0; w <= t1; w += stepW) { const x = X(w / 52); s += `<line x1="${x}" x2="${x}" y1="${yA - band / 2 - 16}" y2="${yB + band / 2 + 4}" class="ax"/><text x="${x}" y="${yB + band / 2 + 18}" text-anchor="middle" class="tick">week ${w}</text>`; }
+    const small = W < 520;
+    s += `<text x="${l}" y="${yA - band / 2 - 20}" class="ann">${small ? short(j).slice(0, 30) : short(j)}, ${setName()}${small ? "" : `: one dot per year (${xs.length} years)`}</text>`;
+    s += `<text x="${l}" y="${yB - band / 2 - 6}" class="ann">${small ? "reference years, 80 industries" : "reference years (52 weeks), all 80 industries: one dot per year"}</text>`;
+    return { s, X, xs, rs, yA, yB, band, jit, lo, hi, l, r };
+  }
+  function viewAverages() {
+    const S = SETS[state.set], R = SETS.ref, j = state.ind;
+    setTitle("One number per year");
+    extra.innerHTML = "";
+    if (!S.years.length || !R.years.length) { waiting(); return; }
+    const { W, H } = size();
+    const n = Math.min(S.avg.length, R.pooled.length);
+    function draw(u) {
+      const k = Math.max(1, Math.round(u * n));
+      const d = dotRows(W, H, S, R, j, k, false);
+      let s = svgOpen(W, H, "Yearly averages: the industry and the reference years") + d.s;
+      d.xs.forEach((v, y) => { s += `<circle cx="${d.X(v)}" cy="${d.yA + d.jit(y) * d.band}" r="3.4" fill="var(--blue)" opacity=".75"><title>year ${y + 1}: week ${wk(v)}</title></circle>`; });
+      d.rs.forEach((v, y) => { s += `<circle cx="${d.X(v)}" cy="${d.yB + d.jit(y + 7) * d.band}" r="3.4" fill="var(--muted)" opacity=".75"><title>reference year ${y + 1}: week ${wk(v)}</title></circle>`; });
+      if (u >= 1) {
+        const ma = meanVar(d.xs).mean, mb = meanVar(d.rs).mean, xa = d.X(ma), xb = d.X(mb);
+        s += `<line x1="${xa}" x2="${xa}" y1="${d.yA - d.band / 2 - 4}" y2="${d.yA + d.band / 2 + 4}" stroke="var(--ink)" stroke-width="2"/>`;
+        s += `<line x1="${xb}" x2="${xb}" y1="${d.yB - d.band / 2 - 4}" y2="${d.yB + d.band / 2 + 4}" stroke="var(--ink)" stroke-width="2"/>`;
+        const ym = (d.yA + d.yB) / 2;
+        s += `<line x1="${xb}" x2="${xa}" y1="${ym}" y2="${ym}" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#q2ah)"/>`;
+        s += `<text x="${(xa + xb) / 2}" y="${ym - 6}" text-anchor="middle" class="ann">${((ma - mb) * 52 >= 0 ? "+" : "") + ((ma - mb) * 52).toFixed(2)} weeks</text>`;
+        read.innerHTML = `Average of the top row: <b>week ${wk(ma)}</b>; of the bottom row: <b>week ${wk(mb)}</b>. The difference, <b>${((ma - mb) * 52).toFixed(2)} weeks</b>, is the industry's <b>lead</b> (negative = earlier). ` +
+          `The bottom row is narrow, because each of its dots averages 80 industries; the top row is wider, because each dot averages one industry.`;
+      }
+      box.innerHTML = s + `<defs><marker id="q2ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink)"/></marker></defs></svg>`;
+    }
+    read.innerHTML = "Each dot is one simulated year.";
+    run(1600, draw);
+  }
+  function viewWelch() {
+    const S = SETS[state.set], R = SETS.ref, j = state.ind;
+    setTitle("Welch's t-test: is the difference larger than chance?");
+    if (!S.done || !R.done) { extra.innerHTML = ""; waiting(); return; }
+    if (!$("#q2-used")) {
+      extra.innerHTML = `<label class="mini-label" style="flex:1">Years used <input type="range" id="q2-used" min="5" max="${YEARS}" step="1" value="${state.used}"></label><span class="mono" id="q2-used-n"></span>`;
+      $("#q2-used").addEventListener("input", e => { state.used = +e.target.value; drawWelch(); });
+    }
+    drawWelch();
+  }
+  function drawWelch() {
+    const S = SETS[state.set], R = SETS.ref, j = state.ind, used = state.used;
+    const { W, H } = size();
+    $("#q2-used-n").textContent = used + " + " + used;
+    const d = dotRows(W, H, S, R, j, used, true);
+    const w = welch(d.xs, d.rs);
+    let s = svgOpen(W, H, "Welch's t-test") + d.s;
+    d.xs.forEach((v, y) => { s += `<circle cx="${d.X(v)}" cy="${d.yA + d.jit(y) * d.band}" r="3" fill="var(--blue)" opacity=".7"/>`; });
+    d.rs.forEach((v, y) => { s += `<circle cx="${d.X(v)}" cy="${d.yB + d.jit(y + 7) * d.band}" r="3" fill="var(--muted)" opacity=".7"/>`; });
+    [[w.a.mean, d.yA], [w.b.mean, d.yB]].forEach(([m, y]) => { const x = d.X(m); s += `<line x1="${x}" x2="${x}" y1="${y - d.band / 2 - 3}" y2="${y + d.band / 2 + 3}" stroke="var(--ink)" stroke-width="2"/>`; });
+    // the difference with its 95% interval, on its own scale (weeks), with 0 = no difference
+    const yC = H * 0.82, span = Math.max(Math.abs(w.diff) + w.half, 2 * w.half) * 52 * 1.15;
+    const l = 16, r = 16, Z = v => l + (v * 52 + span) / (2 * span) * (W - l - r);
+    s += `<text x="${l}" y="${yC - 26}" class="ann">${W < 520 ? "difference, with its 95% interval (weeks)" : "difference of the two averages, with its 95% interval (weeks)"}</text>`;
+    s += `<line x1="${Z(-span / 52)}" x2="${Z(span / 52)}" y1="${yC}" y2="${yC}" class="ax0"/>`;
+    s += `<line x1="${Z(0)}" x2="${Z(0)}" y1="${yC - 14}" y2="${yC + 14}" stroke="var(--muted)" stroke-dasharray="3 3"/><text x="${Z(0)}" y="${yC + 28}" text-anchor="middle" class="tick">0 = no difference</text>`;
+    s += `<line x1="${Z(w.diff - w.half)}" x2="${Z(w.diff + w.half)}" y1="${yC}" y2="${yC}" stroke="var(--blue)" stroke-width="5" stroke-linecap="round"/>`;
+    s += `<circle cx="${Z(w.diff)}" cy="${yC}" r="6" fill="var(--ink)"/><text x="${Z(w.diff)}" y="${yC - 10}" text-anchor="middle" class="ann">${(w.diff * 52).toFixed(2)}</text>`;
+    box.innerHTML = s + "</svg>";
+    read.innerHTML = `<span class="mono">d = ${(w.diff * 52).toFixed(2)} weeks</span> (the lead). ` +
+      `<span class="mono">se = √(s₁²/n₁ + s₂²/n₂) = √(${(Math.sqrt(w.a.variance) * 52).toFixed(2)}²/${w.a.n} + ${(Math.sqrt(w.b.variance) * 52).toFixed(2)}²/${w.b.n}) = ${(w.se * 52).toFixed(3)} weeks</span>. ` +
+      `<span class="mono">t = d / se = ${w.t.toFixed(2)}</span>, with <span class="mono">${w.df.toFixed(0)}</span> degrees of freedom. ` +
+      `The 95% interval is <span class="mono">d ± ${(w.half * 52).toFixed(2)}</span> weeks; ${Math.abs(w.t) > tQuantile975(w.df) ? "it does not contain 0." : "it contains 0."}`;
+  }
+
+  // view 3: what chance alone gives
+  function viewNull() {
+    const S = SETS[state.set], j = state.ind;
+    setTitle("What chance alone gives: the t-distribution");
+    extra.innerHTML = "";
+    const c = analysis(state.set), nt = nullScores();
+    if (!c || !nt) { waiting(); return; }
+    const obs = c.early[j], { W, H } = size();
+    const lim = Math.max(6, Math.min(12, Math.ceil(Math.abs(obs.t)) + 1));
+    const l = 16, r = 16, X = t => l + (t + lim) / (2 * lim) * (W - l - r), base = H - 40, top = 34;
+    const bw = 0.25, nb = Math.round(2 * lim / bw), counts = new Array(nb).fill(0);
+    const peak = tDensity(0, obs.df), Y = dens => base - dens / peak * (base - top) * 0.92;
+    function draw(u) {
+      counts.fill(0);
+      const k = Math.round(u * nt.length);
+      for (let i = 0; i < k; i++) { const b = Math.floor((nt[i] + lim) / bw); if (b >= 0 && b < nb) counts[b]++; }
+      let s = svgOpen(W, H, "Distribution of t-scores when there is no order");
+      for (let t = -lim; t <= lim; t += lim > 8 ? 4 : 2) s += `<line x1="${X(t)}" x2="${X(t)}" y1="${base}" y2="${base + 5}" class="ax0"/><text x="${X(t)}" y="${base + 18}" text-anchor="middle" class="tick">${t}</text>`;
+      s += `<line x1="${X(-lim)}" x2="${X(lim)}" y1="${base}" y2="${base}" class="ax0"/>`;
+      counts.forEach((c2, b) => {                    // the histogram, scaled like a density
+        if (!c2) return;
+        const dens = c2 / (nt.length * bw), y = Y(dens * (k ? nt.length / k : 1));
+        s += `<rect x="${X(-lim + b * bw) + 0.5}" y="${y}" width="${Math.max(1, X(bw) - X(0) - 1)}" height="${base - y}" fill="var(--muted)" opacity=".35"/>`;
+      });
+      if (u >= 1) {
+        let path = "", tail = "";
+        for (let i = 0; i <= 240; i++) { const t = -lim + i * 2 * lim / 240; path += (i ? "L" : "M") + X(t).toFixed(1) + "," + Y(tDensity(t, obs.df)).toFixed(1); }
+        s += `<path d="${path}" fill="none" stroke="var(--ink)" stroke-width="1.6"/>`;
+        const a = Math.abs(obs.t);
+        for (const sgn of [1, -1]) {                 // the two tails beyond |t|: the p-value
+          if (a >= lim) continue;
+          tail = `M${X(sgn * a)},${base}`;
+          for (let i = 0; i <= 60; i++) { const t = sgn * (a + i * (lim - a) / 60); tail += `L${X(t)},${Y(tDensity(t, obs.df))}`; }
+          tail += `L${X(sgn * lim)},${base}z`;
+          s += `<path d="${tail}" fill="var(--blue)" opacity=".55"/>`;
+        }
+        const xo = X(Math.max(-lim + 0.05, Math.min(lim - 0.05, obs.t)));
+        s += `<line x1="${xo}" x2="${xo}" y1="${top - 10}" y2="${base}" stroke="var(--blue)" stroke-width="2.5"/>`;
+        s += `<text x="${xo + (obs.t > 0 ? -6 : 6)}" y="${top - 14}" text-anchor="${obs.t > 0 ? "end" : "start"}" class="ann">${short(j)}: t = ${obs.t.toFixed(2)}</text>`;
+        const beyond = Array.from(nt).filter(v => Math.abs(v) >= Math.abs(obs.t)).length;
+        read.innerHTML = `Grey: the t-scores of 2,000 tests without any order (the reference years cut into two random halves, and a random industry compared with the other half). Black: Student's t-distribution with ${obs.df.toFixed(0)} degrees of freedom, which the test uses; it follows the grey bars. ` +
+          `The <b>p-value</b> is the area of the curve beyond ±${Math.abs(obs.t).toFixed(2)} (blue): <b>p = ${sup(obs.p)}</b>. Of the 2,000 tests without order, ${fmt(beyond)} (${(100 * beyond / nt.length).toFixed(1)}%) were at least this far from 0.`;
+      } else read.innerHTML = `Adding tests without any order: ${fmt(k)} of 2,000.`;
+      box.innerHTML = s + "</svg>";
+    }
+    run(2600, draw);
+  }
+
+  // view 4: 80 tests at once
+  function viewMany() {
+    setTitle("80 tests at once: the false-discovery rate");
+    extra.innerHTML = `<div class="chips" role="group" aria-label="Which data"><button class="chip" data-d="stock" aria-pressed="${state.testData === "stock"}">${setName()} vs reference</button><button class="chip" data-d="check" aria-pressed="${state.testData === "check"}">check: reference even vs odd years</button></div>`;
+    extra.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { state.testData = b.dataset.d; viewMany(); });
+    const c = analysis(state.set);
+    if (!c) { waiting(); return; }
+    const res = state.testData === "stock" ? c.early : c.check;
+    const { W, H, small } = size();
+    const order = res.map((o, k) => k).sort((a, b) => res[a].lead - res[b].lead);
+    const prank = res.map((o, k) => k).sort((a, b) => res[a].p - res[b].p);
+    const found = res.filter(o => o.q < 0.05).length, raw = res.filter(o => o.p < 0.05).length;
+    const lw = small ? W : W * 0.56, rw = small ? W : W - lw, hA = small ? H * 0.5 : H, hB = small ? H * 0.5 : H, oxB = small ? 0 : lw, oyB = small ? H * 0.5 : 0;
+    const allL = res.flatMap(o => [o.lead - o.half, o.lead + o.half]), ymax = Math.max(1, ...allL.map(Math.abs)) * 1.05;
+    const l = 38, top = 24, bot = 26;
+    const XA = k => l + k / 79 * (lw - l - 12), YA = v => top + (ymax - v) / (2 * ymax) * (hA - top - bot);
+    const lg = v => Math.log10(Math.max(v, 1e-12)), XB = k => oxB + 40 + k / 79 * (rw - 52), YB = p => oyB + top + (0 - lg(p)) / 12 * (hB - top - bot);
+    function draw(u) {
+      const e = ease(u);
+      let s = svgOpen(W, H, "Leads of the 80 industries and the false-discovery rate");
+      // left: leads with 95% intervals, ordered by lead
+      s += `<text x="${l - 30}" y="${top - 10}" class="ann">lead of each industry, weeks (sorted)</text>`;
+      [-ymax, 0, ymax].forEach(v => { s += `<line x1="${l}" x2="${lw - 12}" y1="${YA(v)}" y2="${YA(v)}" class="${v === 0 ? "ax0" : "ax"}"/><text x="${l - 6}" y="${YA(v) + 4}" text-anchor="end" class="tick">${v.toFixed(1)}</text>`; });
+      order.forEach((k, rank) => {
+        const o = res[k], x = XA(k + (rank - k) * e), f = o.q < 0.05;
+        s += `<line x1="${x}" x2="${x}" y1="${YA(o.lead - o.half)}" y2="${YA(o.lead + o.half)}" stroke="${f ? "var(--ink)" : "var(--blue)"}" stroke-width="${f ? 2.2 : 1.2}" opacity="${f ? 1 : .5}"/>`;
+        s += `<circle cx="${x}" cy="${YA(o.lead)}" r="${f ? 4 : 2.4}" fill="${f ? "var(--ink)" : "var(--blue)"}" data-tip="${plan.names[k]}: lead ${o.lead.toFixed(2)} weeks, p = ${sup(o.p)}, q = ${sup(o.q)}"/>`;
+        if (f && u >= 1 && !small) s += `<text x="${x - 6}" y="${YA(o.lead - o.half) + 14}" text-anchor="end" class="ann">${short(k)}</text>`;
+      });
+      // right: the 80 p-values from smallest to largest, on a log scale, and the line k/80 × 0.05
+      s += `<text x="${oxB + 4}" y="${oyB + top - 10}" class="ann">p-values, smallest first (log scale)</text>`;
+      [1, 1e-3, 1e-6, 1e-9, 1e-12].forEach(p => { s += `<line x1="${oxB + 40}" x2="${oxB + rw - 12}" y1="${YB(p)}" y2="${YB(p)}" class="ax"/><text x="${oxB + 34}" y="${YB(p) + 4}" text-anchor="end" class="tick">${p === 1 ? "1" : "10" + "⁻" + ["", "", "", "³", "", "", "⁶", "", "", "⁹", "", "", "¹²"][-Math.log10(p)]}</text>`; });
+      let bh = "", raw5 = "";
+      for (let k = 0; k < 80; k++) { bh += (k ? "L" : "M") + XB(k) + "," + YB(0.05 * (k + 1) / 80); }
+      raw5 = `M${XB(0)},${YB(0.05)}L${XB(79)},${YB(0.05)}`;
+      s += `<path d="${raw5}" stroke="var(--muted)" stroke-dasharray="3 3" fill="none"/><text x="${XB(79)}" y="${YB(0.05) - 4}" text-anchor="end" class="tick">p = 0.05</text>`;
+      if (u > 0.4) s += `<path d="${bh}" stroke="var(--ink)" stroke-width="1.5" fill="none"/><text x="${XB(79)}" y="${YB(0.05 * 80 / 80) + 14}" text-anchor="end" class="tick">0.05 × k / 80</text>`;
+      prank.forEach((k, rank) => {
+        const o = res[k], x = XB(k + (rank - k) * e), f = o.q < 0.05;
+        s += `<circle cx="${x}" cy="${YB(o.p)}" r="${f ? 3.8 : 2.4}" fill="${f ? "var(--ink)" : "var(--blue)"}" data-tip="${plan.names[k]}: p = ${sup(o.p)}"/>`;
+      });
+      box.innerHTML = s + "</svg>";
+    }
+    run(1400, draw);
+    read.innerHTML = (state.testData === "stock" ? `${setName()} against the reference years. ` : "The paper's check: the reference years against themselves (even-numbered against odd-numbered years), where there is no order. ") +
+      `p below 0.05: <b>${raw}</b> of 80 tests (about 4 are expected by chance alone). With the false-discovery rate of 0.05, findings: <b>${found}</b>` +
+      (found ? " (" + res.map((o, k) => [o, k]).filter(([o]) => o.q < 0.05).map(([o, k]) => short(k)).join(", ") + ")." : ".");
+  }
+
+  // view 5: does the order hold through the year?
+  function viewTau() {
+    setTitle("Kendall's τ: is the ranking the same early and late in the year?");
+    extra.innerHTML = "";
+    const c = analysis(state.set);
+    if (!c) { waiting(); return; }
+    const st = c.stab, { W, H } = size();
+    const rank = v => { const idx = Array.from(v.keys()).sort((a, b) => v[a] - v[b]), r = new Array(v.length); idx.forEach((k, i) => { r[k] = i + 1; }); return r; };
+    const re = rank(Array.from(st.early)), rl = rank(Array.from(st.late));
+    const l = 42, b = 34, t = 16, side = Math.min(W - l - 16, H - t - b), X = v => l + (v - 1) / 79 * side, Y = v => t + side - (v - 1) / 79 * side;
+    const rng = mulberry32(17), pairsShown = [];
+    for (let k = 0; k < 14; k++) { const a = Math.floor(rng() * 80); let bb = Math.floor(rng() * 80); if (bb === a) bb = (a + 1) % 80; pairsShown.push([a, bb]); }
+    function draw(u) {
+      const shown = Math.floor(u * pairsShown.length);
+      let s = svgOpen(W, H, "Ranks from early batches against ranks from late batches");
+      s += `<rect x="${l}" y="${t}" width="${side}" height="${side}" fill="none" class="ax"/>`;
+      s += `<line x1="${X(1)}" y1="${Y(1)}" x2="${X(80)}" y2="${Y(80)}" stroke="var(--muted)" stroke-dasharray="3 3"/>`;
+      s += `<text x="${l + side / 2}" y="${t + side + 26}" text-anchor="middle" class="tick">rank by early batches (1 to 26), even-numbered years</text>`;
+      s += `<text transform="translate(${l - 26},${t + side / 2}) rotate(-90)" text-anchor="middle" class="tick">rank by late batches (27 to 52), odd years</text>`;
+      for (let k = 0; k < 80; k++) s += `<circle cx="${X(re[k])}" cy="${Y(rl[k])}" r="${k === state.ind ? 5 : 3}" fill="${k === state.ind ? "var(--ink)" : "var(--blue)"}" opacity=".8" data-tip="${plan.names[k]}: rank ${re[k]} early, ${rl[k]} late"/>`;
+      let agree = 0, dis = 0;
+      for (let i = 0; i < shown; i++) {
+        const [a, bb] = pairsShown[i], same = Math.sign(re[a] - re[bb]) === Math.sign(rl[a] - rl[bb]);
+        if (same) agree++; else dis++;
+        if (i === shown - 1 && u < 1) s += `<line x1="${X(re[a])}" y1="${Y(rl[a])}" x2="${X(re[bb])}" y2="${Y(rl[bb])}" stroke="var(--ink)" stroke-width="2" ${same ? "" : 'stroke-dasharray="5 4"'}/><text x="${l + side + 8}" y="${t + 14}" class="ann">${same ? "this pair agrees" : "this pair disagrees"}</text>`;
+      }
+      s += `<text x="${l + side + 8}" y="${t + 36}" class="ann-m">pairs shown: ${shown}</text><text x="${l + side + 8}" y="${t + 52}" class="ann-m">agree ${agree}, disagree ${dis}</text>`;
+      box.innerHTML = s + "</svg>";
+    }
+    run(REDUCE ? 1 : 7000, draw);
+    read.innerHTML = `Each dot is an industry. If the order were the same early and late in the year, the dots would lie on the dashed line. Kendall's τ takes every pair of industries (3,160 pairs): it is the share of pairs in the same order in both rankings minus the share in the opposite order. ` +
+      `Here <b>τ = ${st.tau.toFixed(3)}</b> (p = ${sup(st.p)}): ${Math.abs(st.tau) < 0.2 ? "the two rankings agree about as often as they disagree, so there is no stable order of the 80 industries." : "the rankings agree more often than they disagree."}`;
+  }
+
+  // view 6: who runs before whom
+  function viewPairs() {
+    setTitle("Who runs before whom: links and the DAG");
+    const c = analysis(state.set);
+    const opts = plan.names.map((nm, k) => `<option value="${k}" ${k === state.other ? "selected" : ""}>${nm}</option>`).join("");
+    extra.innerHTML = `<label class="mini-label" style="flex:1; min-width: 0">Industry a <select class="sel" id="q2-other" style="max-width: 100%">${opts}</select></label><span class="mini-label">b = the industry chosen above</span>`;
+    $("#q2-other").onchange = e => { state.other = +e.target.value; viewPairs(); };
+    if (!c) { waiting(); return; }
+    waiting("Comparing 3,160 pairs of industries…");
+    setTimeout(() => {
+      const P = pairs(state.set);
+      if (!P || state.step !== 6) return;
+      const a = state.other, b = state.ind, S = SETS[state.set];
+      const per = S.years.map(m => { let k = 0; for (let n = 0; n < NB; n++) if (m[a * NB + n] < m[b * NB + n]) k++; return k / NB; });
+      const os = oneSample(per, 0.5);
+      const { W, H, small } = size();
+      const hTop = H * 0.3, l = 16, r = 16, X = v => l + v * (W - l - r);
+      const cx = W / 2, cy = hTop + (H - hTop) / 2 + 4, R = Math.min(W / 2 - (small ? 40 : 90), (H - hTop) / 2 - 18);
+      const pos = k => { const ang = -Math.PI / 2 + k / NI * 2 * Math.PI; return [cx + R * Math.cos(ang), cy + R * Math.sin(ang)]; };
+      const links = P.links, into = new Array(NI).fill(0), outof = new Array(NI).fill(0);
+      links.forEach(L => { into[L.to]++; outof[L.from]++; });
+      const raw = [], rawDeg = new Array(NI).fill(0);           // pairs with p < 0.05 before the correction
+      for (let x = 0; x < NI; x++) for (let y = x + 1; y < NI; y++) if (P.pw.p[x][y] < 0.05) {
+        raw.push(P.pw.share[x][y] > 0.5 ? [x, y] : [y, x]); rawDeg[x]++; rawDeg[y]++;
+      }
+      const busiest = rawDeg.reduce((bst, v, k2) => v > rawDeg[bst] ? k2 : bst, 0);
+      function draw(u) {
+        let s = svgOpen(W, H, "Share of cases in which a runs before b, and the links between industries");
+        s += `<text x="${l}" y="14" class="ann">${short(a)} (a) before ${short(b)} (b): share of the 52 batches, one dot per year</text>`;
+        s += `<line x1="${X(0)}" x2="${X(1)}" y1="${hTop * 0.62}" y2="${hTop * 0.62}" class="ax0"/>`;
+        [0, 0.25, 0.5, 0.75, 1].forEach(v => { s += `<text x="${X(v)}" y="${hTop * 0.62 + 16}" text-anchor="middle" class="tick">${v}</text>`; });
+        s += `<line x1="${X(0.5)}" x2="${X(0.5)}" y1="${hTop * 0.3}" y2="${hTop * 0.62 + 4}" stroke="var(--muted)" stroke-dasharray="3 3"/>`;
+        per.forEach((v, y) => { s += `<circle cx="${X(v)}" cy="${hTop * 0.47 + (((y * 2654435761) >>> 0) % 1000 / 1000 - 0.5) * hTop * 0.24}" r="2.6" fill="var(--blue)" opacity=".6"/>`; });
+        s += `<line x1="${X(os.mean)}" x2="${X(os.mean)}" y1="${hTop * 0.28}" y2="${hTop * 0.66}" stroke="var(--ink)" stroke-width="2"/>`;
+        // the graph: pairs with p < 0.05 before the correction (faint), then the links (solid)
+        const kr = Math.round(Math.min(1, u * 1.6) * raw.length);
+        for (let i = 0; i < kr; i++) {
+          const [x1, y1] = pos(raw[i][0]), [x2, y2] = pos(raw[i][1]);
+          s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--muted)" stroke-width=".6" opacity=".35"/>`;
+        }
+        const k = u < 0.65 ? 0 : Math.round((u - 0.65) / 0.35 * links.length);
+        for (let i = 0; i < k; i++) {
+          const [x1, y1] = pos(links[i].from), [x2, y2] = pos(links[i].to), dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1;
+          s += `<line x1="${x1}" y1="${y1}" x2="${x2 - dx / len * 6}" y2="${y2 - dy / len * 6}" stroke="var(--blue)" stroke-width="1" opacity=".55" marker-end="url(#q2ah2)"/>`;
+        }
+        for (let j = 0; j < NI; j++) {
+          const [x, y] = pos(j), big = into[j] + outof[j] >= 3 || j === a || j === b || j === busiest;
+          s += `<circle cx="${x}" cy="${y}" r="${big ? 5 : 2.6}" fill="${big ? "var(--ink)" : "var(--muted)"}" data-tip="${plan.names[j]}: ${rawDeg[j]} pairs with p < 0.05 before the correction; ${into[j] + outof[j]} links"/>`;
+          if (big && u >= 1) { const left = x < cx; s += `<text x="${x + (left ? -8 : 8)}" y="${y + 4}" text-anchor="${left ? "end" : "start"}" class="ann">${short(j)}</text>`; }
+        }
+        box.innerHTML = s + `<defs><marker id="q2ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--blue)"/></marker></defs></svg>`;
+      }
+      run(2400, draw);
+      const top = into.map((v, j) => [v, j]).sort((x, y) => y[0] - x[0])[0];
+      const G = new Map(); links.forEach(L => { if (!G.has(L.from)) G.set(L.from, []); G.get(L.from).push(L.to); });
+      const color = new Uint8Array(NI); let cyc = false;
+      const dfs = v => { color[v] = 1; for (const w of G.get(v) || []) { if (color[w] === 1) cyc = true; else if (!color[w]) dfs(w); } color[v] = 2; };
+      for (let v = 0; v < NI; v++) if (!color[v]) dfs(v);
+      read.innerHTML = `Top: in each year, the share of n = 1, …, 52 for which a's n-th batch ran before b's n-th batch. Without an order it is about 0.5. Here the average is <b>${os.mean.toFixed(3)}</b> (t = ${os.t.toFixed(2)}, p = ${sup(os.p)}). ` +
+        `Bottom: all 3,160 pairs. Before the correction, <b>${raw.length}</b> pairs have p &lt; 0.05 (grey lines; about 158 would by chance alone), ${rawDeg[busiest]} of them with ${short(busiest)}. ` +
+        `After the false-discovery rate of 0.05: <b>${links.length} links</b>` + (links.length ? ` (blue)${top[0] > 1 ? `, ${top[0]} of them pointing to ${short(top[1])}` : ""}. ${cyc ? "The links contain a cycle." : "They contain no cycle, so they form a DAG."}` : `. With no links, there is no order to draw.`);
+    }, 30);
+  }
+
+  // view 7: the study's numbers and the browser's numbers side by side
+  function viewSummary() {
+    setTitle("The study and the browser, side by side");
+    extra.innerHTML = "";
+    want("wstar");
+    const rows = [];
+    for (const name of ["nine", "wstar"]) {
+      const c = analysis(name), S = SETS[name];
+      const lab = (name === "nine" ? "9 weeks" : "w* 26.14 weeks") + `<br><span class="sub">browser, ${YEARS} years</span>`;
+      if (!c) { rows.push(`<tr><td>${lab}</td><td colspan="5">simulating… ${S.years.length}/${YEARS}</td></tr>`); continue; }
+      const P = pairs(name), found = c.early.filter(o => o.q < 0.05).length;
+      let raw = 0;
+      for (let x = 0; x < NI; x++) for (let y = x + 1; y < NI; y++) if (P.pw.p[x][y] < 0.05) raw++;
+      const who = c.early.filter(o => o.q < 0.05).map(o => short(o.j) + (o.lead > 0 ? ", later" : ", earlier")).join("; ");
+      rows.push(`<tr><td>${lab}</td><td>${pct(S.waited / YEARS, 0)}</td><td>${found}${who ? `<br><span class="sub">${who}</span>` : ""}</td><td>${c.stab.tau.toFixed(3)}</td><td>${raw}</td><td>${P.links.length}</td></tr>`);
+    }
+    const c9 = analysis("nine");
+    if (c9) rows.push(`<tr><td>Check: reference vs reference<br><span class="sub">browser, even vs odd years</span></td><td>0%</td><td>${c9.check.filter(o => o.q < 0.05).length}</td><td>–</td><td>–</td><td>–</td></tr>`);
+    rows.push(`<tr class="hl"><td>w* 26.14 weeks<br><span class="sub">study, 1,000 years</span></td><td>0.6%</td><td>0</td><td>0.017</td><td>–</td><td>0</td></tr>`);
+    box.innerHTML = `<div class="q2-table"><table class="t"><tr><th>Years</th><th>With waiting</th><th>Industries earlier or later (of 80)</th><th>τ</th><th>Pairs with p &lt; 0.05, before the correction (of 3,160)</th><th>Links</th></tr>${rows.join("")}</table></div>`;
+    read.innerHTML = "Without any order, about 4 industries and about 158 pairs would have p &lt; 0.05 before the correction, and none would remain after it. The browser rows come from the years simulated on this page, not from the study.";
+  }
+
+  const VIEWS = [viewMoments, viewAverages, viewWelch, viewNull, viewMany, viewTau, viewPairs, viewSummary];
+  const View = {
+    show(i) {
+      state.step = i;
+      if (i !== 2 && $("#q2-used")) extra.innerHTML = "";
+      VIEWS[i]();
+    },
+    dataChanged(name) {
+      if (state.step < 0) return;
+      if (name === state.set || name === "ref") {
+        if (state.step <= 1 && (SETS[name].years.length % 10 === 0 || SETS[name].done)) { /* the dot views redraw at the end */ }
+        if (SETS[name].done) View.show(state.step);
+      }
+      if (state.step === 7 && SETS[name].done) View.show(7);
+    },
+  };
+
+  // controls
+  const sel = $("#q2-ind");
+  sel.innerHTML = plan.names.map((nm, k) => `<option value="${k}" ${k === FOOD ? "selected" : ""}>${nm}</option>`).join("");
+  sel.onchange = () => { state.ind = +sel.value; state.yearIdx = null; if (state.step >= 0) View.show(state.step); };
+  document.querySelectorAll("#q2-sets [data-set]").forEach(b => b.onclick = () => {
+    state.set = b.dataset.set;
+    document.querySelectorAll("#q2-sets [data-set]").forEach(c => c.setAttribute("aria-pressed", c === b ? "true" : "false"));
+    want(state.set);
+    if (state.step >= 0) View.show(state.step);
+  });
+  box.addEventListener("pointermove", e => {
+    const t = e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.getAttribute("data-tip"); tip.hidden = false;
+    const r = fig.getBoundingClientRect();                     // the sticky figure holds the tooltip
+    tip.style.left = Math.min(e.clientX - r.left + 12, r.width - 240) + "px"; tip.style.top = (e.clientY - r.top + 14) + "px";
+  });
+  box.addEventListener("pointerleave", () => { tip.hidden = true; });
+  const fig = $("#q2-fig");
+  fig.appendChild(tip);
+
+  // start the simulations when the section comes near
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { want("ref"); want("nine"); io.disconnect(); } }, { rootMargin: "150% 0px" });
+  io.observe($("#q2"));
+  status();
+  U.addScrolly("q2-scrolly", i => View.show(i));
+  let rT = 0;
+  window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { if (state.step >= 0) View.show(state.step); }, 150); });
+  U.checkScrollies();
+})();
+
+</script>
+
+</body>
+</html>
