@@ -1,0 +1,1935 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Completing a Production Year</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Preliminary results: the 2018 Philippine Supply and Use Tables simulated as a Petri net, one batch at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --paper: #F3F5F7;
+  --sheet: #FFFFFF;
+  --ink: #15202B;
+  --ink-2: #33414E;
+  --muted: #5A6875;
+  --rule: #D5DCE3;
+  --rule-soft: #E7ECF1;
+  --cell: #E6EBF0;
+  --band: #F5F7F9;
+  --blue: #2a78d6;
+  --orange: #eb6834;
+  --orange-soft: #FCE4DA;
+  --aqua: #1baf7a;
+  --good: #0ca30c;
+  --critical: #d03b3b;
+  --ramp: #b7d3f6 #9ec5f4 #86b6ef #6da7ec #5598e7 #3987e5 #2a78d6 #256abf #1c5cab #184f95 #104281 #0d366b;
+  --shadow: 0 1px 2px rgba(21, 32, 43, .05), 0 6px 20px rgba(21, 32, 43, .06);
+  --font-head: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --hh: 52px;
+  --gutter: max(16px, env(safe-area-inset-left));
+  --gutter-r: max(16px, env(safe-area-inset-right));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0E141B;
+    --sheet: #151D26;
+    --ink: #E5EAF0;
+    --ink-2: #C3CDD7;
+    --muted: #93A2B0;
+    --rule: #2A3644;
+    --rule-soft: #1E2833;
+    --cell: #212C38;
+    --band: #18212B;
+    --blue: #3987e5;
+    --orange: #d95926;
+    --orange-soft: #46291E;
+    --aqua: #199e70;
+    --ramp: #184f95 #1c5cab #256abf #2a78d6 #3987e5 #5598e7 #6da7ec #86b6ef #9ec5f4 #b7d3f6 #cde2fb;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 20px rgba(0, 0, 0, .25);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0E141B;
+  --sheet: #151D26;
+  --ink: #E5EAF0;
+  --ink-2: #C3CDD7;
+  --muted: #93A2B0;
+  --rule: #2A3644;
+  --rule-soft: #1E2833;
+  --cell: #212C38;
+  --band: #18212B;
+  --blue: #3987e5;
+  --orange: #d95926;
+  --orange-soft: #46291E;
+  --aqua: #199e70;
+  --ramp: #184f95 #1c5cab #256abf #2a78d6 #3987e5 #5598e7 #6da7ec #86b6ef #9ec5f4 #b7d3f6 #cde2fb;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 20px rgba(0, 0, 0, .25);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--hh) + 12px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--blue); text-underline-offset: 2px; }
+button, select, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+.mono { font-family: var(--font-mono); font-size: .92em; font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter-r); }
+.prose { max-width: 700px; }
+.prose p, .prose li { color: var(--ink-2); }
+h1, h2, h3, .eyebrow, .head-font { font-family: var(--font-head); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.25rem); line-height: 1.15; margin: 0 0 .6em; font-weight: 600; letter-spacing: -.005em; }
+h3 { font-size: 1.2rem; margin: 0 0 .4em; font-weight: 600; }
+.eyebrow { text-transform: uppercase; letter-spacing: .09em; font-size: .78rem; font-weight: 600; color: var(--muted); margin: 0 0 10px; }
+.question { font-family: var(--font-head); font-size: 1.12rem; font-weight: 600; color: var(--ink); border-left: 3px solid var(--ink); padding: 2px 0 2px 14px; margin: 0 0 1.1em; }
+
+/* header */
+header.top {
+  position: sticky; top: 0; z-index: 60; height: var(--hh);
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+header.top .wrap { height: 100%; display: flex; align-items: center; gap: 18px; }
+.brand { font-family: var(--font-head); font-weight: 600; font-size: .98rem; letter-spacing: .01em; white-space: nowrap; }
+.brand span { color: var(--muted); font-weight: 500; }
+nav.toc { display: flex; gap: 16px; margin-left: auto; font-family: var(--font-head); font-size: .92rem; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--ink); }
+.theme-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px;
+  border: 1px solid var(--rule); border-radius: 17px; background: var(--sheet); cursor: pointer;
+  font-family: var(--font-head); font-size: .88rem; font-weight: 500; white-space: nowrap;
+}
+.theme-btn svg { width: 16px; height: 16px; }
+@media (max-width: 899px) { nav.toc { display: none; } .theme-btn { margin-left: auto; } }
+@media (max-width: 520px) { .brand span { display: none; } .brand { font-size: .92rem; } }
+
+/* hero */
+.hero { padding: 72px 0 56px; border-bottom: 1px solid var(--rule); }
+.hero h1 { font-size: clamp(2.3rem, 6vw, 4.1rem); line-height: 1.02; letter-spacing: -.015em; margin: 0 0 22px; font-weight: 700; max-width: 15ch; }
+.hero .lead { font-size: 1.2rem; max-width: 690px; color: var(--ink-2); margin: 0 0 26px; }
+.qs { display: grid; gap: 12px; max-width: 760px; margin: 0 0 40px; }
+.qs div { display: grid; grid-template-columns: 44px 1fr; gap: 10px; align-items: baseline; }
+.qs b { font-family: var(--font-head); font-size: 1.15rem; }
+.qs span { font-size: 1.08rem; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.tile { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 16px; box-shadow: var(--shadow); }
+.tile .big { font-family: var(--font-mono); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.15rem); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.tile .tag { font-family: var(--font-head); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+.tile p { margin: 0; font-size: .95rem; line-height: 1.5; color: var(--ink-2); }
+.byline { margin-top: 28px; font-family: var(--font-head); color: var(--muted); font-size: .95rem; }
+@media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } .hero { padding-top: 44px; } }
+
+section.block { padding: 88px 0 24px; }
+section.block + section.block { border-top: 1px solid var(--rule); }
+
+/* supply / use bars */
+.su { margin: 26px 0 8px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 820px; }
+.su-row { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; align-items: center; }
+@media (max-width: 520px) { .su-row { grid-template-columns: 46px minmax(0, 1fr); gap: 8px; } .su-seg { padding: 6px 7px; } .su-seg .l { white-space: normal; font-size: .72rem; } .su-bar { height: 70px; } }
+.su-row > b { font-family: var(--font-head); font-size: .95rem; }
+.su-bar { display: flex; gap: 2px; height: 58px; }
+.su-seg { border-radius: 6px; padding: 7px 10px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.su-seg .v { font-family: var(--font-mono); font-weight: 600; font-size: .98rem; white-space: nowrap; }
+.su-seg .l { font-family: var(--font-head); font-size: .82rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seg-made { background: color-mix(in srgb, var(--blue) 22%, var(--sheet)); }
+.seg-imp { background: color-mix(in srgb, var(--aqua) 24%, var(--sheet)); }
+.seg-in { background: color-mix(in srgb, var(--ink) 9%, var(--sheet)); }
+.seg-fin { background: color-mix(in srgb, var(--ink) 16%, var(--sheet)); }
+.su-note { font-family: var(--font-head); color: var(--muted); font-size: .88rem; }
+
+/* two views */
+.views { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 18px; }
+.view { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; }
+.view h3 { margin-bottom: 8px; }
+.view p { margin: 0 0 10px; font-size: .98rem; color: var(--ink-2); }
+.view .asks { font-family: var(--font-head); font-size: .95rem; color: var(--ink); border-top: 1px solid var(--rule-soft); padding-top: 10px; margin: 0; }
+@media (max-width: 760px) { .views { grid-template-columns: 1fr; } }
+
+/* scrolly */
+.scrolly { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 44px; align-items: start; margin-top: 18px; }
+.scrolly > .figure { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--hh) + 14px); max-height: calc(100vh - var(--hh) - 24px); overflow-y: auto; }
+.scrolly > .steps { grid-column: 1; grid-row: 1; padding: 14vh 0 26vh; }
+.step { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px; margin: 0 0 62vh; box-shadow: var(--shadow); opacity: .5; transition: opacity .35s ease, border-color .35s ease; }
+.step:last-child { margin-bottom: 0; }
+.step.is-active { opacity: 1; border-color: var(--ink-2); }
+.step h3 { font-size: 1.12rem; }
+.step p { margin: 0 0 .7em; font-size: 1rem; color: var(--ink-2); }
+.step p:last-child { margin-bottom: 0; }
+.step .k { font-family: var(--font-mono); font-size: .9em; color: var(--ink); font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .step { transition: none; } }
+@media (max-width: 899px) {
+  .scrolly { display: block; }
+  .scrolly > .figure { position: sticky; top: var(--hh); z-index: 20; background: var(--paper); margin: 0 calc(-1 * var(--gutter-r)) 0 calc(-1 * var(--gutter)); padding: 8px var(--gutter-r) 8px var(--gutter); border-bottom: 1px solid var(--rule); max-height: none; overflow: visible; }
+  .scrolly > .steps { position: relative; z-index: 1; padding: 6vh 0 18vh; }
+  .step { margin-bottom: 42vh; opacity: .72; padding: 16px 18px; }
+}
+
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; box-shadow: var(--shadow); }
+.figure.card { padding: 16px 18px; }
+@media (max-width: 899px) { .scrolly > .figure.card { border-radius: 0; border-left: 0; border-right: 0; border-top: 0; box-shadow: none; background: var(--paper); } }
+.fig-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.fig-title { font-family: var(--font-head); font-weight: 600; font-size: 1rem; }
+.fig-sub { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+.mini-label { font-family: var(--font-head); font-size: .8rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.sw-orange { background: var(--orange); } .sw-aqua { background: var(--aqua); } .sw-blue { background: var(--blue); } .sw-cell { background: var(--cell); }
+.sw-ramp { width: 46px; background: linear-gradient(90deg, var(--r0, #b7d3f6), var(--r1, #0d366b)); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--rule); background: var(--sheet); cursor: pointer; font-family: var(--font-head); font-size: .9rem; font-weight: 500; white-space: nowrap; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.btn[disabled] { opacity: .45; cursor: default; }
+.btn svg { width: 14px; height: 14px; }
+select.sel { height: 34px; border-radius: 8px; border: 1px solid var(--rule); background: var(--sheet); padding: 0 8px; font-family: var(--font-head); font-size: .9rem; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { height: 28px; padding: 0 9px; border-radius: 14px; border: 1px solid var(--rule); background: var(--sheet); cursor: pointer; font-family: var(--font-mono); font-size: .8rem; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+
+/* toy */
+#toy-svg { width: 100%; height: auto; display: block; max-width: 390px; margin: 0 auto; touch-action: manipulation; }
+#toy-svg text { font-family: var(--font-head); }
+.toy-t rect { fill: var(--sheet); stroke: var(--rule); stroke-width: 1.5; transition: stroke .2s; }
+.toy-t.can rect { stroke: var(--ink); stroke-width: 2; }
+.toy-t.can { cursor: pointer; }
+.toy-t.can:hover rect { fill: var(--band); }
+.toy-t.waits rect { stroke: var(--orange); stroke-dasharray: 5 4; }
+.toy-t.done rect { stroke-dasharray: 2 4; }
+.toy-t .name { font-size: 15px; font-weight: 600; fill: var(--ink); }
+.toy-t.done .name { fill: var(--muted); }
+.toy-t .note { font-size: 12px; fill: var(--muted); }
+.toy-t .bt { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.toy-t .bt.f { fill: var(--blue); stroke: var(--blue); }
+.toy-p circle.ring { fill: var(--sheet); stroke: var(--ink-2); stroke-width: 2; }
+.toy-p .tok { fill: var(--ink); }
+#toy-svg .lbl { font-size: 14px; fill: var(--ink); font-weight: 600; paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+#toy-svg .num { font-family: var(--font-mono); font-size: 22px; font-weight: 600; fill: var(--ink); }
+.arc { stroke: var(--muted); stroke-width: 1.3; fill: none; opacity: .75; }
+.arc.out { stroke: var(--blue); stroke-width: 1.8; opacity: .9; }
+#toy-svg .w { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-2); paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+#toy-svg .w.out { fill: var(--blue); font-weight: 600; }
+.mover { fill: var(--ink); }
+.mover.o { fill: var(--blue); }
+.toy-panel { margin-top: 10px; display: grid; gap: 10px; }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--sheet); }
+.stepper button { width: 30px; height: 32px; border: 0; background: transparent; cursor: pointer; font-family: var(--font-mono); font-size: 1rem; }
+.stepper button:hover { background: var(--band); }
+.stepper span { min-width: 92px; text-align: center; font-family: var(--font-mono); font-size: .84rem; }
+.status { font-size: .93rem; line-height: 1.45; color: var(--ink-2); min-height: 2.9em; }
+.status b { color: var(--ink); }
+.log { font-family: var(--font-mono); font-size: .78rem; color: var(--muted); min-height: 1.3em; overflow-wrap: anywhere; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.facts > div { background: var(--sheet); padding: 8px 10px; }
+.facts .fv { font-family: var(--font-mono); font-weight: 600; font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.facts .fl { font-family: var(--font-head); font-size: .74rem; color: var(--muted); line-height: 1.25; }
+.facts > div.hl { background: color-mix(in srgb, var(--blue) 13%, var(--sheet)); }
+@media (max-width: 899px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts > div { padding: 4px 8px; }
+  .facts .fv { font-size: .84rem; }
+  .facts .fl { font-size: .68rem; }
+  #toy-svg { max-width: 400px; max-height: 29vh; }
+  .toy-hide-sm { display: none !important; }
+  .toy-panel { gap: 7px; margin-top: 4px; }
+  .toy-panel .status { font-size: .84rem; min-height: 0; }
+  .toy-panel .btn, #run-fig .btn { height: 30px; padding: 0 9px; font-size: .82rem; }
+  #run-fig select.sel { height: 30px; font-size: .82rem; }
+  #toy-presets { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
+  #toy-presets .mini-label { display: none; }
+  table.t th, table.t td { padding: 4px 5px; }
+  table.t td:first-child { white-space: nowrap; }
+  #toy-presets .chip { flex: none; height: 28px; }
+  #run-fig .hide-sm { display: none !important; }
+}
+
+table.t { border-collapse: collapse; width: 100%; font-size: .9rem; margin: 6px 0 4px; }
+table.t th, table.t td { padding: 5px 8px; border-bottom: 1px solid var(--rule-soft); text-align: right; font-variant-numeric: tabular-nums; }
+table.t th { font-family: var(--font-head); font-weight: 600; color: var(--muted); font-size: .78rem; text-align: right; vertical-align: bottom; line-height: 1.25; }
+table.t td { font-family: var(--font-mono); font-size: .82rem; }
+table.t th:first-child, table.t td:first-child { text-align: left; }
+table.t td:first-child { white-space: nowrap; }
+table.t tr.hl td { background: var(--band); color: var(--ink); font-weight: 600; }
+
+.terms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 8px; }
+.term { border-top: 2px solid var(--ink); padding-top: 8px; }
+.term b { font-family: var(--font-head); font-size: 1rem; display: block; margin-bottom: 3px; }
+.term span { font-size: .93rem; color: var(--ink-2); line-height: 1.5; display: block; }
+@media (max-width: 899px) { .terms { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .terms { grid-template-columns: 1fr; } }
+
+/* spec */
+.spec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; margin: 24px 0 10px; }
+.spec div { background: var(--sheet); padding: 16px 18px; }
+.spec .sv { font-family: var(--font-mono); font-weight: 600; font-size: 1.35rem; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.spec .sl { font-family: var(--font-head); font-size: .86rem; color: var(--muted); line-height: 1.35; margin-top: 3px; }
+@media (max-width: 760px) { .spec { grid-template-columns: 1fr 1fr; } }
+
+/* run figure */
+.grid-wrap { position: relative; }
+#run-canvas, #run-spark, #exp-canvas { display: block; width: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 8px 0 6px; }
+.imports { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; margin: 6px 0 4px; }
+.pbar { height: 6px; border-radius: 3px; background: var(--cell); overflow: hidden; }
+.pbar i { display: block; height: 100%; width: 0; background: var(--aqua); border-radius: 3px; }
+.outcome { display: grid; grid-template-columns: 22px 1fr; gap: 8px; align-items: start; font-size: .92rem; line-height: 1.45; color: var(--ink-2); min-height: 2.9em; margin: 8px 0 10px; }
+.outcome .ic { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 12px; font-family: var(--font-head); font-weight: 700; margin-top: 1px; }
+.outcome .ic.ok { background: var(--good); } .outcome .ic.no { background: var(--critical); } .outcome .ic.run { background: var(--muted); }
+.outcome b { color: var(--ink); }
+.tip { position: absolute; z-index: 30; pointer-events: none; background: var(--ink); color: var(--paper); font-family: var(--font-head); font-size: .82rem; line-height: 1.35; padding: 6px 9px; border-radius: 6px; max-width: 260px; box-shadow: var(--shadow); }
+.tip .mono { color: inherit; }
+@media (max-width: 899px) {
+  .scrolly > .figure .legend { display: none; }
+  .scrolly > .figure .fig-head { margin-bottom: 4px; }
+  .outcome { min-height: 0; font-size: .86rem; margin: 6px 0 8px; }
+}
+
+/* experiment */
+.exp { display: grid; gap: 12px; }
+.exp-sum { font-size: .95rem; color: var(--ink-2); line-height: 1.5; }
+.exp-sum b { color: var(--ink); }
+.slider { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+input[type=range] { width: 100%; accent-color: var(--ink); }
+.lack { font-size: .88rem; color: var(--ink-2); }
+.lack ol { margin: 4px 0 0; padding-left: 20px; }
+
+/* chart */
+#q1-chart svg { display: block; width: 100%; overflow: visible; }
+#q1-chart text { font-family: var(--font-head); }
+.ax { stroke: var(--rule); stroke-width: 1; }
+.ax0 { stroke: var(--muted); stroke-width: 1; }
+.tick { font-size: 11.5px; fill: var(--muted); }
+.ptitle { font-size: 12.5px; fill: var(--ink); font-weight: 600; }
+.ann { font-size: 12px; fill: var(--ink); }
+.ann-m { font-size: 11.5px; fill: var(--muted); }
+.ann-line { stroke: var(--ink-2); stroke-width: 1; fill: none; }
+.wstar { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.dotA { fill: var(--blue); stroke: var(--sheet); stroke-width: 2; }
+.dotB { fill: var(--orange); stroke: var(--sheet); stroke-width: 2; }
+.whisk { stroke: var(--blue); stroke-width: 2; stroke-linecap: round; }
+.lineB { stroke: var(--orange); stroke-width: 2; fill: none; opacity: .55; }
+.faded { opacity: .22; }
+.try { fill: var(--ink); stroke: var(--sheet); stroke-width: 1.5; }
+.brk { stroke: var(--ink); stroke-width: 2; }
+.q1-read { font-family: var(--font-head); font-size: .9rem; color: var(--ink-2); min-height: 2.6em; margin-top: 6px; }
+details.tbl { margin-top: 10px; }
+details.tbl summary { cursor: pointer; font-family: var(--font-head); font-size: .9rem; color: var(--muted); }
+
+/* q2 */
+.q2tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+@media (max-width: 899px) { .q2tiles { grid-template-columns: 1fr 1fr; } }
+.method { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 26px; margin: 18px 0; }
+.method div { border-top: 1px solid var(--rule); padding-top: 10px; font-size: .95rem; color: var(--ink-2); }
+.method b { font-family: var(--font-head); color: var(--ink); display: block; font-size: 1rem; margin-bottom: 2px; }
+@media (max-width: 760px) { .method { grid-template-columns: 1fr; } }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 899px) { .two { grid-template-columns: 1fr; } }
+#order-mini svg { width: 100%; display: block; }
+#order-mini text { font-family: var(--font-head); }
+.next { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--ink); border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+.next p { margin: 0 0 .5em; font-size: .98rem; color: var(--ink-2); }
+.next p:last-child { margin: 0; }
+
+ul.plain { padding-left: 20px; }
+ul.plain li { margin-bottom: 8px; }
+.refs { font-size: .9rem; color: var(--ink-2); padding-left: 0; list-style: none; }
+.refs li { margin-bottom: 9px; padding-left: 22px; text-indent: -22px; }
+footer { padding: 40px 0 64px; border-top: 1px solid var(--rule); margin-top: 56px; color: var(--muted); font-family: var(--font-head); font-size: .92rem; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head><body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">SUT 2018 as a Petri net <span>· preliminary</span></div>
+    <nav class="toc" aria-label="Sections">
+      <a href="#example">Example</a><a href="#net">The net</a><a href="#run">Run a year</a><a href="#q1">Q1</a><a href="#q2">Q2</a><a href="#limits">Limits</a>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch color theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path id="theme-icon" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      <span id="theme-label">Dark</span>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">CS 296 · First draft · Preliminary results · November 2026</p>
+    <h1>Can a year of production always be completed?</h1>
+    <p class="lead">The 2018 Supply and Use Tables of the Philippines give, for each industry, what it produced and what it used in the year. They do not give the order in which production happened. This study simulates the year one batch at a time: an industry can run a batch only when all of its inputs are in stock. It asks two questions.</p>
+    <div class="qs">
+      <div><b>Q1</b><span>How much opening stock is needed so that every simulated year is completed, and what share of years is completed with less?</span></div>
+      <div><b>Q2</b><span>When the stock is limited, do the completed years share an order of industries?</span></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="tag">Q1 · opening stock</div><div class="big">26.14 weeks</div><p>None of 1,000 new simulated years stopped with this stock: 9.19 trillion pesos, about half of a year's input use.</p></div>
+      <div class="tile"><div class="tag">Q1 · more stock, fewer completed years</div><div class="big">91.9% → 85.0%</div><p>Share of years completed with 9 weeks and with 13 weeks of stock. The larger stock completed fewer years.</p></div>
+      <div class="tile"><div class="tag">Q2 · order of industries</div><div class="big">0 of 3,160</div><p>Pairs of industries with a clear order in the 1,000 completed years at 26.14 weeks. At this stock, industries almost never wait.</p></div>
+    </div>
+    <p class="byline">James Matthew Miraflor · CS 296 · Results from the first full run of the study code. The simulations on this page run in your browser with the same rules.</p>
+  </div>
+</section>
+
+<section class="block" id="table">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">1 · The data</p>
+      <h2>The table records totals, not the order</h2>
+      <p class="question">What does the 2018 table say about the year?</p>
+      <p>The Philippine Statistics Authority (PSA) publishes the 2018 tables with 240 products and 240 industries. This study collapses them to 80 products and 80 industries with PSA's input–output classification: the rows of products in the same group are added, and the columns of industries in the same group are added. In the year plan of the study, after rounding to whole units, the totals are:</p>
+    </div>
+    <div class="su" aria-label="Supply and use in the year plan, trillion pesos">
+      <div class="su-row"><b>Supply</b>
+        <div class="su-bar">
+          <div class="su-seg seg-made" style="flex: 36.539"><span class="v">36.54</span><span class="l">made by the 80 industries</span></div>
+          <div class="su-seg seg-imp" style="flex: 7.662"><span class="v">7.66</span><span class="l">imported</span></div>
+        </div>
+      </div>
+      <div class="su-row"><b>Use</b>
+        <div class="su-bar">
+          <div class="su-seg seg-in" style="flex: 18.274"><span class="v">18.27</span><span class="l">used by industries as inputs</span></div>
+          <div class="su-seg seg-fin" style="flex: 25.927"><span class="v">25.93</span><span class="l">to final users (households, government, investment, exports)</span></div>
+        </div>
+      </div>
+      <div class="su-note">Trillion pesos, 2018. Supply = use = 44.20 trillion pesos. The bars are drawn to scale.</div>
+    </div>
+    <div class="prose">
+      <p>For every product, supply equals use for the year as a whole. But the table does not say whether the inputs of a batch were in stock at the moment the batch ran. That depends on the order of production, which the table does not record.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="views">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">2 · Two views</p>
+      <h2>Two timeless views of the same table</h2>
+    </div>
+    <div class="views">
+      <div class="view">
+        <h3>Equilibrium</h3>
+        <p>Supply and demand meet at a vector of prices, and all the equations of the economy hold at the same time (Arrow and Debreu, 1954). The input–output model of Leontief (1936) also solves for all outputs at once. Nothing happens before or after anything else: the equations are solved as if instantly.</p>
+        <p class="asks">Asks: are the flows of the year consistent with one another?</p>
+      </div>
+      <div class="view">
+        <h3>Concurrent processes (this study)</h3>
+        <p>Production is many concurrent processes, that is, processes whose order is not fixed in advance. Each one can run whenever its inputs are in stock, and its outputs become inputs for others. Bonanno (1993, 1995) showed how to read an input and an output matrix as a Petri net.</p>
+        <p class="asks">Asks: can the year be completed step by step from a given stock, and in which order?</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p>Both views are timeless when compared with dynamic models of the economy, in which production takes time and stocks pass from one period to the next (Kydland and Prescott, 1982). Neither view has a calendar. In this study each industry works in 52 equal batches. The number 52 is used because it is easy to read as weeks, but a batch is not a calendar week.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="example">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">3 · A small example</p>
+      <h2>The same stock, two different years</h2>
+      <p>Before the 2018 table, the two questions in a net that is small enough to check by hand. The numbers on this part of the page are exact: the page counts every possible order.</p>
+    </div>
+    <div class="scrolly" id="toy-scrolly">
+      <div class="figure card" id="toy-fig">
+        <svg id="toy-svg" viewBox="0 0 480 372" role="group" aria-label="Petri net of the small example: three products and three industries"></svg>
+        <div class="toy-panel">
+          <div class="status" id="toy-status" aria-live="polite"></div>
+          <div class="log toy-hide-sm" id="toy-log"></div>
+          <div class="row">
+            <button class="btn" id="toy-a" type="button">Order A</button>
+            <button class="btn" id="toy-b" type="button">Order B</button>
+            <button class="btn" id="toy-rand" type="button">Random year</button>
+            <button class="btn" id="toy-reset" type="button">Reset</button>
+          </div>
+          <div class="row toy-hide-sm" id="toy-steppers"></div>
+          <div class="chips" id="toy-presets" aria-label="Opening stock presets"></div>
+          <div class="facts" id="toy-facts"></div>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h3>Three industries, three products</h3>
+          <p>Farming, Factory and Power plant each run 3 batches in the year. A batch can run only if the stock holds all of its inputs. It then takes its inputs from the stock and adds its output.</p>
+          <table class="t">
+            <tr><th>Batch</th><th>Crops used</th><th>Goods used</th><th>Power used</th><th>Output</th></tr>
+            <tr><td>Farming</td><td>1</td><td>1</td><td>2</td><td>6 crops</td></tr>
+            <tr><td>Factory</td><td>2</td><td>1</td><td>2</td><td>6 goods</td></tr>
+            <tr><td>Power plant</td><td>1</td><td>2</td><td>1</td><td>6 power</td></tr>
+            <tr class="hl"><td>One of each</td><td>4</td><td>4</td><td>5</td><td>6 of each</td></tr>
+          </table>
+          <p>Click or tap a box in the net to run one batch of that industry.</p>
+        </div>
+        <div class="step" data-step="1">
+          <h3>Order A completes the year</h3>
+          <p>Start with the stock (crops, goods, power) = <span class="k">(4, 4, 5)</span>: exactly the inputs of one batch of each industry. Run Power plant, Farming, Factory, and repeat this three times.</p>
+          <p>After each round the stock is <span class="k">(6, 6, 6)</span>, then <span class="k">(8, 8, 7)</span>, then <span class="k">(10, 10, 8)</span>. All 9 batches run. The final stock is the opening stock plus <span class="k">(6, 6, 3)</span>, which is what the year delivers to final users.</p>
+        </div>
+        <div class="step" data-step="2">
+          <h3>Order B stops the year</h3>
+          <p>Start again from <span class="k">(4, 4, 5)</span> and run the Factory twice. The stock becomes <span class="k">(2, 9, 3)</span> and then <span class="k">(0, 14, 1)</span>.</p>
+          <p>No crops are left, and every batch needs crops, so nothing can run. Seven batches are left, and the year stops. Same stock, same recipes: one order completes, the other stops.</p>
+        </div>
+        <div class="step" data-step="3">
+          <h3>The stock decides how many orders complete</h3>
+          <p>The 9 batches can be arranged in <span class="k">9!/(3!·3!·3!) = 1,680</span> orders. A random year chooses, at each step, one of the batches that can run, with equal chances.</p>
+          <table class="t">
+            <tr><th>Opening stock</th><th>In batches of use</th><th>Orders that complete</th><th>Random years that complete</th></tr>
+            <tr><td>(3, 3, 4)</td><td>0.75</td><td>0</td><td>0%</td></tr>
+            <tr><td>(4, 4, 5)</td><td>1</td><td>360</td><td>21%</td></tr>
+            <tr><td>(6, 6, 8)</td><td>1.5</td><td>1,122</td><td>57%</td></tr>
+            <tr><td>(9, 9, 12)</td><td>2.25</td><td>1,620</td><td>84%</td></tr>
+            <tr class="hl"><td>(10, 10, 13)</td><td>2.5</td><td>1,680</td><td>100%</td></tr>
+          </table>
+          <p>"In batches of use" counts the stock in units of <span class="k">(4, 4, 5)</span>, the inputs of one batch of each industry, rounded up. Choose any stock below the net to see its exact numbers.</p>
+        </div>
+        <div class="step" data-step="4">
+          <h3>More stock does not always help</h3>
+          <p>From <span class="k">(10, 10, 9)</span> no random year stops. From <span class="k">(10, 10, 10)</span>, 10.5% of random years stop. The net shows one of them: Farming three times and Factory twice use all the power, and then neither the last Factory batch nor the Power plant can run.</p>
+          <p>With 9 units of power, the second Factory batch cannot run, so the Power plant runs instead and the year continues. In the same way, 63% of random years complete from <span class="k">(6, 6, 7)</span> but 57% from <span class="k">(6, 6, 8)</span>. Each stock level must be studied on its own.</p>
+        </div>
+        <div class="step" data-step="5">
+          <h3>An order among the completed years</h3>
+          <p>At <span class="k">(6, 6, 8)</span>, 35% of the completed random years had a step at which some industry had to wait for an input. In the completed years, the Power plant's n-th batch comes before the Factory's n-th batch in <span class="k">57%</span>, <span class="k">53%</span> and <span class="k">53%</span> of cases (n = 1, 2, 3). Without an order, each share would be 50%.</p>
+          <p>At <span class="k">(10, 10, 13)</span> no batch ever waits and every year completes, and every such share is exactly 50%: there is no order.</p>
+          <p>At <span class="k">(10, 10, 10)</span> no completed year waits, but some years stop, and the share for n = 1 is 56%: the years in which the Factory ran early are the ones that stopped.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top: 70px">
+      <h3>The terms, now that the example shows them</h3>
+    </div>
+    <div class="terms">
+      <div class="term"><b>Place</b><span>The stock of one product, drawn as a circle.</span></div>
+      <div class="term"><b>Token</b><span>One unit of a product in stock, drawn as a dot.</span></div>
+      <div class="term"><b>Transition</b><span>One industry, drawn as a box. Each firing is one batch.</span></div>
+      <div class="term"><b>Firing</b><span>Running one batch: its inputs leave the stock and its output enters the stock.</span></div>
+      <div class="term"><b>Enabled</b><span>A transition can fire, because all of its inputs are in stock.</span></div>
+      <div class="term"><b>Waiting</b><span>An industry with batches left is not enabled, while some other batch can run.</span></div>
+      <div class="term"><b>Stop</b><span>No batch can run, but batches are left. In Petri-net terms, a deadlock.</span></div>
+      <div class="term"><b>Completed year</b><span>Every batch has run, and every import delivery has arrived.</span></div>
+      <div class="term"><b>Workflow net</b><span>A net with one start and one end (van der Aalst, 1997). Here the start is the opening stock and the end is the completed year.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="net">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">4 · The 2018 net</p>
+      <h2>The 2018 table as a net</h2>
+      <p class="question">How does the 2018 table become a net like the small example?</p>
+      <p>Each of the 80 products is a place, and each of the 80 industries is a transition. One batch of an industry uses 1/52 of its yearly inputs and makes 1/52 of its yearly output. Each imported product arrives in 52 equal deliveries.</p>
+    </div>
+    <div class="spec">
+      <div><div class="sv">80 × 80</div><div class="sl">products × industries, collapsed from PSA's 240 × 240</div></div>
+      <div><div class="sv">52</div><div class="sl">batches per industry, and deliveries per imported product (67 products are imported)</div></div>
+      <div><div class="sv">7,644</div><div class="sl">firings in a completed year: 80 × 52 batches + 67 × 52 deliveries</div></div>
+      <div><div class="sv">0.35</div><div class="sl">trillion pesos: one week of stock, that is, 1/52 of the year's input use of every product</div></div>
+      <div><div class="sv">18.27</div><div class="sl">trillion pesos: 52 weeks of stock, a full year of input use; with it, no batch ever waits</div></div>
+      <div><div class="sv">22 of 2,696</div><div class="sl">input links that round to zero units (0.82% of links, 3.6 × 10⁻⁸ % of the value)</div></div>
+    </div>
+    <div class="prose">
+      <p><b>Whole units.</b> Each product is counted in whole units. The size of one unit is chosen for each product, from 0.1 pesos to 100,000 pesos, and the inputs and outputs of each batch are rounded half up.</p>
+      <p><b>Opening stock in weeks of use.</b> An opening stock of <i>w</i> weeks holds, for every product, <i>w</i>/52 of the year's input use of that product, rounded up to a whole unit. So 26 weeks is half of a year's input use.</p>
+      <p><b>Random rule.</b> At each step, one of the batches or deliveries that can run is chosen, with equal chances. A year stops if nothing can run while batches are left. A completed year ends with the opening stock plus what final users receive.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="run">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">5 · Watch a year run</p>
+      <h2>The 2018 net, one batch at a time</h2>
+      <p>The net below runs in your browser. It is a port of the study code: the same plan, the same rule, different random numbers. With 1,000 years per stock it gives shares within about 2 points of the study.</p>
+    </div>
+    <div class="scrolly" id="run-scrolly">
+      <div class="figure card" id="run-fig">
+        <div class="fig-head"><div class="fig-title" id="run-title">Year 1 · 52 weeks of stock</div><div class="fig-sub" id="run-sub"></div></div>
+        <div class="grid-wrap" id="run-gridwrap">
+          <canvas id="run-canvas" role="img" aria-label="Grid of 80 industries by 52 batches; a cell is colored when the batch runs"></canvas>
+          <div class="tip" id="run-tip" hidden></div>
+        </div>
+        <div class="legend">
+          <span class="mini-label"><span class="sw sw-ramp" id="ramp-sw"></span>batch ran: early → late in the year</span>
+          <span class="mini-label"><span class="sw sw-orange"></span>next batch waits / cannot run</span>
+          <span class="mini-label"><span class="sw sw-cell"></span>not yet run</span>
+        </div>
+        <div class="mini-label" style="margin-top: 4px"><span class="sw sw-orange"></span>industries waiting, by step <span class="mono hide-sm" id="spark-max"></span></div>
+        <canvas id="run-spark" aria-hidden="true"></canvas>
+        <div class="imports"><span class="mini-label"><span class="sw sw-aqua"></span>import deliveries</span><div class="pbar"><i id="imp-fill"></i></div><span class="mono" id="imp-text" style="font-size: .78rem; color: var(--muted)"></span></div>
+        <div class="outcome" id="run-outcome" aria-live="polite"></div>
+        <div class="row">
+          <button class="btn primary" id="run-play" type="button"></button>
+          <button class="btn" id="run-new" type="button">New year</button>
+          <button class="btn" id="run-end" type="button">End</button>
+          <label class="mini-label">Stock <select class="sel" id="run-stock" aria-label="Opening stock in weeks"></select></label>
+          <label class="mini-label hide-sm">Speed <select class="sel" id="run-speed" aria-label="Animation speed"><option value="6">Slow</option><option value="24" selected>Normal</option><option value="96">Fast</option></select></label>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h3>52 weeks of stock: nothing waits</h3>
+          <p>Each row is one of the 80 industries and each column is one of its 52 batches. A cell is colored when the batch runs, and its shade shows how early or late in the year it ran (see the legend under the grid).</p>
+          <p>With 52 weeks of stock, a full year of input use, no batch ever waits. These are the reference years of the study.</p>
+        </div>
+        <div class="step" data-step="1">
+          <h3>9 weeks: some industries wait</h3>
+          <p>With 9 weeks of stock, an industry sometimes cannot run its next batch, because one of its inputs is not in stock at that step. Its next cell turns orange, and the line under the grid counts the industries that wait at each step.</p>
+          <p>In this year, up to 16 industries waited at the same step, and still the year completed.</p>
+        </div>
+        <div class="step" data-step="2">
+          <h3>2 weeks: most years stop</h3>
+          <p>With 2 weeks of stock, 90.5% of the study's years stopped. This one stops after <span class="k">5,766</span> of <span class="k">7,644</span> steps. All import deliveries have arrived, 78 industries still have batches left, and 75 of them lack water supply.</p>
+        </div>
+        <div class="step" data-step="3">
+          <h3>13 weeks: a stop near the end</h3>
+          <p>More stock, and this year still stops, <span class="k">30</span> steps before the end. Only Electricity and Steam have batches left. Both need steam, and only the Steam industry makes steam.</p>
+          <p>Section 6 shows that 13 weeks completed fewer years than 9 weeks.</p>
+        </div>
+        <div class="step" data-step="4">
+          <h3>Choose a stock and run years</h3>
+          <p>Choose a stock, then watch single years with the controls of the figure, or run many years here and compare the share completed with the study.</p>
+          <div class="exp" id="exp">
+            <div class="slider">
+              <input type="range" id="exp-range" min="1" max="52" step="0.25" value="9" aria-label="Opening stock in weeks">
+              <span class="mono" id="exp-weeks" style="min-width: 7.5em; text-align: right"></span>
+            </div>
+            <div class="chips" id="exp-chips"></div>
+            <div class="row">
+              <button class="btn primary" id="exp-run" type="button">Run 200 years</button>
+              <button class="btn" id="exp-clear" type="button">Clear</button>
+            </div>
+            <canvas id="exp-canvas" aria-hidden="true"></canvas>
+            <div class="exp-sum" id="exp-sum" aria-live="polite"></div>
+            <div class="lack" id="exp-lack"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="q1">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">6 · Results for Q1</p>
+      <h2>How much opening stock is needed?</h2>
+      <p class="question">With how many weeks of stock is every simulated year completed, and what share is completed with less?</p>
+    </div>
+    <div class="scrolly" id="q1-scrolly">
+      <div class="figure card" id="q1-fig">
+        <div id="q1-chart" role="img" aria-label="Share of years completed and share of steps with a waiting industry, by opening stock in weeks"></div>
+        <div class="q1-read" id="q1-read" aria-live="polite"></div>
+        <details class="tbl">
+          <summary>Show the numbers as a table</summary>
+          <table class="t" id="q1-table"></table>
+        </details>
+      </div>
+      <div class="steps">
+        <div class="step" data-step="0">
+          <h3>Each point is 1,000 simulated years</h3>
+          <p>For 9 levels of opening stock, the study simulated 1,000 years each. The top panel shows the share of years completed, with its 95% interval (Wilson, 1927). The bottom panel shows the share of all steps at which some industry with batches left had to wait.</p>
+        </div>
+        <div class="step" data-step="1">
+          <h3>Below 9 weeks, many years stop</h3>
+          <p>With 2 weeks of stock, 9.5% of years complete, and some industry waits at 86% of steps. With 4 weeks, 45.8% complete.</p>
+        </div>
+        <div class="step" data-step="2">
+          <h3>More stock, fewer completed years</h3>
+          <p>With 9 weeks, 91.9% of years complete; with 13 weeks, only 85.0%. The difference is larger than chance (Fisher's exact test, p ≈ 1.7 × 10⁻⁶). As in the small example, each level of stock must be studied on its own.</p>
+          <p>The year at 13 weeks in Section 5 shows one way this happens.</p>
+        </div>
+        <div class="step" data-step="3">
+          <h3>Stops become rare, but they do not disappear</h3>
+          <p>No year stopped with 17 or with 22 weeks, but 5 of 1,000 stopped with 26 weeks. With 1,000 years, stops rarer than about 3 in 1,000 can go unseen, so "no stop seen" at 17 and 22 weeks does not mean "no stop possible".</p>
+        </div>
+        <div class="step" data-step="4">
+          <h3>The search</h3>
+          <p>The study then searched between 26 weeks, the largest stock tried with a stop, and 35 weeks. Each try simulated 1,000 years at the middle of the interval. No try had a stop, so each try became the new upper end: 30.5, 28.25, 27.13, 26.56, 26.28 and 26.14 weeks.</p>
+          <p>The result is <b>w*</b>: the smallest stock tried above the largest stock tried at which some year stopped. Here w* = 26.14 weeks.</p>
+        </div>
+        <div class="step" data-step="5">
+          <h3>The check</h3>
+          <p>Because the search chose w*, its own runs are not a fair test. The study simulated 1,000 new years at w*, and none stopped. So, with 95% confidence, fewer than 3 in 1,000 years stop at 26.14 weeks (the rule of three; Hanley and Lippman-Hand, 1983).</p>
+          <p>The answer to Q1 for now: <b>26.14 weeks, or 9.19 trillion pesos</b>, about half of a year's input use. This does not show that every larger stock completes every year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="q2">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">7 · Results for Q2</p>
+      <h2>Do the completed years share an order?</h2>
+      <p class="question">In the years that complete, do some industries tend to run earlier than others?</p>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <p>The small example gives a case where they do. At <span class="mono">(6, 6, 8)</span>, the Power plant's n-th batch comes before the Factory's n-th batch in more than half of the completed years. At <span class="mono">(10, 10, 13)</span>, every share is 50%.</p>
+        <p>The study asks the same of the 1,000 completed years at w* = 26.14 weeks (the years of the check above), compared with 1,000 reference years at 52 weeks.</p>
+      </div>
+      <div class="card" style="padding: 14px 16px">
+        <div class="fig-title" style="margin-bottom: 4px">Small example: Power plant's n-th batch before Factory's n-th batch</div>
+        <div class="fig-sub" style="margin-bottom: 6px">share of completed random years, exact</div>
+        <div id="order-mini"></div>
+      </div>
+    </div>
+    <div class="method">
+      <div><b>Moment</b>For each batch, the step at which it ran divided by the number of steps in the year: 0 is the start, 1 is the end.</div>
+      <div><b>Earlier or later</b>An industry is clearly earlier or later if its average moment differs from the reference years by more than chance: Welch's t-test, with a false-discovery rate of 0.05 over the 80 industries (Benjamini and Hochberg, 1995).</div>
+      <div><b>Links</b>Two industries are linked if the n-th batch of one comes before the n-th batch of the other more often than chance. There are 3,160 pairs.</div>
+      <div><b>Stability</b>Rank the industries by their early batches in half of the years, and by their late batches in the other half. Kendall's τ near 0 means there is no stable order.</div>
+    </div>
+    <div class="q2tiles">
+      <div class="tile"><div class="tag">Waiting</div><div class="big">0.6%</div><p>of the completed years had any step with a waiting industry; 0.01% of steps on average.</p></div>
+      <div class="tile"><div class="tag">Industries</div><div class="big">0 of 80</div><p>clearly earlier or later than in the reference years.</p></div>
+      <div class="tile"><div class="tag">Links</div><div class="big">0 of 3,160</div><p>pairs of industries linked. With no links, there is no order to draw.</p></div>
+      <div class="tile"><div class="tag">Stability</div><div class="big">τ = 0.017</div><p>p = 0.82: early and late rankings do not agree.</p></div>
+    </div>
+    <div class="prose">
+      <p>The same analysis on the reference years alone (even years against odd years) finds 0 industries and 0 links, as it should. At 26.14 weeks industries almost never wait, so there is no reason for an order, and none is found. <b>At this stock, the answer to Q2 is no.</b></p>
+    </div>
+    <div class="next prose">
+      <p><b>Next step.</b> Repeat the analysis at a stock where industries wait, such as 9 weeks: there, 16.6% of steps had a waiting industry, and 8.1% of years stopped.</p>
+      <p>At such a stock an order among the completed years can have two sources: waiting, and the selection of the years that complete, because the stopped years are not in the analysis (as at (10, 10, 10) in the small example).</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="limits">
+  <div class="wrap prose">
+    <p class="eyebrow">8 · Limits</p>
+    <h2>What is preliminary</h2>
+    <ul class="plain">
+      <li>These results come from one run of the study code, with 1,000 simulated years per stock and 9 levels of stock between 2 and 52 weeks.</li>
+      <li>Only one rule chooses the order: equal chances among the batches and deliveries that can run. Other rules can give other answers.</li>
+      <li>The table is collapsed from 240 to 80 sectors, the year is divided into 52 batches, and every batch is rounded to whole units. Each of these choices can change where years stop.</li>
+      <li>Imports arrive as 52 equal deliveries at random steps, and products for final users stay in stock until the end of the year.</li>
+      <li>Q2 has been analyzed only at w* = 26.14 weeks, where there is almost no waiting.</li>
+      <li>The browser simulation on this page uses the same plan and rule as the study, but other random numbers: its counts differ from the study's by chance.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <div class="wrap prose">
+    <p class="eyebrow">9 · Sources</p>
+    <h2>Sources and code</h2>
+    <ul class="refs">
+      <li>Philippine Statistics Authority (2021a). <i>2018 Supply and Use Tables</i> [Excel workbook, as of December 2021]. <a href="https://psa.gov.ph/system/files/macroeconomic-accounts/2018%20Supply%20and%20Use%20Tables.xlsx">psa.gov.ph</a>.</li>
+      <li>Philippine Statistics Authority (2021c). <i>2018 Input-Output Industry Classification</i> [Excel workbook]. <a href="https://psa.gov.ph/statistics/supply-and-use-input-output/tables">psa.gov.ph</a>.</li>
+      <li>Arrow, K. J. and Debreu, G. (1954). Existence of an equilibrium for a competitive economy. <i>Econometrica</i>, 22(3), 265–290.</li>
+      <li>Benjamini, Y. and Hochberg, Y. (1995). Controlling the false discovery rate. <i>Journal of the Royal Statistical Society: Series B</i>, 57(1), 289–300.</li>
+      <li>Bonanno, G. (1993). The coverability problem in input–output systems. <i>Economics Letters</i>, 43(1), 15–21.</li>
+      <li>Bonanno, G. (1995). Modeling production with Petri nets. <i>Economic Notes</i>, 24(2), 263–292.</li>
+      <li>Hanley, J. A. and Lippman-Hand, A. (1983). If nothing goes wrong, is everything all right? <i>JAMA</i>, 249(13), 1743–1745.</li>
+      <li>Kydland, F. E. and Prescott, E. C. (1982). Time to build and aggregate fluctuations. <i>Econometrica</i>, 50(6), 1345–1370.</li>
+      <li>Leontief, W. W. (1936). Quantitative input and output relations in the economic systems of the United States. <i>Review of Economic Statistics</i>, 18(3), 105–125.</li>
+      <li>van der Aalst, W. M. P. (1997). Verification of workflow nets. In <i>Application and Theory of Petri Nets 1997</i>, LNCS 1248, 407–426.</li>
+      <li>Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. <i>JASA</i>, 22(158), 209–212.</li>
+    </ul>
+    <p>Code: <span class="mono">sut-workflow-study</span> (Python): the year plan, the simulations and the analysis of the firing logs.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">James Matthew Miraflor · CS 296 · First draft, November 2026 · Preliminary results, to be revised.</div>
+</footer>
+
+<script type="application/json" id="plan80">{"N":52,"names":["Palay","Corn","Coconut including copra","Sugarcane including muscovado sugar-making in the farm","Banana","Mango","Pineapple","Coffee","Cassava","Rubber","Cacao","Abaca","Tobacco","Other agricultural crops, n.e.c.","Livestock","Poultry and egg production","Other animal production","Forestry and logging","Fishing and aquaculture","Support activities to agriculture, forestry and fishing","Mining of coal","Extraction of crude petroleum and natural gas","Mining of gold and other precious metal ores","Mining of nickel ores","Mining of copper ores","Stone quarrying, and other mining and quarrying","Manufacture of food products","Manufacture of beverages","Manufacture of tobacco products","Manufacture of textiles","Manufacture of wearing apparel","Manufacture of leather and related products, including footwear","Manufacture of wood, bamboo, cane, rattan articles and related products","Manufacture of paper and paper products","Printing and reproduction of recorded media","Manufacture of coke and refined petroleum products","Manufacture of chemical and chemical products","Manufacture of basic pharmaceutical products and pharmaceutical preparations","Manufacture of rubber and plastic products","Manufacture of other non-metallic mineral products","Manufacture of basic metals","Manufacture of fabricated metal products, except machinery and equipment","Manufacture of computer, electronic and optical products","Manufacture of electrical equipment","Manufacture of machinery and equipment except electrical","Manufacture of transport equipment","Manufacture of furniture","Other manufacturing","Electricity","Steam","Water supply","Sewerage, and waste management and remediation activities","Construction","Wholesale trade, except of motor vehicles and motorcycles","Retail trade, except of motor vehicles and motorcycles","Sale and repair of motor vehicles and motorcycles","Land transport","Water transport","Air transport","Warehousing and storage, and support activities for transportation","Postal and courier activities","Accommodation","Food and beverage service activities","Information and publishing","Communication","Banking institutions","Non-banks","Insurance and pension funding except compulsory social security","Activities auxiliary to financial services activities","Real estate","Ownership of dwellings","Professional, Scientific and Technical Activities; Administrative and Support Service Activities","Public Administration and Defense; Compulsory social security","Public education","Private education","Public human health","Private human health","Social work activities","Arts, entertainment and recreation","Other service activities"],"A":[[0,0,38851444],[0,1,5769],[0,9,2055],[0,14,734602],[0,17,3939],[0,18,195115],[0,19,64112],[0,26,790018834],[0,27,1],[0,72,18065],[1,0,16077],[1,1,624240],[1,8,35531],[1,9,137],[1,13,602],[1,14,89879],[1,15,23663],[1,17,909],[1,26,26322403],[1,27,45207],[1,72,102],[2,2,2685510],[2,9,16794],[2,26,165410815],[2,27,1],[2,36,353],[2,72,7517],[3,3,71850],[3,26,6666533],[3,27,204363],[4,4,299342],[4,9,164],[4,13,131618],[4,26,21485904],[4,72,399],[5,5,878540],[5,6,9567],[5,7,736],[5,8,15130],[5,9,4893],[5,10,1535],[5,11,6152],[5,12,14026],[5,13,37236],[5,26,52074801],[5,27,191426],[5,29,706588],[5,61,225275],[5,62,1305433],[5,72,17928],[5,73,5],[5,74,12],[5,75,1],[5,76,2],[6,5,16491],[6,6,752126],[6,10,6783],[6,12,61989],[6,13,23938],[6,26,21309258],[6,27,27506],[6,29,5458318],[6,30,62976],[7,5,1208],[7,6,3098],[7,7,56441],[7,8,4899],[7,9,1584],[7,10,497],[7,11,1992],[7,12,4542],[7,13,12058],[7,26,17811571],[7,27,53519],[7,61,46872],[7,62,271616],[7,72,1802],[8,5,36554],[8,6,93722],[8,7,7214],[8,8,1246719],[8,9,47934],[8,10,15035],[8,11,60267],[8,12,137406],[8,13,364786],[8,14,36266],[8,16,253],[8,26,23812112],[8,27,4174],[8,37,2330],[8,61,1393],[8,62,8075],[8,72,1099],[8,73,1],[8,74,1],[9,5,10149],[9,6,67375],[9,7,8004],[9,8,270680],[9,9,776374],[9,10,27816],[9,11,263612],[9,12,4136],[9,13,677750],[9,29,7794511],[9,38,9737565],[9,47,3209073],[9,72,133142],[10,5,12852],[10,6,32952],[10,7,2536],[10,8,52114],[10,9,16853],[10,10,11103814],[10,11,21189],[10,12,48310],[10,13,128255],[10,26,288795393],[10,61,112127],[10,62,649755],[10,72,8095],[10,73,3],[10,74,7],[11,5,39],[11,10,16],[11,11,367148],[11,12,145],[11,13,56],[11,29,6785466],[11,30,175485],[11,31,4442],[11,32,296933],[11,33,2272962],[11,34,1184534],[11,46,44358],[11,47,306169],[12,5,1923],[12,10,791],[12,12,1092660],[12,13,2792],[12,26,5154300],[12,27,1],[12,28,6178166],[13,5,51733],[13,6,261742],[13,7,9992],[13,8,205303],[13,9,66393],[13,10,21278],[13,11,83476],[13,12,194465],[13,13,3969093],[13,14,359167],[13,16,2508],[13,18,2],[13,26,142279640],[13,27,9956871],[13,29,4730],[13,36,763625],[13,37,743456],[13,53,1748188],[13,54,7059495],[13,61,237776],[13,62,1377870],[13,72,17984],[13,73,14],[13,74,45],[13,75,5],[13,76,8],[13,77,2],[14,3,360303],[14,9,586],[14,13,261931],[14,14,75129430],[14,15,1096735],[14,16,275369],[14,26,20963723],[14,30,15933],[14,72,93137],[15,9,3478],[15,14,279725],[15,15,48563652],[15,16,7152],[15,19,163564],[15,26,11795681],[15,30,10660],[15,57,66348],[15,61,92609],[15,62,489564],[15,72,39943],[16,16,100887511],[16,72,12639],[17,9,10566],[17,10,553],[17,11,3134],[17,12,6336],[17,13,7395],[17,17,2186290],[17,18,13012],[17,19,48802],[17,20,43117],[17,21,85],[17,22,878957],[17,23,551142],[17,24,76759],[17,25,56803],[17,26,21113717],[17,27,564299],[17,29,220504],[17,31,3593],[17,32,55638711],[17,33,6458917],[17,36,22544092],[17,39,42134954],[17,41,33440],[17,45,11082],[17,46,6285],[17,48,81232],[17,50,2445055],[17,52,2744986],[17,53,22895],[17,54,55248],[17,55,24227],[17,72,11588],[17,73,27918],[17,74,72125],[18,18,5052443],[18,26,20433948],[18,47,60278],[18,61,77],[18,62,407],[18,72,11140],[19,0,8805988],[19,1,3144331],[19,2,969174],[19,3,895613],[19,4,1804410],[19,5,242346],[19,6,147624],[19,7,95368],[19,8,31613],[19,9,304775],[19,10,30896],[19,11,410937],[19,12,173645],[19,13,1394794],[19,14,4013291],[19,15,1312786],[19,16,729752],[19,17,282705],[19,18,6894335],[19,19,11646404],[19,28,47786],[19,53,428],[19,54,41454],[19,55,315],[19,72,32371],[20,27,6945],[20,31,11389],[20,36,379300],[20,39,2919829],[20,40,19364014],[20,41,41282],[20,48,1925593],[20,53,8073],[20,54,19481],[20,73,205],[20,74,531],[21,35,88846644],[21,40,50285],[21,41,45],[21,48,5803321],[21,53,2409],[21,54,5813],[22,20,222540],[22,21,214093],[22,22,30591],[22,23,161040],[22,24,753827],[22,25,460412],[22,41,3077786],[23,20,36267],[23,21,70751],[23,22,4985],[23,23,26244],[23,24,199989],[23,25,224201],[23,40,3428],[23,41,48],[24,20,65133],[24,21,127065],[24,22,8953],[24,23,47133],[24,24,57586],[24,25,204130],[24,41,275616],[24,42,6620],[24,53,57],[24,54,230],[25,14,43],[25,20,177636],[25,21,250114],[25,22,24418],[25,23,128546],[25,24,593241],[25,25,1126965],[25,26,519044],[25,36,1797969],[25,39,5067739],[25,40,316255],[25,41,2702828],[25,42,1042],[25,44,47184],[25,46,44569],[25,47,27505],[25,48,309125],[25,50,124],[25,51,128426],[25,52,3963242],[25,54,1745],[25,69,13064],[25,70,114851],[25,71,2144],[25,73,596],[25,74,3100],[25,75,64],[26,1,1],[26,2,791],[26,3,95097],[26,13,152108],[26,14,23236568],[26,15,9409514],[26,16,4584529],[26,17,841],[26,18,51156962],[26,19,670272],[26,26,200259977],[26,27,9964977],[26,28,73],[26,57,29086],[26,58,269],[26,61,3633414],[26,62,21849384],[26,64,307877],[26,65,20385],[26,66,2099181],[26,71,7392078],[26,72,975103],[26,73,21866],[26,74,56329],[26,75,24773],[26,76,47517],[26,77,3997],[26,78,58920],[26,79,156927],[27,26,49878004],[27,27,83103736],[27,52,898],[27,53,33147622],[27,54,44907855],[27,55,934],[27,57,10800],[27,59,10155],[27,61,12448115],[27,62,18621898],[27,72,471756],[27,73,2766],[27,74,30499],[27,75,9456],[28,28,831351],[28,53,11759],[28,54,47485],[28,61,7575],[29,0,1038],[29,1,931214],[29,2,11404],[29,3,515],[29,4,617901],[29,5,258],[29,6,22],[29,7,3],[29,8,11],[29,9,41],[29,10,33],[29,11,172],[29,12,372],[29,13,1027],[29,14,1896],[29,15,307826],[29,16,9964],[29,18,4258217],[29,19,3099],[29,20,1061],[29,21,4],[29,25,261],[29,26,446609],[29,27,465],[29,28,329947],[29,29,7893540],[29,30,37467643],[29,31,4163646],[29,32,45947],[29,33,116873],[29,34,10918712],[29,36,2843647],[29,37,36903],[29,38,1151110],[29,39,2157447],[29,40,81],[29,41,26454],[29,42,190163],[29,43,1571698],[29,45,522299],[29,46,5624064],[29,47,2864202],[29,51,88],[29,52,93],[29,56,49656],[29,57,41154],[29,59,16094],[29,61,322563],[29,62,1645311],[29,63,484394],[29,64,11],[29,71,516937],[29,72,216339],[29,73,3768],[29,74,3538],[29,75,172789],[29,76,113296],[29,77,9543],[29,78,82164],[29,79,38634],[30,0,144716],[30,4,15547],[30,18,420175],[30,19,41945],[30,20,51286],[30,21,3330],[30,22,129007],[30,23,25689],[30,24,9118],[30,26,1468590],[30,27,148126],[30,28,25],[30,29,7757986],[30,30,589645221],[30,31,57381],[30,32,50055],[30,33,2016],[30,34,2494],[30,36,158434],[30,37,40652],[30,38,73176],[30,39,265018],[30,40,70789],[30,41,194753],[30,42,866270],[30,43,42881],[30,44,151045],[30,45,572863],[30,46,26437],[30,47,1970],[30,48,468195],[30,50,85522],[30,51,4525],[30,52,1233497],[30,53,75405],[30,54,304498],[30,55,131311],[30,56,359690],[30,57,41832],[30,58,235005],[30,59,202801],[30,60,52674],[30,61,46674],[30,62,212287],[30,63,51607],[30,64,801654],[30,65,1480704],[30,66,560024],[30,67,282681],[30,68,169770],[30,71,1946377],[30,72,418876],[30,73,60312],[30,74,155663],[30,75,24182],[30,76,46578],[30,77,3893],[30,78,20524],[30,79,117146],[31,20,170],[31,21,71],[31,22,14],[31,23,15],[31,24,2],[31,29,488860],[31,30,822761],[31,31,788720],[31,32,1935],[31,33,417],[31,34,150294],[31,36,685908],[31,38,11934],[31,40,27],[31,41,191],[31,42,443690],[31,43,1971],[31,44,66129],[31,45,29899],[31,46,36064],[31,47,346058],[31,52,443431],[31,72,214],[31,73,42],[31,74,33],[31,75,1153],[32,1,115],[32,2,31],[32,3,5980],[32,5,294],[32,6,2],[32,10,11],[32,11,7],[32,12,82],[32,13,61],[32,14,4],[32,17,101195],[32,18,6747],[32,20,13582],[32,22,15301],[32,25,10839],[32,26,6950334],[32,27,374128],[32,28,30308],[32,29,544],[32,30,20],[32,31,265312],[32,32,32909052],[32,33,16375071],[32,34,8179533],[32,35,6295859],[32,36,953232],[32,37,87104],[32,38,1208838],[32,39,548951],[32,40,748],[32,42,3344029],[32,43,19982],[32,44,38300],[32,45,24541],[32,46,13224811],[32,47,21624602],[32,52,36565189],[32,56,59026],[32,59,2],[32,61,56853],[32,62,285928],[32,63,419698],[32,69,116349],[32,70,2544],[32,71,10851330],[32,72,5075099],[32,73,959858],[32,74,2157178],[32,75,22415],[32,76,20521],[32,77,1726],[32,78,7937],[32,79,3299216],[33,5,48],[33,10,70],[33,12,800],[33,13,449],[33,14,80],[33,21,42],[33,22,589],[33,23,668],[33,24,459],[33,25,413],[33,27,87174],[33,28,167119],[33,33,33864480],[33,34,10549645],[33,35,937958],[33,36,465705],[33,37,190565],[33,38,998496],[33,42,5248505],[33,43,411701],[33,44,573137],[33,45,390792],[33,47,4047662],[33,48,2165],[33,50,27350],[33,51,277],[33,52,25314],[33,53,1817],[33,54,24250],[33,55,92103],[33,56,10715234],[33,57,145244],[33,58,673196],[33,59,1253973],[33,60,936090],[33,61,81693],[33,62,9387056],[33,63,2401902],[33,64,11398258],[33,65,43236301],[33,66,11793298],[33,67,722327],[33,68,286513],[33,69,1548562],[33,70,74555],[33,71,15423877],[33,72,1572084],[33,73,35678343],[33,74,2347741],[33,75,290591],[33,76,3118570],[33,77,201327],[33,78,1251196],[33,79,4789289],[34,20,2],[34,27,2],[34,33,9170374],[34,34,241507],[34,36,12158657],[34,38,12635],[34,42,36314973],[34,43,10808123],[34,44,28329],[34,45,299],[34,48,4],[34,50,10],[34,52,1058242],[34,56,13692],[34,58,768],[34,61,5752],[34,62,1870],[34,63,7086398],[34,64,62469],[34,65,37693],[34,66,2411],[34,67,37757],[34,68,10862],[34,71,723112],[34,72,8574952],[34,73,3676418],[34,74,7530437],[34,75,142110],[34,76,64],[34,77,34],[34,78,309],[34,79,13198],[35,0,47906],[35,1,23732],[35,2,2636],[35,3,15140],[35,4,3099],[35,5,2865],[35,6,390],[35,7,8],[35,8,34],[35,9,194],[35,10,103],[35,11,537],[35,12,1178],[35,13,3601],[35,14,7086],[35,15,20326],[35,16,4219],[35,17,4526],[35,18,354030],[35,19,33662],[35,20,36351],[35,21,7159],[35,22,12008],[35,23,39424],[35,24,7034],[35,25,145652],[35,26,1239076],[35,27,118973],[35,28,1704],[35,29,117232],[35,30,9642],[35,31,15414],[35,32,39529],[35,33,131899],[35,34,44653],[35,35,70513],[35,36,229540],[35,37,7878],[35,38,27587],[35,39,836526],[35,40,1117480],[35,41,105007],[35,42,345448],[35,43,1472],[35,44,21153],[35,45,54506],[35,46,40668],[35,47,84189],[35,48,2065736],[35,49,4276],[35,50,35625],[35,51,3096],[35,52,635395],[35,53,265425],[35,54,625787],[35,55,57865],[35,56,2556550],[35,57,259177],[35,58,1920281],[35,59,581558],[35,60,67039],[35,61,23268],[35,62,117021],[35,63,2768],[35,64,287369],[35,65,149762],[35,66,290307],[35,67,54077],[35,68,22286],[35,69,74416],[35,70,60598],[35,71,271351],[35,72,87458],[35,73,16474],[35,74,43060],[35,75,26821],[35,76,50899],[35,77,4282],[35,78,3528],[35,79,36885],[36,0,4362273],[36,1,1835680],[36,2,387209],[36,3,488266],[36,4,1982570],[36,5,291396],[36,6,83164],[36,7,30043],[36,8,60726],[36,9,65360],[36,10,14348],[36,11,36246],[36,12,71387],[36,13,845714],[36,14,114241],[36,15,106484],[36,16,35994],[36,17,66946],[36,18,147737],[36,19,669873],[36,20,8283],[36,21,1769],[36,22,50341],[36,23,571305],[36,24,1284],[36,25,1010302],[36,26,1941604],[36,27,117192],[36,28,594851],[36,29,933405],[36,30,66852],[36,31,26348],[36,32,61373],[36,33,113919],[36,34,495774],[36,35,1384335],[36,36,85265236],[36,37,3430793],[36,38,11316774],[36,39,121414],[36,40,199643],[36,41,69178],[36,42,21512415],[36,43,511730],[36,44,922234],[36,45,1166924],[36,47,539340],[36,48,8408],[36,49,46736],[36,50,406632],[36,51,83512],[36,52,16723527],[36,53,421521],[36,54,1554845],[36,55,38],[36,56,143603],[36,57,26933],[36,58,2022922],[36,59,210132],[36,61,765781],[36,62,6070965],[36,64,956],[36,65,45898],[36,66,10493],[36,67,3264],[36,68,43942],[36,69,64562],[36,70,470700],[36,71,1185206],[36,72,324948],[36,73,141560],[36,74,561954],[36,75,471592],[36,76,1172462],[36,77,262985],[36,78,574948],[36,79,3739448],[37,14,343783],[37,20,3255],[37,21,1016],[37,22,10747],[37,23,5291],[37,24,440],[37,25,12324],[37,36,38517],[37,37,9693387],[37,38,8675],[37,52,434043],[37,72,146746],[37,73,31916],[37,74,68847],[37,75,11304844],[37,76,1906483],[37,79,21270],[38,5,2207],[38,10,30],[38,12,343],[38,20,30105],[38,21,6706],[38,22,70679],[38,23,52472],[38,24,14997],[38,25,116088],[38,29,26],[38,31,3413322],[38,34,13],[38,36,4713],[38,38,7799012],[38,42,57559773],[38,43,1173215],[38,44,3002768],[38,45,215897],[38,46,556500],[38,47,3244006],[38,48,659233],[38,50,1787987],[38,51,317767],[38,52,94390470],[38,53,16],[38,54,195],[38,66,13691],[38,71,23162],[38,72,89862],[38,73,14755],[38,74,25293],[38,75,6602],[38,79,12463],[39,5,610],[39,12,475],[39,14,757],[39,20,11147],[39,21,476],[39,22,1782],[39,24,10481],[39,25,15933],[39,27,2260],[39,29,179924],[39,34,75],[39,36,11228654],[39,37,398678],[39,38,1910727],[39,42,4333085],[39,43,3082141],[39,44,1973911],[39,45,23703781],[39,47,1374535],[39,48,17911278],[39,50,340872],[39,51,48273],[39,52,558086596],[39,69,2030],[39,70,4770548],[39,72,2551491],[39,73,31812],[39,74,150377],[39,75,1917],[40,14,322],[40,20,9928],[40,21,1259],[40,22,34195],[40,23,16835],[40,24,6071],[40,25,65207],[40,34,1743],[40,36,84105],[40,38,122460],[40,41,1830862],[40,42,3372654],[40,43,262057],[40,44,460582],[40,45,2063084],[40,47,584768],[40,50,92824],[40,51,27767],[40,52,100607902],[40,55,190661],[40,72,145043],[40,73,3737],[40,74,8062],[40,75,3381],[41,5,2195],[41,10,273],[41,12,2924],[41,13,1458],[41,14,1586],[41,18,21953],[41,20,277],[41,21,168],[41,22,4509],[41,23,1896],[41,24,8868],[41,25,41922],[41,27,422445],[41,28,34940],[41,29,27776],[41,34,30],[41,35,727723],[41,36,1388987],[41,37,83873],[41,38,542324],[41,41,1485615],[41,42,17398697],[41,43,8665222],[41,44,5882220],[41,45,2065206],[41,47,1421888],[41,48,171015],[41,49,150],[41,50,452240],[41,51,65031],[41,52,21729434],[41,56,2353788],[41,57,315788],[41,58,2944471],[41,59,1068836],[41,60,19440],[41,61,440590],[41,62,801683],[41,63,84991],[41,64,2492170],[41,69,604706],[41,70,512213],[41,71,775487],[41,72,152866],[41,73,5222],[41,74,3442],[41,75,15185],[41,76,190261],[41,77,40136],[41,78,194582],[41,79,574711],[42,5,25],[42,10,18],[42,12,209],[42,13,88],[42,14,3212],[42,18,20778],[42,20,181],[42,21,20],[42,22,495],[42,23,615],[42,24,432],[42,25,517],[42,27,38368],[42,28,9822],[42,34,260],[42,35,53791],[42,36,5606577],[42,37,17764],[42,38,70176],[42,42,41963267],[42,43,371893],[42,44,376351],[42,45,2673121],[42,48,9511],[42,49,20767],[42,50,335611],[42,51,51420],[42,52,5311251],[42,53,516056],[42,54,2083925],[42,55,195116],[42,56,197914],[42,58,110425],[42,59,105442],[42,60,72678],[42,61,228883],[42,62,1171583],[42,63,1659365],[42,64,6224288],[42,69,1589802],[42,71,4995280],[42,72,7375],[42,73,69632],[42,74,58644],[42,75,59461],[42,76,592437],[42,77,124994],[42,78,661235],[42,79,1261640],[43,12,1],[43,14,1],[43,20,9],[43,21,2],[43,22,8],[43,23,323],[43,24,363],[43,25,1170],[43,27,4],[43,28,15],[43,29,10372],[43,36,8613],[43,37,10],[43,38,166389],[43,42,7645271],[43,43,9358851],[43,44,322118],[43,45,6873366],[43,48,2602087],[43,49,54166],[43,50,316324],[43,51,121395],[43,52,5388859],[43,54,254],[43,56,3700897],[43,57,502209],[43,58,5509357],[43,59,2003396],[43,60,36439],[43,61,812525],[43,62,1489008],[43,63,159305],[43,64,6735146],[43,65,753599],[43,66,690360],[43,67,712458],[43,68,276929],[43,69,1106732],[43,70,228234],[43,71,1496378],[43,72,11314],[43,73,580],[43,74,169],[43,75,4835],[43,76,6962],[43,77,1469],[43,78,7118],[43,79,28281],[44,5,539],[44,18,414],[44,20,627542],[44,22,3611909],[44,23,1159737],[44,25,4206716],[44,29,129],[44,34,1],[44,37,88],[44,38,2317726],[44,42,2395555],[44,43,15814],[44,44,4052253],[44,48,4667],[44,49,1321174],[44,50,162959],[44,51,36057],[44,53,829959],[44,54,3351524],[44,55,162207],[44,56,1884],[44,57,563377],[44,59,23434],[44,63,6127],[44,72,4445],[44,73,4875],[44,74,1146],[44,75,4803],[44,78,250904],[44,79,3253],[45,45,1273986],[45,53,195217],[45,54,787912],[45,55,195072],[45,56,8461],[45,57,115946],[45,58,12595],[45,59,4580],[45,60,83],[45,61,1390],[45,62,2540],[45,63,364],[45,64,10679],[45,69,268470],[45,71,350494],[45,72,32],[45,73,26],[45,74,56],[45,75,26],[45,76,608],[45,77,128],[45,78,649],[45,79,1836],[46,3,1677],[46,5,2],[46,6,44],[46,10,19],[46,11,105],[46,12,213],[46,13,239],[46,15,83296],[46,16,2732],[46,18,2995],[46,26,3682],[46,29,2064212],[46,30,310],[46,31,13361],[46,32,6879787],[46,38,3028],[46,39,76983],[46,41,578826],[46,42,567105],[46,43,1098197],[46,44,110816],[46,45,5673],[46,46,28748393],[46,47,52184],[46,48,148],[46,50,1298],[46,52,15272377],[46,53,2334064],[46,54,9425367],[46,55,362137],[46,59,659409],[46,61,410009],[46,62,2062049],[46,63,4735],[46,64,60396],[46,65,10103],[46,66,1038908],[46,67,3501830],[46,68,1865895],[46,69,1337881],[46,71,1307284],[46,72,19701],[46,73,6617],[46,74,17094],[46,75,3538],[46,76,6814],[46,77,573],[46,78,103],[46,79,10980],[47,18,39],[47,20,205561],[47,21,39],[47,22,114],[47,23,12],[47,24,21],[47,25,909],[47,27,1612],[47,28,41908],[47,29,9731],[47,34,74],[47,35,641395],[47,36,2261549],[47,37,696958],[47,38,224111],[47,42,12314200],[47,43,20952],[47,44,3303190],[47,45,1703090],[47,47,3756450],[47,48,26517],[47,49,7565],[47,50,15302],[47,51,11965],[47,52,355969],[47,53,14525],[47,54,58145],[47,55,44151],[47,56,895604],[47,57,121533],[47,58,1333246],[47,59,484815],[47,60,8818],[47,61,27263],[47,62,337935],[47,63,38551],[47,64,1130428],[47,69,161925],[47,71,270972],[47,72,5770],[47,73,4283],[47,74,11520],[47,75,2786],[47,76,66504],[47,77,14027],[47,78,873262],[47,79,211514],[48,0,116124],[48,1,31048],[48,2,6639],[48,3,8408],[48,4,38292],[48,5,10274],[48,6,1386],[48,7,462],[48,8,1038],[48,9,882],[48,10,217],[48,11,443],[48,12,855],[48,13,12865],[48,14,35519],[48,15,53225],[48,16,27267],[48,17,1880],[48,18,126180],[48,19,19316],[48,20,27869],[48,21,21263],[48,22,15489],[48,23,10304],[48,24,1538],[48,25,17630],[48,26,1998997],[48,27,120905],[48,28,7323],[48,29,133210],[48,30,80050],[48,31,31594],[48,32,73482],[48,33,136423],[48,34,76893],[48,35,263506],[48,36,272488],[48,37,21946],[48,38,43428],[48,39,145361],[48,40,615588],[48,41,82815],[48,42,459797],[48,43,65527],[48,44,50077],[48,45,234862],[48,46,32552],[48,47,131822],[48,48,342820],[48,49,5262],[48,50,103172],[48,51,4647],[48,52,870245],[48,53,330771],[48,54,1026956],[48,55,90388],[48,56,284613],[48,57,29601],[48,58,162713],[48,59,113253],[48,60,25901],[48,61,75701],[48,62,232531],[48,63,41438],[48,64,454607],[48,65,491240],[48,66,238173],[48,67,187895],[48,68,70884],[48,69,311238],[48,70,138985],[48,71,1017231],[48,72,138186],[48,73,60997],[48,74,93290],[48,75,30487],[48,76,98001],[48,77,21752],[48,78,66669],[48,79,90402],[49,48,284826],[49,49,22027],[50,0,106189],[50,1,28365],[50,2,6077],[50,3,7684],[50,4,35070],[50,5,9339],[50,6,1262],[50,7,422],[50,8,957],[50,9,814],[50,10,185],[50,11,422],[50,12,738],[50,13,11755],[50,14,82076],[50,15,48685],[50,16,24979],[50,17,1647],[50,18,115213],[50,19,46640],[50,20,9077],[50,21,1944],[50,22,14164],[50,23,9503],[50,24,1404],[50,25,16105],[50,26,1936130],[50,27,2533285],[50,28,6772],[50,29,121347],[50,30,73248],[50,31,28967],[50,32,67295],[50,33,124557],[50,34,70534],[50,35,240918],[50,36,249273],[50,37,20020],[50,38,39631],[50,39,132813],[50,40,218518],[50,41,75447],[50,42,419649],[50,43,59745],[50,44,45674],[50,45,215292],[50,46,30080],[50,47,120169],[50,48,313576],[50,49,4902],[50,50,39878],[50,51,198071],[50,52,781032],[50,53,302594],[50,54,924482],[50,55,82682],[50,56,260331],[50,57,27024],[50,58,148786],[50,59,103682],[50,60,23690],[50,61,69251],[50,62,212760],[50,63,37850],[50,64,415760],[50,65,344545],[50,66,217893],[50,67,171878],[50,68,64840],[50,69,375204],[50,70,127183],[50,71,654005],[50,72,305602],[50,73,55777],[50,74,85254],[50,75,27860],[50,76,89595],[50,77,20014],[50,78,60936],[50,79,83142],[51,0,51816],[51,1,13044],[51,2,2739],[51,3,3962],[51,4,17486],[51,5,5044],[51,6,447],[51,8,440],[51,9,692],[51,13,5234],[51,14,38374],[51,15,23631],[51,16,12500],[51,18,55673],[51,19,23131],[51,20,3028],[51,21,919],[51,22,6342],[51,23,3170],[51,24,555],[51,25,7918],[51,26,908175],[51,27,58312],[51,28,2366],[51,29,54111],[51,30,32475],[51,31,16086],[51,32,29834],[51,33,59144],[51,34,37799],[51,35,114842],[51,36,118281],[51,37,8886],[51,38,20612],[51,39,56472],[51,40,105852],[51,41,35587],[51,42,200418],[51,43,27838],[51,44,20465],[51,45,105038],[51,46,14680],[51,47,53028],[51,48,147959],[51,49,3208],[51,50,20666],[51,51,3270],[51,52,465314],[51,53,145928],[51,54,534214],[51,55,37731],[51,56,126957],[51,57,14040],[51,58,71615],[51,59,49585],[51,60,13003],[51,61,33829],[51,62,101193],[51,63,17436],[51,64,197316],[51,65,255804],[51,66,104435],[51,67,81306],[51,68,31522],[51,69,181109],[51,70,61024],[51,71,317746],[51,72,146510],[51,73,26490],[51,74,39778],[51,75,13095],[51,76,43203],[51,77,11165],[51,78,29737],[51,79,31157],[52,20,3023],[52,21,944],[52,22,9981],[52,23,4914],[52,24,253011],[52,25,11446],[52,48,120080],[52,49,4767],[52,50,22996],[52,51,1291],[52,52,403117],[52,53,1014913],[52,54,3272474],[52,55,707307],[52,56,1026707],[52,57,1690139],[52,58,10983],[52,59,631464],[52,62,292751],[52,63,6084132],[52,64,1728514],[52,65,4253897],[52,66,230682],[52,68,79876],[52,69,173178],[52,71,26930880],[52,72,69123],[52,73,21327],[52,74,36560],[52,75,9543],[52,76,1562822],[52,77,6276],[52,78,191080],[52,79,74226],[53,0,589332],[53,1,176656],[53,2,22124],[53,3,69870],[53,4,205808],[53,5,72022],[53,6,30922],[53,7,10316],[53,8,23156],[53,9,19676],[53,10,4869],[53,11,9833],[53,12,19087],[53,13,286965],[53,14,184056],[53,15,138891],[53,16,60316],[53,17,41784],[53,18,364800],[53,19,186792],[53,20,41460],[53,21,47226],[53,22,63179],[53,23,162935],[53,24,34300],[53,25,214525],[53,26,62559654],[53,27,5123368],[53,28,163272],[53,29,3962954],[53,30,2089611],[53,31,124423],[53,32,1638522],[53,33,1894452],[53,34,953317],[53,35,5312407],[53,36,6183889],[53,37,171234],[53,38,204958],[53,39,1921018],[53,40,1564216],[53,41,933794],[53,42,6411398],[53,43,685225],[53,44,1116275],[53,45,10653231],[53,46,542524],[53,47,1511759],[53,48,2718095],[53,49,117338],[53,50,56731],[53,51,103850],[53,52,4215390],[53,53,7375002],[53,54,19478171],[53,55,278909],[53,56,606805],[53,57,78887],[53,58,81862],[53,59,153979],[53,60,177652],[53,61,1687836],[53,62,5184668],[53,63,521949],[53,64,1412147],[53,65,1360334],[53,66,333497],[53,67,455197],[53,68,391191],[53,69,3212064],[53,70,594340],[53,71,9892428],[53,72,5491036],[53,73,1360051],[53,74,2080070],[53,75,679542],[53,76,1994427],[53,77,484784],[53,78,1100761],[53,79,2012938],[54,0,889517],[54,1,273605],[54,2,58520],[54,3,72946],[54,4,337521],[54,5,90477],[54,6,12222],[54,7,4075],[54,8,9146],[54,9,7771],[54,10,1928],[54,11,3888],[54,12,7580],[54,13,113475],[54,14,315484],[54,15,468972],[54,16,240330],[54,17,16491],[54,18,1111028],[54,19,237775],[54,20,87407],[54,21,18661],[54,22,42188],[54,23,90756],[54,24,13558],[54,25,155351],[54,26,53264295],[54,27,3052200],[54,28,201765],[54,29,1269886],[54,30,705647],[54,31,278450],[54,32,647691],[54,33,1202054],[54,34,677643],[54,35,11066991],[54,36,4356457],[54,37,545182],[54,38,382666],[54,39,1888206],[54,40,3796680],[54,41,784348],[54,42,10866508],[54,43,2395873],[54,44,1390366],[54,45,3186105],[54,46,470950],[54,47,1896862],[54,48,3890246],[54,49,145170],[54,50,178992],[54,51,40985],[54,52,30672732],[54,53,2914968],[54,54,89022988],[54,55,1690518],[54,56,3898535],[54,57,842703],[54,58,1434013],[54,59,1172225],[54,60,628254],[54,61,4015540],[54,62,25313844],[54,63,767744],[54,64,4006988],[54,65,5194338],[54,66,2098987],[54,67,1655776],[54,68,624666],[54,69,3614139],[54,70,810504],[54,71,9865545],[54,72,2945220],[54,73,537524],[54,74,822156],[54,75,268628],[54,76,863792],[54,77,191638],[54,78,2092322],[54,79,2836453],[55,0,438285],[55,1,116311],[55,2,24977],[55,3,31313],[55,4,143514],[55,5,39868],[55,6,5439],[55,7,1589],[55,8,3745],[55,9,3367],[55,10,1274],[55,11,2181],[55,12,2544],[55,13,47093],[55,14,339831],[55,15,199970],[55,16,102052],[55,17,6195],[55,18,475437],[55,19,192552],[55,20,36820],[55,21,7820],[55,22,57837],[55,23,38548],[55,24,6078],[55,25,67070],[55,26,8003595],[55,27,494464],[55,28,28849],[55,29,502848],[55,30,302420],[55,31,121295],[55,32,274948],[55,33,506724],[55,34,287253],[55,35,996805],[55,36,1028975],[55,37,82836],[55,38,164447],[55,39,543615],[55,40,900946],[55,41,301693],[55,42,1731081],[55,43,249761],[55,44,193274],[55,45,890325],[55,46,125806],[55,47,502329],[55,48,1297489],[55,49,19502],[55,50,163329],[55,51,15906],[55,52,4027505],[55,53,1251139],[55,54,4610255],[55,55,19784223],[55,56,1076125],[55,57,110963],[55,58,613893],[55,59,426576],[55,60,100133],[55,61,287905],[55,62,877163],[55,63,157163],[55,64,1717736],[55,65,245639],[55,66,900784],[55,67,714441],[55,68,268291],[55,69,1551487],[55,70,525104],[55,71,2697507],[55,72,1262620],[55,73,231070],[55,74,351466],[55,75,114639],[55,76,371467],[55,77,81453],[55,78,253099],[55,79,359712],[56,0,410198],[56,1,186397],[56,2,26261],[56,3,26720],[56,4,117938],[56,5,32571],[56,6,4342],[56,7,1455],[56,8,3211],[56,9,2779],[56,10,587],[56,11,1533],[56,12,3111],[56,13,40853],[56,14,147156],[56,15,164720],[56,16,84122],[56,17,13533],[56,18,494368],[56,19,180271],[56,20,30364],[56,21,6559],[56,22,47735],[56,23,31780],[56,24,4984],[56,25,54316],[56,26,7256753],[56,27,405857],[56,28,22680],[56,29,410632],[56,30,246866],[56,31,96606],[56,32,225712],[56,33,421337],[56,34,236547],[56,35,812750],[56,36,840421],[56,37,67555],[56,38,133869],[56,39,447675],[56,40,737248],[56,41,273808],[56,42,1413803],[56,43,202086],[56,44,154265],[56,45,725513],[56,46,101132],[56,47,581908],[56,48,236935],[56,50,114159],[56,51,46088],[56,52,632073],[56,53,4735255],[56,54,4998866],[56,55,211388],[56,56,11313001],[56,57,582219],[56,58,3917272],[56,59,6182527],[56,60,193686],[56,61,59787],[56,62,300687],[56,63,294920],[56,64,4323836],[56,68,649],[56,69,1426995],[56,71,4018794],[56,72,143953],[56,73,93506],[56,74,201703],[56,75,14605],[56,76,12226],[56,77,1031],[56,78,60344],[56,79,26386],[57,18,265109],[57,19,9364],[57,20,111],[57,25,583],[57,26,37220],[57,32,215682],[57,38,595311],[57,40,8063],[57,41,624511],[57,53,4898423],[57,54,4400849],[57,55,319413],[57,59,3307],[57,60,76555],[57,64,21895],[57,72,549846],[58,20,827],[58,21,1],[58,25,43],[58,26,4019],[58,27,28028],[58,29,99584],[58,30,38287],[58,53,1737339],[58,54,2222895],[58,55,122307],[58,58,5764629],[58,67,228275],[58,68,38856],[58,71,47354],[58,72,2485838],[58,75,3],[58,76,9],[58,77,9],[59,0,121461],[59,1,514822],[59,2,10155],[59,3,8900],[59,4,89287],[59,5,12091],[59,6,2467],[59,7,710],[59,8,1099],[59,9,1626],[59,10,274],[59,11,2000],[59,12,4085],[59,13,21609],[59,14,171841],[59,15,83072],[59,16,48714],[59,17,2543],[59,18,178191],[59,19,85665],[59,20,21598],[59,21,78145],[59,22,23870],[59,23,329333],[59,24,1866],[59,25,63952],[59,26,2219132],[59,27,138642],[59,28,7778],[59,29,837747],[59,30,294564],[59,31,29851],[59,32,1542286],[59,33,142208],[59,34,80196],[59,35,276262],[59,36,286078],[59,37,23659],[59,38,45979],[59,39,151059],[59,40,5146418],[59,41,1442497],[59,42,1274539],[59,43,2599231],[59,44,1367242],[59,45,2239015],[59,46,564698],[59,47,802568],[59,48,2208],[59,50,71594],[59,52,2885330],[59,56,10755026],[59,58,10289412],[59,59,1761527],[59,60,1735382],[59,61,219869],[59,62,1082849],[59,64,84330],[59,69,1024559],[59,71,110319],[59,72,582683],[59,73,6899],[59,74,83401],[59,75,40179],[59,76,69831],[59,77,5875],[60,0,192626],[60,1,51279],[60,2,10902],[60,3,14018],[60,4,63155],[60,5,16360],[60,6,2374],[60,7,771],[60,8,1816],[60,9,1633],[60,10,618],[60,11,529],[60,12,1234],[60,13,21433],[60,14,149396],[60,15,88254],[60,16,45279],[60,17,3004],[60,18,210116],[60,19,84987],[60,20,16071],[60,21,3521],[60,22,26179],[60,23,16825],[60,24,2620],[60,25,29710],[60,26,3516196],[60,27,219636],[60,28,12596],[60,29,220473],[60,30,132773],[60,31,49338],[60,32,116749],[60,33,223321],[60,34,128163],[60,35,437456],[60,36,451671],[60,37,36679],[60,38,72159],[60,39,239790],[60,40,397915],[60,41,138010],[60,42,765855],[60,43,108432],[60,44,84122],[60,45,391282],[60,46,52355],[60,47,217037],[60,50,2031],[60,52,30487],[60,56,153211],[60,57,1119721],[60,58,1034615],[60,59,1028390],[60,60,1344364],[60,61,73143],[60,62,1925],[60,63,4068516],[60,64,10452176],[60,65,1245068],[60,66,150106],[60,67,2231354],[60,68,342834],[60,69,1354347],[60,71,3792318],[60,72,7381245],[60,73,1666645],[60,74,2856964],[60,76,21836],[60,77,6584],[60,78,261854],[61,3,3914],[61,4,571],[61,23,9176],[61,26,206206],[61,29,4774],[61,42,50212],[61,44,954],[61,52,31869],[61,53,12165],[61,54,30572],[61,55,22454],[61,61,64509],[61,62,661598],[61,64,26754],[61,67,177608],[61,68,58079],[61,71,3045670],[61,72,27877454],[61,73,3037],[61,74,54844],[61,75,82086],[61,76,158099],[61,77,13300],[61,78,485021],[62,20,835],[62,21,261],[62,22,2755],[62,23,1356],[62,24,113],[62,50,6348],[62,51,356],[62,52,111277],[62,56,1732493],[62,57,157259],[62,58,650413],[62,59,110479],[62,61,9717791],[62,62,245810900],[62,63,51],[62,64,1352055],[62,65,2946],[62,66,6894131],[62,67,201],[62,68,8763],[62,69,47804],[62,71,908805],[62,72,190808],[62,73,5887],[62,74,10092],[62,75,2634],[62,76,260498],[62,77,192757],[62,78,3247385],[63,28,384],[63,34,302],[63,38,568],[63,42,24113],[63,48,43401],[63,50,193514],[63,51,34538],[63,52,144479],[63,61,530038],[63,63,307102745],[63,64,43377924],[63,65,253818],[63,66,1503893],[63,69,149387],[63,71,4567932],[63,72,264996692],[63,73,1572637],[63,74,512085],[63,75,3209],[63,76,2451],[63,77,11990],[63,78,6617315],[63,79,355],[64,0,332207],[64,1,88815],[64,2,18991],[64,3,23966],[64,4,109542],[64,5,29411],[64,6,3974],[64,7,1317],[64,8,2957],[64,9,2528],[64,10,612],[64,11,1256],[64,12,2531],[64,13,36866],[64,14,256348],[64,15,152232],[64,16,78014],[64,17,5364],[64,18,360496],[64,19,145799],[64,20,28334],[64,21,6070],[64,22,44329],[64,23,29632],[64,24,4399],[64,25,51120],[64,26,6055008],[64,27,376452],[64,28,20911],[64,29,381654],[64,30,229011],[64,31,90440],[64,32,210606],[64,33,390385],[64,34,220097],[64,35,753848],[64,36,779562],[64,37,62843],[64,38,124168],[64,39,415433],[64,40,684016],[64,41,236924],[64,42,1310856],[64,43,187324],[64,44,143395],[64,45,672434],[64,46,93147],[64,47,376371],[64,48,986134],[64,49,15137],[64,50,124504],[64,51,13189],[64,52,3048738],[64,53,950179],[64,54,3506240],[64,55,259558],[64,56,841179],[64,57,85759],[64,58,509547],[64,59,332719],[64,60,97925],[64,61,223251],[64,62,712222],[64,63,127331],[64,64,4645898],[64,65,1985568],[64,66,734609],[64,67,557397],[64,68,223411],[64,69,3067201],[64,70,397603],[64,71,2392609],[64,72,4347247],[64,73,295254],[64,74,292783],[64,75,243617],[64,76,293698],[64,77,68290],[64,78,276830],[64,79,288879],[65,0,132066],[65,1,35313],[65,2,7551],[65,3,9558],[65,4,43555],[65,5,11677],[65,6,1577],[65,7,525],[65,8,1181],[65,9,1003],[65,10,248],[65,11,504],[65,12,965],[65,13,14638],[65,14,34464],[65,15,32180],[65,16,31012],[65,17,2139],[65,18,135556],[65,19,5355],[65,20,11280],[65,21,2409],[65,22,8232],[65,23,11716],[65,24,1747],[65,25,20047],[65,26,2097720],[65,27,111055],[65,28,8323],[65,29,151514],[65,30,91036],[65,31,35869],[65,32,83618],[65,33,117038],[65,34,48832],[65,35,299678],[65,36,309887],[65,37,24958],[65,38,49389],[65,39,146428],[65,40,271877],[65,41,94187],[65,42,298940],[65,43,74522],[65,44,56379],[65,45,267108],[65,46,37066],[65,47,56195],[65,48,295403],[65,49,5975],[65,50,49510],[65,51,5299],[65,52,822117],[65,53,376165],[65,54,1387560],[65,55,102787],[65,56,323665],[65,57,33664],[65,58,185051],[65,59,128785],[65,60,29447],[65,61,86090],[65,62,49749],[65,63,47133],[65,64,517054],[65,65,670321],[65,66,270860],[65,67,273006],[65,68,80602],[65,69,663598],[65,70,30316],[65,71,812944],[65,72,321430],[65,73,69370],[65,74,106095],[65,75,34658],[65,76,111453],[65,77,24724],[65,78,75819],[65,79,102787],[66,20,992],[66,21,310],[66,22,3274],[66,23,1612],[66,24,134],[66,25,3754],[66,48,1727530],[66,49,1563],[66,50,7543],[66,51,54623],[66,52,7172559],[66,53,22],[66,54,1716],[66,55,1275],[66,56,905854],[66,57,292593],[66,58,48827],[66,59,280473],[66,61,159],[66,63,14765],[66,65,32195374],[66,66,16000350],[66,67,154386],[66,68,2799731],[66,69,487949],[66,71,2625787],[66,72,12355358],[66,73,52359],[66,74,112945],[66,75,558330],[66,78,12946],[67,0,134150],[67,1,35799],[67,2,7688],[67,3,9720],[67,4,44172],[67,5,11957],[67,6,1600],[67,7,543],[67,8,1207],[67,9,1036],[67,10,261],[67,11,522],[67,12,1044],[67,13,14793],[67,14,103450],[67,15,61517],[67,16,31485],[67,17,2118],[67,18,145747],[67,19,58895],[67,20,11333],[67,21,2445],[67,22,17933],[67,23,11865],[67,24,1755],[67,25,20428],[67,26,2444631],[67,27,151902],[67,28,8483],[67,29,154600],[67,30,92391],[67,31,36371],[67,32,84771],[67,33,157482],[67,34,88806],[67,35,304552],[67,36,440516],[67,37,39418],[67,38,50242],[67,39,168306],[67,40,276201],[67,41,95485],[67,42,529522],[67,43,75573],[67,44,57590],[67,45,271427],[67,46,37461],[67,47,152224],[67,48,656806],[67,49,6136],[67,50,50962],[67,51,5440],[67,52,1236426],[67,53,382196],[67,54,1409750],[67,55,104603],[67,56,461177],[67,57,68326],[67,58,195213],[67,59,419350],[67,60,31925],[67,61,89196],[67,62,283103],[67,63,48031],[67,64,728298],[67,65,1913336],[67,66,383288],[67,67,28388252],[67,68,5276719],[67,69,2161770],[67,70,160645],[67,71,2258201],[67,72,3003823],[67,73,85354],[67,74,611161],[67,75,138069],[67,76,126079],[67,77,25645],[67,78,79888],[67,79,106087],[68,5,3],[68,12,1],[68,20,10035],[68,21,3133],[68,22,33131],[68,23,16311],[68,24,1355],[68,25,37991],[68,27,991],[68,28,66278],[68,29,40195],[68,34,22],[68,35,1166675],[68,36,1732512],[68,37,193457],[68,38,299156],[68,42,1055511],[68,43,86036],[68,44,118416],[68,45,187283],[68,50,76329],[68,51,4284],[68,52,1338039],[68,56,21834],[68,57,6795],[68,59,93],[68,61,29506],[68,63,17595],[68,64,8014],[68,65,17586451],[68,66,1454967],[68,67,14446972],[68,68,11802064],[68,69,22312843],[68,71,732164],[68,72,44036588],[68,73,285737],[68,74,616366],[68,75,3046934],[68,76,79632],[68,77,1021],[68,78,313878],[68,79,446322],[69,0,31214],[69,1,2673],[69,2,9947],[69,3,5110],[69,4,7364],[69,5,5096],[69,6,4683],[69,7,1565],[69,8,2009],[69,9,2981],[69,10,740],[69,11,1490],[69,12,2875],[69,13,40998],[69,14,19741],[69,15,3367],[69,16,5421],[69,17,6334],[69,18,29268],[69,19,24814],[69,20,23821],[69,21,3290],[69,22,5712],[69,23,14994],[69,24,5193],[69,25,41275],[69,26,218091],[69,27,92989],[69,28,24740],[69,29,137951],[69,30,186168],[69,31,43007],[69,32,114181],[69,33,58272],[69,34,25060],[69,35,889901],[69,36,66918],[69,37,4505],[69,38,146628],[69,39,83200],[69,40,13099],[69,41,104173],[69,42,165947],[69,43,95163],[69,44,92990],[69,45,197356],[69,46,49975],[69,47,111005],[69,48,23085],[69,49,17757],[69,50,98937],[69,51,15707],[69,52,52308],[69,53,290577],[69,54,4120301],[69,55,305255],[69,56,415258],[69,57,36954],[69,58,36031],[69,59,227851],[69,60,87435],[69,61,140315],[69,62,384438],[69,63,147718],[69,64,1672065],[69,65,2029056],[69,66,402206],[69,67,634481],[69,68,239368],[69,69,1404574],[69,70,4],[69,71,2438212],[69,72,199706],[69,73,205994],[69,74,237893],[69,75,102939],[69,76,187587],[69,77,73420],[69,78,53148],[69,79,305111],[71,0,30965],[71,1,13368],[71,2,2864],[71,3,3620],[71,4,16457],[71,5,6085],[71,6,590],[71,7,198],[71,8,447],[71,9,383],[71,10,104],[71,11,202],[71,12,525],[71,13,5612],[71,14,39317],[71,15,22895],[71,16,11739],[71,17,836],[71,18,54261],[71,19,21933],[71,20,4272],[71,21,909],[71,22,11640],[71,23,8858],[71,24,1353],[71,25,7703],[71,26,833509],[71,27,56782],[71,28,3697],[71,29,57382],[71,30,34445],[71,31,13578],[71,32,31616],[71,33,58870],[71,34,32994],[71,35,113365],[71,36,376361],[71,37,15997],[71,38,31815],[71,39,62572],[71,40,102881],[71,41,35673],[71,42,556626],[71,43,43709],[71,44,35431],[71,45,149587],[71,46,14171],[71,47,56661],[71,48,209405],[71,49,2272],[71,50,154651],[71,51,9918],[71,52,1343957],[71,53,242590],[71,54,859904],[71,55,48358],[71,56,1410957],[71,57,131208],[71,58,742057],[71,59,720626],[71,60,65037],[71,61,401442],[71,62,511990],[71,63,126582],[71,64,2525137],[71,65,3423828],[71,66,907889],[71,67,687702],[71,68,685913],[71,69,1164489],[71,70,101524],[71,71,6272286],[71,72,284454],[71,73,52876],[71,74,93854],[71,75,316297],[71,76,283199],[71,77,129898],[71,78,113062],[71,79,161624],[72,50,362],[72,72,385439],[73,20,11688],[73,21,3649],[73,22,38588],[73,23,18998],[73,24,1578],[73,50,88903],[73,51,4989],[73,52,1558442],[73,72,502149],[73,73,82450],[73,74,141339],[73,75,36893],[74,20,9280],[74,21,2897],[74,22,30637],[74,23,15083],[74,24,1253],[74,50,70585],[74,51,3961],[74,52,1237332],[74,72,398683],[74,73,65462],[74,74,112216],[74,75,29292],[75,20,127],[75,21,8],[75,22,3669],[75,25,1008],[75,53,120234],[75,54,302149],[75,55,221919],[75,56,1245191],[75,57,9977],[75,72,251052],[75,73,90857],[75,74,175883],[75,75,9597969],[75,76,18480529],[75,77,2188082],[76,20,1345],[76,21,420],[76,22,4442],[76,23,2187],[76,24,182],[76,25,146],[76,50,10233],[76,51,574],[76,52,179380],[76,65,144549],[76,72,577983],[76,73,94902],[76,74,162684],[76,75,42465],[76,76,157932862],[77,65,143],[77,74,59356],[77,76,351251],[77,77,47154],[78,20,11],[78,21,3],[78,22,37],[78,23,18],[78,24,2],[78,52,1483],[78,53,3189163],[78,54,9780650],[78,55,294247],[78,65,1330641],[78,66,246234],[78,69,637],[78,71,671294],[78,72,478],[78,73,78],[78,75,35],[78,78,31886559],[79,0,9035],[79,1,34814],[79,2,7310],[79,3,10574],[79,4,42780],[79,5,13463],[79,6,1592],[79,8,783],[79,9,1232],[79,13,13831],[79,14,100442],[79,15,59659],[79,16,31774],[79,18,139069],[79,19,56987],[79,20,10827],[79,21,2468],[79,22,17094],[79,23,11364],[79,24,1983],[79,25,19867],[79,26,2352953],[79,27,142481],[79,28,8419],[79,29,145454],[79,30,83822],[79,31,42478],[79,32,76383],[79,33,166989],[79,34,84131],[79,35,430711],[79,36,302564],[79,37,358555],[79,38,226184],[79,39,174544],[79,40,270744],[79,41,75842],[79,42,1760604],[79,43,199881],[79,44,580589],[79,45,1077046],[79,46,33675],[79,47,132926],[79,48,382928],[79,49,5708],[79,50,51574],[79,51,5819],[79,52,1196501],[79,53,366247],[79,54,1363715],[79,55,105498],[79,56,316688],[79,57,31226],[79,58,184766],[79,59,123803],[79,60,30848],[79,61,2318514],[79,62,2343790],[79,63,773373],[79,64,504121],[79,65,655727],[79,66,267175],[79,67,209713],[79,68,272115],[79,69,461399],[79,70,154518],[79,71,809103],[79,72,385247],[79,73,1998919],[79,74,4625944],[79,75,897535],[79,76,1691593],[79,77,256896],[79,78,807014],[79,79,26263340]],"B":[[0,0,840908549],[0,1,2332692],[0,14,5769],[0,16,1923],[0,19,11538],[0,53,319231],[0,54,769231],[1,0,616731],[1,1,24453603],[1,53,26923],[1,54,108269],[2,0,6325000],[2,1,8950000],[2,2,161694842],[2,14,173077],[2,16,53846],[2,18,9615],[2,26,9615],[2,53,65385],[2,54,265385],[3,0,271154],[3,1,60000],[3,2,26346],[3,3,6792721],[3,14,45962],[3,16,14231],[3,18,19615],[4,0,5364808],[4,1,194808],[4,2,180962],[4,3,511154],[4,4,32351354],[4,18,129231],[4,19,310577],[4,53,62692],[4,54,150962],[5,0,7119231],[5,1,257692],[5,2,1084615],[5,3,678846],[5,5,74650861],[5,12,192308],[5,13,5484615],[5,14,815385],[5,16,253846],[5,18,21154],[6,0,3144231],[6,1,113462],[6,2,250000],[6,3,300000],[6,6,56359202],[6,12,173077],[6,13,4925000],[6,14,742308],[6,16,230769],[6,18,17308],[7,0,444231],[7,1,15385],[7,2,311538],[7,3,42308],[7,7,12933010],[7,12,53846],[7,13,1553846],[7,14,255769],[7,16,78846],[7,18,5769],[8,0,1528846],[8,1,55769],[8,2,1075000],[8,3,146154],[8,8,43166623],[8,12,150000],[8,13,4296154],[8,14,657692],[8,16,203846],[8,18,15385],[9,0,792308],[9,1,28846],[9,2,555769],[9,3,75000],[9,9,23824923],[9,12,217308],[9,13,6165385],[9,14,903846],[9,16,280769],[9,18,21154],[10,0,13846154],[10,1,576923],[10,2,9807692],[10,3,1346154],[10,10,388194175],[10,12,192308],[10,13,6730769],[10,14,1153846],[10,16,384615],[11,0,417308],[11,1,15385],[11,2,294231],[11,3,40385],[11,11,9190742],[11,12,23077],[11,13,671154],[11,14,111538],[11,16,34615],[11,18,3846],[12,0,353846],[12,1,13462],[12,2,248077],[12,3,34615],[12,12,6090807],[12,13,853846],[12,14,146154],[12,16,44231],[12,18,3846],[13,0,15257692],[13,1,557692],[13,2,4821154],[13,3,1453846],[13,4,136538],[13,12,326923],[13,13,184754797],[13,14,1523077],[13,16,471154],[13,18,34615],[13,19,1711538],[13,26,305769],[14,0,1476731],[14,1,369808],[14,2,297115],[14,3,29038],[14,4,57115],[14,14,145533834],[14,15,2173077],[14,16,1398462],[14,18,577],[14,19,51154],[15,0,762115],[15,1,346731],[15,2,111923],[15,3,11923],[15,4,2308],[15,14,1506346],[15,15,91936257],[15,16,5342885],[15,19,30962],[15,26,34808],[16,0,121154],[16,1,55769],[16,2,17308],[16,3,34615],[16,4,7692],[16,14,238462],[16,15,9942308],[16,16,191247370],[16,19,5769],[16,26,7571154],[17,0,869231],[17,1,30769],[17,2,611538],[17,3,82692],[17,4,7692],[17,12,50000],[17,13,1436538],[17,17,13752463],[17,18,141273077],[18,0,38077],[18,1,1731],[18,2,15769],[18,13,962],[18,14,1845385],[18,15,71538],[18,16,1174615],[18,18,89130807],[18,19,4711731],[18,26,38269],[19,0,5000],[19,1,4038],[19,2,192],[19,4,577],[19,13,385],[19,14,1268462],[19,15,507115],[19,16,233462],[19,18,540577],[19,19,40906497],[19,52,5385],[19,56,192],[19,66,7308],[20,20,5882567],[20,35,2193654],[20,39,38269],[20,44,385],[21,20,30385],[21,21,7739082],[21,35,7338077],[21,39,128077],[21,44,1731],[22,20,59423],[22,22,5368373],[22,23,136538],[22,24,256154],[22,25,340000],[22,35,185000],[23,20,65769],[23,22,27308],[23,23,5722976],[23,24,140962],[23,25,421538],[23,35,3264615],[24,20,62692],[24,22,680769],[24,23,162308],[24,24,3442124],[24,25,1618077],[25,21,810769],[25,22,962],[25,23,962],[25,25,12828156],[25,35,2157692],[25,39,37500],[25,44,385],[26,3,283462],[26,4,312500],[26,5,138846],[26,6,150962],[26,7,30962],[26,8,95962],[26,10,2692],[26,12,33846],[26,13,971731],[26,26,931349088],[26,27,424423],[26,35,387692],[26,36,65769],[26,40,50769],[26,47,39615],[26,54,1346],[26,59,35962],[26,64,1918654],[27,0,621154],[27,1,198077],[27,2,3815385],[27,3,142308],[27,4,155769],[27,5,69231],[27,6,75000],[27,26,70340385],[27,27,657456397],[27,36,3846],[27,47,105769],[28,26,1731],[28,28,6798116],[28,36,8077],[28,47,71731],[29,29,157318258],[29,30,5005769],[29,36,619231],[29,39,559615],[29,40,257692],[29,46,23077],[29,47,303846],[30,29,151211538],[30,30,2736307316],[30,46,19231],[30,47,634615],[31,29,6504231],[31,30,437115],[31,31,5536599],[31,39,441731],[31,41,170962],[31,42,192],[31,43,749038],[31,46,258269],[31,47,35385],[32,21,1923],[32,25,5769],[32,29,86538],[32,30,9615],[32,32,231293481],[32,35,219231],[32,39,1701923],[32,40,4357692],[32,41,3669231],[32,43,667308],[32,45,69231],[32,46,3484615],[32,47,17519231],[33,29,2051923],[33,32,23077],[33,33,213567079],[33,34,5769],[33,35,144231],[33,36,5769],[33,39,40385],[33,40,776923],[33,41,17308],[33,44,92308],[33,47,238462],[34,29,771154],[34,34,130384970],[34,36,73077],[34,44,5769],[34,47,167308],[34,65,548077],[35,35,14026123],[35,41,212],[35,45,38],[35,47,462],[36,29,132500],[36,30,129615],[36,35,2201923],[36,36,193970223],[36,39,355962],[36,40,104808],[36,41,3846],[36,42,25000],[36,43,3462],[36,44,40192],[36,45,14615],[36,46,2885],[36,47,32500],[37,29,46154],[37,36,9615],[37,37,138605503],[37,47,557692],[38,29,5346154],[38,35,1063462],[38,36,25000],[38,38,271335592],[38,39,728846],[38,40,9932692],[38,41,282692],[38,42,226923],[38,43,1923],[38,44,107692],[38,46,225000],[38,47,398077],[39,25,6763462],[39,29,301923],[39,35,17057692],[39,36,3846],[39,39,269925732],[39,40,130769],[39,41,25000],[39,43,21154],[39,44,28846],[39,45,357692],[39,46,3846],[39,47,186538],[40,29,1731],[40,30,3654],[40,36,2692],[40,39,54038],[40,40,35137035],[40,41,279038],[40,42,1346],[40,43,28462],[40,44,8077],[40,45,33269],[40,46,28269],[40,47,315385],[41,29,425192],[41,30,33846],[41,35,248654],[41,36,35192],[41,39,13216154],[41,40,21884231],[41,41,21217897],[41,42,1294808],[41,43,360000],[41,44,156923],[41,45,410192],[41,46,54808],[41,47,1882885],[42,29,32115],[42,30,64231],[42,36,122692],[42,39,1330962],[42,40,417692],[42,41,573846],[42,42,193532147],[42,43,11325577],[42,44,6689808],[42,45,5850769],[42,46,1647500],[42,47,1849038],[43,30,3269],[43,35,68846],[43,39,577],[43,40,156731],[43,41,23654],[43,42,35023654],[43,43,19109156],[43,44,667692],[43,45,17885],[43,47,898846],[44,35,348077],[44,36,263462],[44,39,390385],[44,40,4423077],[44,41,3278846],[44,42,7934615],[44,43,7163462],[44,44,156405452],[44,45,1207692],[44,46,86538],[44,47,205769],[45,30,169615],[45,35,11154],[45,36,10769],[45,39,180192],[45,40,347308],[45,41,1035769],[45,42,2598077],[45,43,1921923],[45,44,333462],[45,45,47555347],[45,47,2970962],[45,71,2177115],[45,78,67308],[46,17,5769],[46,29,11326923],[46,30,261538],[46,32,123077],[46,36,1923],[46,39,388462],[46,40,594231],[46,41,96154],[46,43,257692],[46,44,501923],[46,45,551923],[46,46,100128167],[46,47,1688462],[47,29,551731],[47,30,504231],[47,36,46923],[47,39,2995577],[47,40,30577],[47,41,1154],[47,42,167692],[47,43,175192],[47,44,259615],[47,45,221731],[47,46,34231],[47,47,20683673],[48,20,673],[48,21,1885],[48,22,3712],[48,23,2115],[48,24,5865],[48,25,3904],[48,35,625635],[48,36,64250],[48,40,709231],[48,41,17673],[48,43,544500],[48,44,329269],[48,45,741865],[48,47,238154],[48,48,14307057],[48,49,9981],[48,50,5942],[48,51,32942],[48,52,24538],[49,49,306853],[50,50,21262884],[50,51,769],[51,50,23251923],[51,51,23318670],[51,78,176923],[52,36,9615],[52,39,12130769],[52,40,3384615],[52,41,242308],[52,44,271154],[52,45,1923],[52,52,5737553791],[52,53,92308],[52,54,386538],[52,55,175000],[52,56,76923],[52,69,11101923],[53,0,10192],[53,1,3269],[53,2,2500],[53,3,769],[53,4,3269],[53,5,769],[53,6,769],[53,7,192],[53,8,577],[53,9,385],[53,10,15],[53,11,192],[53,12,192],[53,13,21346],[53,14,12308],[53,15,4423],[53,16,192],[53,17,192],[53,18,9596346],[53,19,3846],[53,20,2500],[53,21,6923],[53,22,16538],[53,23,4038],[53,24,15577],[53,25,14423],[53,26,8883077],[53,27,427308],[53,28,13654],[53,29,106538],[53,30,1919808],[53,31,336731],[53,32,38462],[53,33,67692],[53,34,387115],[53,35,500769],[53,36,1042115],[53,37,385],[53,38,962],[53,39,29231],[53,40,192],[53,41,5385],[53,42,140192],[53,43,2692],[53,44,9231],[53,45,5769],[53,46,962],[53,47,1923],[53,48,248],[53,49,4],[53,50,31],[53,51,2],[53,52,545385],[53,53,144356975],[53,54,40912375],[53,55,1803654],[53,56,501923],[53,57,303077],[53,59,192],[53,62,772698],[53,63,7263],[53,64,2102115],[53,65,23],[53,66,18],[53,67,110],[53,68,5],[53,69,1095],[53,71,101135],[53,74,20675],[53,76,190192],[53,78,9808],[53,79,276632],[54,0,73846],[54,1,23654],[54,2,18077],[54,3,5385],[54,4,24038],[54,5,5577],[54,6,5962],[54,7,1154],[54,8,3846],[54,9,2308],[54,10,192],[54,11,1154],[54,12,962],[54,13,64615],[54,14,26538],[54,15,32500],[54,16,577],[54,17,769],[54,18,2727115],[54,19,27308],[54,20,17885],[54,21,50000],[54,22,119038],[54,23,28654],[54,24,112692],[54,25,103077],[54,26,2268269],[54,27,755000],[54,28,61346],[54,29,147692],[54,30,801154],[54,31,680192],[54,32,96346],[54,33,65769],[54,34,414423],[54,35,749231],[54,36,1568462],[54,37,1154],[54,38,2885],[54,39,38077],[54,40,769],[54,41,8654],[54,42,804231],[54,43,5385],[54,44,14038],[54,45,13846],[54,46,1731],[54,47,4231],[54,48,179],[54,49,3],[54,50,22],[54,51,1],[54,52,3929423],[54,53,14240435],[54,54,648249591],[54,55,4158077],[54,56,164423],[54,57,1194],[54,58,7572],[54,59,6312],[54,60,349],[54,61,248654],[54,62,1143903],[54,63,22256],[54,64,137885],[54,65,167],[54,66,129],[54,67,450],[54,68,36],[54,69,7889],[54,71,176966],[54,74,148956],[54,76,5926731],[54,77,491731],[54,78,70192],[54,79,1566824],[55,53,365385],[55,54,915385],[55,55,120019165],[55,56,2638462],[55,57,86029],[55,58,545514],[55,59,455908],[55,60,25157],[55,61,4751923],[56,53,4231],[56,54,50000],[56,56,137658282],[56,59,318269],[56,71,28462],[57,53,1139423],[57,54,1075769],[57,55,471538],[57,56,1069038],[57,57,15398129],[57,59,186154],[57,66,9615],[57,71,184038],[58,53,1634808],[58,54,1384615],[58,55,263269],[58,56,1992115],[58,58,84959803],[58,59,385],[58,71,9808],[59,53,1410962],[59,54,703654],[59,55,1119038],[59,56,13904615],[59,57,43462],[59,58,1346],[59,59,62797103],[59,60,441538],[59,61,6154],[59,64,154615],[59,66,115000],[59,67,577],[59,68,769],[59,71,388846],[59,78,270769],[60,56,4178846],[60,60,107323284],[60,71,11538],[61,59,13462],[61,61,490196408],[61,62,226923],[61,69,1461538],[61,71,323077],[61,76,12753846],[61,78,9436538],[61,79,1923],[62,57,9615],[62,61,4182692],[62,62,1543052066],[62,71,1055769],[62,74,1109615],[62,78,46715385],[63,63,1713423505],[63,64,306192308],[63,78,16307692],[64,63,2522308],[64,64,156220330],[64,71,18462],[64,78,10577],[65,53,47115],[65,54,69596],[65,55,186962],[65,64,135],[65,65,18073572],[65,66,2791615],[65,68,1285173],[65,71,1269],[65,74,183885],[66,53,256923],[66,54,794615],[66,55,2892885],[66,56,69038],[66,57,9615],[66,62,10962],[66,65,70523077],[66,66,92668094],[66,67,26731],[66,68,2296346],[66,71,77115],[66,74,958846],[66,77,255962],[67,65,25962],[67,66,7384231],[67,67,97824002],[67,68,4371731],[68,54,25000],[68,65,30769],[68,66,5736538],[68,67,26923],[68,68,152117395],[69,0,519],[69,52,4096],[69,53,158173],[69,54,620997],[69,55,666058],[69,56,175269],[69,59,23750],[69,63,201558],[69,64,392250],[69,65,6500],[69,66,26038],[69,67,31558],[69,68,1173],[69,69,18172577],[69,71,43923],[69,72,253096],[69,73,24615],[69,74,19442],[69,75,2000],[69,76,77115],[69,77,115],[69,78,67000],[69,79,3096],[70,70,110802],[71,0,1481],[71,53,3000],[71,56,30308],[71,57,1154],[71,58,38],[71,59,38596],[71,61,7442],[71,62,11019],[71,63,5250],[71,64,1247192],[71,65,296077],[71,66,760731],[71,67,65154],[71,68,127308],[71,69,9481],[71,71,38254182],[71,73,2337885],[71,74,1852231],[71,75,4673],[71,76,83269],[71,77,1365],[71,78,220962],[71,79,214865],[72,72,2407534],[73,53,542308],[73,54,1357692],[73,55,617308],[73,66,92308],[73,73,754695314],[74,53,425000],[74,54,1065385],[74,55,484615],[74,61,11538],[74,74,440261649],[75,53,38462],[75,54,173077],[75,55,76923],[75,75,2170904364],[76,53,634615],[76,54,1596154],[76,55,730769],[76,68,148230769],[76,76,5042904770],[77,77,6523197],[77,78,962],[78,61,5769],[78,63,4017308],[78,66,7692],[78,71,303846],[78,78,533017164],[78,79,538462],[79,68,3667308],[79,69,4573077],[79,71,40385],[79,78,5153846],[79,79,470278843]],"m":[1571154,2713846,6126923,0,385,0,0,8405769,0,1717308,19423077,786538,10905769,78413462,123269,385,3423077,271154,35962,0,19343269,80572500,0,5577,1259672,3204038,114780385,68559615,2235192,130776923,767807692,9129686,115777194,187890980,22140385,7593808,71388206,202344887,314563462,416325174,94218077,32550351,223513060,64756346,951305769,122233077,30928846,17912712,0,0,0,0,7182692,36538,68462,53846,4481538,8014423,4909808,34020000,12573077,188469231,1083867019,266865385,9161154,402538,1382885,7145577,68039962,2782077,0,2673919,51375,0,4732692,0,47596154,49231,4482692,15896154],"imported":[0,1,2,4,7,9,10,11,12,13,14,15,16,17,18,20,21,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,71,72,74,76,77,78,79],"weekUse":[829893936,27158750,168120990,6942746,21917427,55489286,27719385,18271699,25875341,22980187,300984255,11437753,12430633,169414861,98197147,61512376,100900150,158097819,25558293,43453141,24676642,94708517,4920289,565913,792523,17361579,336208816,242644494,898170,88234161,612030902,4320003,172510419,217437053,97713463,16133429,181690748,24031584,174604368,632124626,109995509,76243413,78922715,59143671,25121218,3231150,80013189,31716810,12915108,306853,14040159,5713791,50934424,194494332,314065630,67091783,62075778,12026242,12818303,54202298,49686452,33080926,271427453,631643770,47576501,13381554,77875093,57346672,123712920,19808985,0,27169844,385801,2489666,1976681,32688654,159154354,457904,47401570,59175280],"s":[1e-05,0.0001,1e-05,0.0001,0.0001,1e-05,1e-05,1e-05,1e-05,1e-05,1e-07,1e-05,1e-05,1e-05,0.0001,0.0001,1e-05,1e-05,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,1e-05,0.0001,1e-05,1e-06,0.0001,1e-05,1e-05,1e-05,0.001,0.0001,1e-05,1e-05,1e-05,0.0001,0.0001,0.0001,0.0001,1e-05,0.0001,1e-05,0.0001,0.001,0.001,0.0001,1e-05,1e-05,0.0001,0.0001,1e-05,0.0001,0.0001,0.0001,0.0001,1e-05,1e-05,1e-05,1e-06,0.0001,0.001,0.0001,0.0001,1e-05,0.001,0.1,0.001,0.01,1e-05,1e-05,1e-06,1e-06,0.0001,1e-05,1e-05],"fTilde":[16026151,760622,15552698,287283,17339506,35069267,38535972,5828618,25420128,11602429,140671458,151066,6264020,120353396,53313033,38574267,111764528,287335,71506553,26049,2781502,1101335,1425199,9082832,6433119,1678885,714865850,558898442,8216677,206630250,3043949490,18943205,206352563,187417161,56377277,5487214,86714989,317532267,429633147,79007048,20115564,17527720,368026722,61582985,1107891926,178380928,66841901,11868229,4754083,0,7223494,41033725,5721675135,21089776,378682990,62764991,80465004,15521885,82336308,61176150,74400293,669802020,2408564708,1671145120,120356330,9660306,94348001,59404831,102263667,3944010,110802,21077738,2073108,754815264,445004198,2138504172,5082538877,6115486,494971363,440434333]}</script>
+<script>
+// The year-plan simulation, ported from simulation.py (same rule: at each step, one of
+// the batches or deliveries that can start is picked with equal chances).
+// Lists are stored as flat typed arrays ("start" offsets per row), for speed.
+function buildModel(P) {
+  const n = P.names.length;
+  const byInd = Array.from({ length: n }, () => []);
+  for (const [i, j, a] of P.A) byInd[j].push([i, a]);
+  const inStart = new Int32Array(n + 1), inProd = [], inAmt = [];
+  byInd.forEach((list, j) => { inStart[j] = inProd.length; for (const [i, a] of list) { inProd.push(i); inAmt.push(a); } });
+  inStart[n] = inProd.length;
+  const byProd = Array.from({ length: n }, () => []);
+  for (let j = 0; j < n; j++) for (let k = inStart[j]; k < inStart[j + 1]; k++) byProd[inProd[k]].push(k);
+  const usStart = new Int32Array(n + 1), usPos = [];
+  byProd.forEach((list, i) => { usStart[i] = usPos.length; usPos.push(...list); });
+  usStart[n] = usPos.length;
+  const change = Array.from({ length: n }, () => new Map());
+  for (const [i, j, a] of P.A) change[j].set(i, (change[j].get(i) || 0) - a);
+  for (const [i, j, b] of P.B) change[j].set(i, (change[j].get(i) || 0) + b);
+  const chStart = new Int32Array(n + 1), chProd = [], chDelta = [];
+  change.forEach((mp, j) => { chStart[j] = chProd.length; for (const [i, d] of mp) if (d !== 0) { chProd.push(i); chDelta.push(d); } });
+  chStart[n] = chProd.length;
+  const inInd = new Int32Array(inProd.length);
+  for (let j = 0; j < n; j++) for (let k = inStart[j]; k < inStart[j + 1]; k++) inInd[k] = j;
+  return {
+    n, N: P.N, names: P.names, m: Float64Array.from(P.m), imported: Int32Array.from(P.imported),
+    weekUse: P.weekUse, s: P.s, fTilde: P.fTilde,
+    inStart, inProd: Int32Array.from(inProd), inAmt: Float64Array.from(inAmt), inInd,
+    usStart, usPos: Int32Array.from(usPos),
+    chStart, chProd: Int32Array.from(chProd), chDelta: Float64Array.from(chDelta),
+  };
+}
+
+function openingStock(M, weeks) { return M.weekUse.map(u => Math.ceil(weeks * u)); }
+
+function stockPesos(M, z0) {           // trillion pesos
+  let total = 0;
+  for (let i = 0; i < z0.length; i++) total += z0[i] * M.s[i];
+  return total / 1e6;
+}
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Simulate one year. With record = true, also returns the order of firings and,
+// for every step, how many industries with batches left had to wait.
+function simulateYear(M, z0, rng, record) {
+  const n = M.n, N = M.N, imp = M.imported, nImp = imp.length;
+  const { inStart, inProd, inAmt, inInd, usStart, usPos, chStart, chProd, chDelta, m } = M;
+  const z = Float64Array.from(z0);
+  const left = new Int32Array(n).fill(N);
+  const delLeft = new Int32Array(nImp).fill(N);
+  let indLeft = n, delTotal = nImp * N;
+  const lacking = new Int32Array(n);
+  const flag = new Uint8Array(inProd.length);          // flag[k] = 1 if input k is missing
+  for (let k = 0; k < inProd.length; k++) if (z[inProd[k]] < inAmt[k]) { flag[k] = 1; lacking[inInd[k]]++; }
+  const total = N * (n + nImp);
+  const order = record ? new Int16Array(total) : null;
+  const waits = record ? new Uint8Array(total) : null;
+  const waitBits = record ? new Uint8Array(total * Math.ceil(n / 8)) : null;   // which industries wait, per step
+  const bytes = Math.ceil(n / 8);
+  const canRun = new Int32Array(n), canDel = new Int32Array(nImp);
+  let steps = 0, blocked = 0;
+  for (;;) {
+    let r = 0;
+    for (let j = 0; j < n; j++) if (left[j] > 0 && lacking[j] === 0) canRun[r++] = j;
+    let d = 0;
+    if (delTotal > 0) for (let t = 0; t < nImp; t++) if (delLeft[t] > 0) canDel[d++] = t;
+    const k = r + d;
+    if (k === 0) break;
+    const waiting = indLeft - r;
+    if (waiting > 0) {
+      blocked++;
+      if (record) for (let j = 0; j < n; j++) if (left[j] > 0 && lacking[j] > 0) waitBits[steps * bytes + (j >> 3)] |= 1 << (j & 7);
+    }
+    const pick = Math.floor(rng() * k);
+    let fired, changedFrom, changedTo, single = -1;
+    if (pick < r) {
+      const j = canRun[pick];
+      changedFrom = chStart[j]; changedTo = chStart[j + 1];
+      for (let c = changedFrom; c < changedTo; c++) z[chProd[c]] += chDelta[c];
+      if (--left[j] === 0) indLeft--;
+      fired = j;
+    } else {
+      const t = canDel[pick - r];
+      single = imp[t];
+      z[single] += m[single];
+      delLeft[t]--; delTotal--;
+      fired = n + t;
+    }
+    // update which inputs are missing, only for products whose stock changed
+    if (single >= 0) {
+      for (let u = usStart[single]; u < usStart[single + 1]; u++) {
+        const q = usPos[u], f = z[single] < inAmt[q] ? 1 : 0;
+        if (f !== flag[q]) { lacking[inInd[q]] += f ? 1 : -1; flag[q] = f; }
+      }
+    } else {
+      for (let c = changedFrom; c < changedTo; c++) {
+        const i = chProd[c];
+        for (let u = usStart[i]; u < usStart[i + 1]; u++) {
+          const q = usPos[u], f = z[i] < inAmt[q] ? 1 : 0;
+          if (f !== flag[q]) { lacking[inInd[q]] += f ? 1 : -1; flag[q] = f; }
+        }
+      }
+    }
+    if (record) { order[steps] = fired; waits[steps] = waiting; }
+    steps++;
+  }
+  const finished = steps === total;
+  let lackingProducts = null;
+  if (!finished) {                       // which products the stuck industries lack
+    const count = new Map();
+    for (let j = 0; j < n; j++) {
+      if (left[j] === 0) continue;
+      for (let q = inStart[j]; q < inStart[j + 1]; q++) if (flag[q]) count.set(inProd[q], (count.get(inProd[q]) || 0) + 1);
+    }
+    lackingProducts = [...count.entries()].sort((a, b) => b[1] - a[1]);
+  }
+  let balanced = true;
+  if (finished) for (let i = 0; i < n; i++) if (z[i] !== z0[i] + N * M.fTilde[i]) { balanced = false; break; }
+  return { finished, steps, blocked, total, order, waits, waitBits, bytes, left, lackingProducts, balanced, industriesLeft: indLeft };
+}
+
+if (typeof module !== "undefined") module.exports = { buildModel, openingStock, stockPesos, mulberry32, simulateYear };
+
+</script>
+<script>
+// The small example: exact counts by enumerating every order (at most 1,680).
+const TOY = {
+  products: ["crops", "goods", "power"],
+  inds: ["Farming", "Factory", "Power plant"],
+  use: [[1, 1, 2], [2, 1, 2], [1, 2, 1]],   // per industry: crops, goods, power used
+  makes: [0, 1, 2], out: 6, batches: 3,
+};
+function toyCanRun(z, left, j) {
+  if (left[j] === 0) return false;
+  const u = TOY.use[j];
+  return z[0] >= u[0] && z[1] >= u[1] && z[2] >= u[2];
+}
+function toyFire(z, j) {
+  const u = TOY.use[j], y = z.slice();
+  y[0] -= u[0]; y[1] -= u[1]; y[2] -= u[2]; y[TOY.makes[j]] += TOY.out;
+  return y;
+}
+function toyExact(z0) {
+  let orders = 0, pDone = 0, pDoneWaited = 0;
+  const before = [[0, 0, 0], [0, 0, 0]];      // [Power plant before Factory, Farming before Factory] for n = 1..3
+  const pos = [[], [], []];
+  (function walk(z, left, step, p, waited) {
+    const can = [0, 1, 2].filter(j => toyCanRun(z, left, j));
+    const leftTotal = left[0] + left[1] + left[2];
+    if (leftTotal === 0) {
+      pDone += p; if (waited) pDoneWaited += p;
+      for (let n = 0; n < 3; n++) {
+        if (pos[2][n] < pos[1][n]) before[0][n] += p;
+        if (pos[0][n] < pos[1][n]) before[1][n] += p;
+      }
+      return;
+    }
+    if (can.length === 0) return;               // the year stops
+    const waitsNow = [0, 1, 2].some(j => left[j] > 0 && !can.includes(j));
+    for (const j of can) {
+      const l2 = left.slice(); l2[j]--;
+      pos[j].push(step);
+      walk(toyFire(z, j), l2, step + 1, p / can.length, waited || waitsNow);
+      pos[j].pop();
+    }
+  })(z0.slice(), [3, 3, 3], 0, 1, false);
+  (function count(z, left) {                     // orders: every sequence, not weighted
+    const leftTotal = left[0] + left[1] + left[2];
+    if (leftTotal === 0) { orders++; return; }
+    for (let j = 0; j < 3; j++) if (toyCanRun(z, left, j)) { const l2 = left.slice(); l2[j]--; count(toyFire(z, j), l2); }
+  })(z0.slice(), [3, 3, 3]);
+  return {
+    orders, pDone, waitedShare: pDone > 0 ? pDoneWaited / pDone : NaN,
+    powerBeforeFactory: before[0].map(x => pDone > 0 ? x / pDone : NaN),
+    farmingBeforeFactory: before[1].map(x => pDone > 0 ? x / pDone : NaN),
+  };
+}
+if (typeof module !== "undefined") module.exports = { TOY, toyCanRun, toyFire, toyExact };
+
+</script>
+<script>
+(function () {
+  "use strict";
+  const $ = (s, el) => (el || document).querySelector(s);
+  const REDUCE = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const fmt = x => Math.round(x).toLocaleString("en-US");
+  const pct = (x, d) => (100 * x).toFixed(d === undefined ? 1 : d) + "%";
+  const ease = u => (u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2);
+  const root = document.documentElement;
+
+  // ---------- theme ----------
+  const THEME_KEY = "sut-scrolly-theme";
+  const mqDark = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
+  const SUN = "M12 7a5 5 0 1 0 0 10a5 5 0 1 0 0-10z M12 1v2 M12 21v2 M4.2 4.2l1.4 1.4 M18.4 18.4l1.4 1.4 M1 12h2 M21 12h2 M4.2 19.8l1.4-1.4 M18.4 5.6l1.4-1.4";
+  const MOON = "M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z";
+  function readStored() { try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; } }
+  function writeStored(v) { try { localStorage.setItem(THEME_KEY, v); } catch (e) { /* storage not available */ } }
+  const stored = readStored();
+  if (stored === "dark" || stored === "light") root.setAttribute("data-theme", stored);
+  function effectiveTheme() {
+    const t = root.getAttribute("data-theme");
+    if (t === "dark" || t === "light") return t;
+    return mqDark && mqDark.matches ? "dark" : "light";
+  }
+  const themeListeners = [];
+  function updateThemeButton() {
+    const t = effectiveTheme();
+    $("#theme-label").textContent = t === "dark" ? "Light" : "Dark";
+    $("#theme-icon").setAttribute("d", t === "dark" ? SUN : MOON);
+    $("#theme-btn").setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
+  }
+  function themeChanged() { updateThemeButton(); themeListeners.forEach(f => f()); }
+  $("#theme-btn").addEventListener("click", () => {
+    const next = effectiveTheme() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    writeStored(next);
+    themeChanged();
+  });
+  if (mqDark && mqDark.addEventListener) mqDark.addEventListener("change", () => { if (!root.getAttribute("data-theme")) themeChanged(); });
+  updateThemeButton();
+
+  function cssVar(name) { return getComputedStyle(root).getPropertyValue(name).trim(); }
+  function hexToRgb(h) {
+    h = h.replace("#", "");
+    if (h.length === 3) h = h.split("").map(c => c + c).join("");
+    const v = parseInt(h, 16);
+    return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+  }
+  function buildLUT(stops, size) {
+    const out = [];
+    for (let k = 0; k < size; k++) {
+      const x = (k / (size - 1)) * (stops.length - 1);
+      const i = Math.min(stops.length - 2, Math.floor(x)), f = x - i, a = stops[i], b = stops[i + 1];
+      out.push("rgb(" + Math.round(a[0] + (b[0] - a[0]) * f) + "," + Math.round(a[1] + (b[1] - a[1]) * f) + "," + Math.round(a[2] + (b[2] - a[2]) * f) + ")");
+    }
+    return out;
+  }
+  const C = {};
+  function readColors() {
+    ["paper", "sheet", "ink", "ink-2", "muted", "rule", "rule-soft", "cell", "band", "blue", "orange", "orange-soft", "aqua"].forEach(k => { C[k] = cssVar("--" + k); });
+    const stops = cssVar("--ramp").split(/[\s,]+/).filter(Boolean).map(hexToRgb);
+    C.lut = buildLUT(stops, 96);
+    const sw = $("#ramp-sw");
+    if (sw) { sw.style.setProperty("--r0", C.lut[0]); sw.style.setProperty("--r1", C.lut[95]); }
+  }
+  readColors();
+  themeListeners.push(readColors);
+
+  // ---------- scrolly ----------
+  const scrollies = [];
+  function narrow() { return window.innerWidth < 900; }
+  function addScrolly(id, onStep) {
+    const sec = document.getElementById(id);
+    const s = { sec, steps: Array.from(sec.querySelectorAll(".step")), fig: sec.querySelector(".figure"), active: -1, onStep };
+    scrollies.push(s);
+    return s;
+  }
+  function checkScrollies() {
+    const H = window.innerHeight;
+    for (const s of scrollies) {
+      let trig;
+      if (narrow()) {
+        const fb = s.fig.getBoundingClientRect().bottom;
+        trig = Math.max(fb + 30, fb + (H - fb) * 0.45);
+      } else trig = H * 0.58;
+      let idx = -1;
+      s.steps.forEach((st, i) => { if (st.getBoundingClientRect().top < trig) idx = i; });
+      if (idx >= 0 && idx !== s.active) {
+        s.active = idx;
+        s.steps.forEach((st, i) => st.classList.toggle("is-active", i === idx));
+        s.onStep(idx);
+      }
+    }
+  }
+  let scrollQueued = false;
+  window.addEventListener("scroll", () => {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => { scrollQueued = false; checkScrollies(); });
+  }, { passive: true });
+
+  // ======================================================================
+  // The small example (toy net)
+  // ======================================================================
+  const Toy = (function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = $("#toy-svg");
+    const PL = [{ x: 110, y: 190 }, { x: 240, y: 190 }, { x: 370, y: 190 }];
+    const TR = [{ x: 110, y: 50 }, { x: 240, y: 322 }, { x: 370, y: 50 }];
+    const R = 34, HW = 62, HH = 26;
+    const NAMES = TOY.inds, PRODS = TOY.products;
+    let z0 = [4, 4, 5], z = z0.slice(), zDisp = z0.slice(), left = [3, 3, 3], fired = [];
+    let gen = 0, busy = false, movers = [], raf = 0, highlight = "";
+
+    function el(tag, attrs, parent) {
+      const e = document.createElementNS(NS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(e);
+      return e;
+    }
+    function geom(i, j, off) {
+      const p = PL[i], t = TR[j];
+      const dx = t.x - p.x, dy = t.y - p.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+      const px = p.x + nx * off, py = p.y + ny * off, tx = t.x + nx * off, ty = t.y + ny * off;
+      const a = Math.sqrt(Math.max(0, R * R - off * off));
+      const s = Math.min(Math.abs(ux) > 1e-9 ? HW / Math.abs(ux) : 1e9, Math.abs(uy) > 1e-9 ? HH / Math.abs(uy) : 1e9);
+      return { P: [px + ux * a, py + uy * a], T: [tx - ux * s, ty - uy * s], ux, uy };
+    }
+    const arcs = { in: [[], [], []], out: [] };   // in[j][i], out[j]
+    const placeEls = [], transEls = [];
+    let gMovers;
+
+    function build() {
+      svg.innerHTML = "";
+      const defs = el("defs", {}, svg);
+      [["ah", "var(--muted)"], ["ah-out", "var(--blue)"]].forEach(([id, col]) => {
+        const m = el("marker", { id, viewBox: "0 0 10 10", refX: "9", refY: "5", markerWidth: "6.5", markerHeight: "6.5", orient: "auto-start-reverse" }, defs);
+        el("path", { d: "M0,0 L10,5 L0,10 z", style: "fill:" + col }, m);
+      });
+      const gArcs = el("g", {}, svg), gW = el("g", {}, svg);
+      for (let j = 0; j < 3; j++) {
+        for (let i = 0; i < 3; i++) {
+          const own = TOY.makes[j] === i;
+          const g = geom(i, j, own ? -9 : 0);
+          const end = [g.T[0] - g.ux * 2, g.T[1] - g.uy * 2];
+          el("path", { d: `M${g.P[0]},${g.P[1]} L${end[0]},${end[1]}`, class: "arc", "marker-end": "url(#ah)" }, gArcs);
+          arcs.in[j][i] = { from: g.P, to: g.T };
+          const f = 0.68, lx = g.P[0] + (g.T[0] - g.P[0]) * f, ly = g.P[1] + (g.T[1] - g.P[1]) * f;
+          const shift = own ? -11 : 0;
+          const tw = el("text", { x: lx + shift * (TR[j].y < PL[i].y ? 1 : -1), y: ly + 4, "text-anchor": "middle", class: "w" }, gW);
+          tw.textContent = TOY.use[j][i];
+        }
+        const i = TOY.makes[j];
+        const g = geom(i, j, 9);
+        const start = g.T, end = [g.P[0] + g.ux * 2, g.P[1] + g.uy * 2];
+        el("path", { d: `M${start[0]},${start[1]} L${end[0]},${end[1]}`, class: "arc out", "marker-end": "url(#ah-out)" }, gArcs);
+        arcs.out[j] = { from: g.T, to: g.P };
+        const f = 0.4, lx = g.T[0] + (g.P[0] - g.T[0]) * f, ly = g.T[1] + (g.P[1] - g.T[1]) * f;
+        const tw = el("text", { x: lx + 11 * (TR[j].y < PL[i].y ? 1 : -1), y: ly + 4, "text-anchor": "middle", class: "w out" }, gW);
+        tw.textContent = TOY.out;
+      }
+      for (let i = 0; i < 3; i++) {
+        const g = el("g", { class: "toy-p" }, svg);
+        el("circle", { cx: PL[i].x, cy: PL[i].y, r: R, class: "ring" }, g);
+        const toks = el("g", {}, g);
+        const num = el("text", { x: PL[i].x, y: PL[i].y + 8, "text-anchor": "middle", class: "num" }, g);
+        const ly = i === 1 ? PL[i].y - R - 10 : PL[i].y + R + 19;
+        const lbl = el("text", { x: PL[i].x, y: ly, "text-anchor": "middle", class: "lbl" }, g);
+        placeEls.push({ toks, num, lbl });
+      }
+      for (let j = 0; j < 3; j++) {
+        const g = el("g", { class: "toy-t", tabindex: "0", role: "button" }, svg);
+        el("rect", { x: TR[j].x - HW, y: TR[j].y - HH, width: HW * 2, height: HH * 2, rx: 9 }, g);
+        const name = el("text", { x: TR[j].x, y: TR[j].y - 3, "text-anchor": "middle", class: "name" }, g);
+        name.textContent = NAMES[j];
+        const bts = [];
+        for (let b = 0; b < 3; b++) bts.push(el("rect", { x: TR[j].x - 21 + b * 15, y: TR[j].y + 7, width: 11, height: 9, rx: 2, class: "bt" }, g));
+        const note = el("text", { x: TR[j].x, y: TR[j].y < 100 ? TR[j].y - HH - 8 : TR[j].y + HH + 17, "text-anchor": "middle", class: "note" }, svg);
+        g.addEventListener("click", () => userFire(j));
+        g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); userFire(j); } });
+        transEls.push({ g, bts, note });
+      }
+      gMovers = el("g", {}, svg);
+    }
+
+    function canRun(j, zz, ll) { return toyCanRun(zz || z, ll || left, j); }
+    function anyCan() { return [0, 1, 2].some(j => canRun(j)); }
+    function lacks(j, zz) {
+      const u = TOY.use[j], out = [];
+      for (let i = 0; i < 3; i++) if ((zz || z)[i] < u[i]) out.push(PRODS[i]);
+      return out;
+    }
+    function tup(a) { return "(" + a.join(", ") + ")"; }
+
+    function renderPlaces() {
+      for (let i = 0; i < 3; i++) {
+        const k = zDisp[i], pe = placeEls[i];
+        pe.toks.innerHTML = "";
+        if (k <= 16) {
+          pe.num.textContent = "";
+          const rows = Math.ceil(k / 4);
+          for (let q = 0; q < k; q++) {
+            const r = Math.floor(q / 4), inRow = Math.min(4, k - r * 4), c = q - r * 4;
+            const x = PL[i].x + (c - (inRow - 1) / 2) * 11, y = PL[i].y + (r - (rows - 1) / 2) * 11;
+            el("circle", { cx: x, cy: y, r: 3.6, class: "tok" }, pe.toks);
+          }
+        } else pe.num.textContent = k;
+        pe.lbl.textContent = PRODS[i] + " " + k;
+      }
+    }
+    function renderTrans() {
+      const someCan = anyCan();
+      for (let j = 0; j < 3; j++) {
+        const te = transEls[j], can = !busy && canRun(j);
+        te.g.classList.toggle("can", can);
+        te.g.classList.toggle("done", left[j] === 0);
+        te.g.classList.toggle("waits", !busy && left[j] > 0 && !canRun(j));
+        te.g.setAttribute("aria-disabled", can ? "false" : "true");
+        te.g.setAttribute("aria-label", NAMES[j] + ": " + left[j] + " batches left" + (can ? ", can run" : ""));
+        te.bts.forEach((b, q) => b.classList.toggle("f", q < 3 - left[j]));
+        let note = "";
+        if (left[j] === 0) note = "all 3 batches ran";
+        else if (busy) note = "";
+        else if (!canRun(j)) note = (someCan ? "waits: needs " : "cannot run: needs ") + lacks(j).join(" and ");
+        te.note.textContent = note;
+      }
+    }
+    function status() {
+      const st = $("#toy-status"), total = left[0] + left[1] + left[2];
+      if (total === 0) {
+        st.innerHTML = "<b>The year is completed.</b> All 9 batches ran. Final stock " + tup(z) + " = opening stock " + tup(z0) + " + " + tup(z.map((v, i) => v - z0[i])) + " for final users.";
+      } else if (!anyCan()) {
+        const parts = [0, 1, 2].filter(j => left[j] > 0).map(j => NAMES[j] + " needs " + lacks(j).join(" and "));
+        st.innerHTML = "<b>The year stops.</b> " + total + " batches are left and none can run: " + parts.join("; ") + ".";
+      } else {
+        const can = [0, 1, 2].filter(j => canRun(j)).map(j => NAMES[j]);
+        const waits = [0, 1, 2].filter(j => left[j] > 0 && !canRun(j));
+        st.innerHTML = "Stock " + tup(z) + ". " + total + " batches left. Can run now: " + can.join(", ") + "." +
+          (waits.length ? " " + waits.map(j => NAMES[j] + " waits for " + lacks(j).join(" and ")).join("; ") + "." : "");
+      }
+      $("#toy-log").textContent = fired.length ? "Order so far: " + fired.map(j => NAMES[j]).join(" → ") : "";
+    }
+    function render() { renderPlaces(); renderTrans(); status(); }
+
+    function facts() {
+      const r = toyExact(z0);
+      const box = $("#toy-facts");
+      const v = (x) => (isNaN(x) ? "–" : pct(x, 0));
+      const pp = r.pDone > 0 ? r.powerBeforeFactory.map(x => Math.round(100 * x)).join(" / ") + "%" : "–";
+      box.innerHTML =
+        `<div class="${highlight === "count" ? "hl" : ""}"><div class="fv">${fmt(r.orders)} of 1,680</div><div class="fl">orders that complete</div></div>` +
+        `<div class="${highlight === "count" ? "hl" : ""}"><div class="fv">${r.pDone > 0 && r.pDone < 1 ? pct(r.pDone, 1) : v(r.pDone)}</div><div class="fl">random years that complete</div></div>` +
+        `<div class="${highlight === "order" ? "hl" : ""}"><div class="fv">${v(r.waitedShare)}</div><div class="fl">completed years in which some industry waited</div></div>` +
+        `<div class="${highlight === "order" ? "hl" : ""}"><div class="fv">${pp}</div><div class="fl">Power plant's n-th batch before Factory's, n = 1, 2, 3</div></div>`;
+      document.querySelectorAll("#toy-presets .chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.z === z0.join(",") ? "true" : "false"));
+      document.querySelectorAll("#toy-steppers span[data-i]").forEach(s => { const i = +s.dataset.i; s.textContent = PRODS[i] + " " + z0[i]; });
+    }
+
+    function cancel() {
+      gen++; busy = false; movers = []; cancelAnimationFrame(raf);
+      if (gMovers) gMovers.innerHTML = "";
+    }
+    function setStock(a, hl) {
+      cancel();
+      if (hl !== undefined) highlight = hl;
+      z0 = a.slice(); z = a.slice(); zDisp = a.slice(); left = [3, 3, 3]; fired = [];
+      render(); facts();
+    }
+    function fireLogical(j) {
+      z = toyFire(z, j); left[j]--; fired.push(j);
+    }
+    function animateFire(j, done) {
+      const my = gen;
+      busy = true; renderTrans();
+      const u = TOY.use[j];
+      const t0 = performance.now();
+      const list = [];
+      for (let i = 0; i < 3; i++) for (let k = 0; k < u[i]; k++) list.push({ a: arcs.in[j][i].from, b: arcs.in[j][i].to, start: k * 60, dur: 330, cls: "mover" });
+      for (let k = 0; k < TOY.out; k++) list.push({ a: arcs.out[j].from, b: arcs.out[j].to, start: 400 + k * 38, dur: 330, cls: "mover o" });
+      list.forEach(m => { m.e = el("circle", { r: 3.6, class: m.cls, cx: m.a[0], cy: m.a[1], opacity: 0 }, gMovers); });
+      // the inputs leave the stock at once
+      const zIn = zDisp.slice(); for (let i = 0; i < 3; i++) zIn[i] -= u[i];
+      zDisp = zIn; renderPlaces();
+      left[j]--; renderTrans(); left[j]++;
+      const endAt = 400 + (TOY.out - 1) * 38 + 330;
+      function frame(now) {
+        if (my !== gen) return;
+        const el_ = now - t0;
+        for (const m of list) {
+          const u2 = Math.max(0, Math.min(1, (el_ - m.start) / m.dur));
+          const e2 = ease(u2);
+          m.e.setAttribute("cx", m.a[0] + (m.b[0] - m.a[0]) * e2);
+          m.e.setAttribute("cy", m.a[1] + (m.b[1] - m.a[1]) * e2);
+          m.e.setAttribute("opacity", u2 <= 0 || u2 >= 1 ? 0 : 1);
+        }
+        if (el_ < endAt) raf = requestAnimationFrame(frame);
+        else {
+          gMovers.innerHTML = "";
+          fireLogical(j); zDisp = z.slice(); busy = false; render();
+          if (done) done();
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    function fireNow(j) { fireLogical(j); zDisp = z.slice(); }
+    function userFire(j) {
+      if (busy || !canRun(j)) return;
+      if (REDUCE) { fireNow(j); render(); return; }
+      animateFire(j, null);
+    }
+    // play a list of industries, or a random year (seq = null)
+    function play(seq) {
+      const a = z0.slice();
+      setStock(a);
+      const my = gen;
+      const queue = seq ? seq.slice() : null;
+      function nextIndustry() {
+        if (queue) return queue.length && canRun(queue[0]) ? queue.shift() : -1;
+        const can = [0, 1, 2].filter(j => canRun(j));
+        return can.length ? can[Math.floor(Math.random() * can.length)] : -1;
+      }
+      if (REDUCE) {
+        for (;;) { const j = nextIndustry(); if (j < 0) break; fireNow(j); }
+        render(); return;
+      }
+      function step() {
+        if (my !== gen) return;
+        const j = nextIndustry();
+        if (j < 0) { render(); return; }
+        animateFire(j, () => setTimeout(step, 130));
+      }
+      setTimeout(step, 250);
+    }
+
+    function init() {
+      build();
+      const presets = [[3, 3, 4], [4, 4, 5], [6, 6, 7], [6, 6, 8], [9, 9, 12], [10, 10, 9], [10, 10, 10], [10, 10, 13]];
+      const pBox = $("#toy-presets");
+      pBox.innerHTML = '<span class="mini-label" style="margin-right: 4px">Opening stock</span>';
+      presets.forEach(p => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "chip"; b.dataset.z = p.join(","); b.textContent = tup(p);
+        b.addEventListener("click", () => setStock(p, ""));
+        pBox.appendChild(b);
+      });
+      const sBox = $("#toy-steppers");
+      for (let i = 0; i < 3; i++) {
+        const w = document.createElement("div");
+        w.className = "stepper";
+        w.innerHTML = `<button type="button" aria-label="One less ${PRODS[i]}">−</button><span data-i="${i}"></span><button type="button" aria-label="One more ${PRODS[i]}">+</button>`;
+        const [minus, plus] = w.querySelectorAll("button");
+        minus.addEventListener("click", () => { const a = z0.slice(); a[i] = Math.max(0, a[i] - 1); setStock(a, ""); });
+        plus.addEventListener("click", () => { const a = z0.slice(); a[i] = Math.min(24, a[i] + 1); setStock(a, ""); });
+        sBox.appendChild(w);
+      }
+      $("#toy-a").addEventListener("click", () => { setStock([4, 4, 5]); play([2, 0, 1, 2, 0, 1, 2, 0, 1]); });
+      $("#toy-b").addEventListener("click", () => { setStock([4, 4, 5]); play([1, 1]); });
+      $("#toy-rand").addEventListener("click", () => play(null));
+      $("#toy-reset").addEventListener("click", () => setStock(z0));
+      setStock([4, 4, 5], "");
+    }
+    function onStep(i) {
+      if (i === 0) setStock([4, 4, 5], "");
+      else if (i === 1) { setStock([4, 4, 5], ""); play([2, 0, 1, 2, 0, 1, 2, 0, 1]); }
+      else if (i === 2) { setStock([4, 4, 5], ""); play([1, 1]); }
+      else if (i === 3) setStock([6, 6, 8], "count");
+      else if (i === 4) { setStock([10, 10, 10], "count"); play([0, 0, 0, 1, 1]); }
+      else if (i === 5) setStock([6, 6, 8], "order");
+    }
+    return { init, onStep };
+  })();
+
+  // ======================================================================
+  // The 2018 net: one year, animated
+  // ======================================================================
+  const plan = JSON.parse($("#plan80").textContent);
+  const M = buildModel(plan);
+  const NI = M.n, NB = M.N, NIMP = M.imported.length, TOTAL = NB * (NI + NIMP), IMP_TOTAL = NB * NIMP;
+  const WSTAR = 26.140625;
+  const STOCKS = [2, 4, 9, 13, 17, 22, 26, WSTAR, 35, 52];
+  function weeksLabel(w) {
+    if (Math.abs(w - WSTAR) < 1e-9) return "26.14 weeks (w*)";
+    const s = Number.isInteger(w) ? String(w) : (Math.round(w * 100) / 100).toString();
+    return s + (w === 1 ? " week" : " weeks");
+  }
+  const pesosCache = new Map();
+  function pesosOf(w) {
+    if (!pesosCache.has(w)) pesosCache.set(w, stockPesos(M, openingStock(M, w)));
+    return pesosCache.get(w);
+  }
+  const GROUPS = [[0, 19, "Agriculture"], [20, 25, "Mining"], [26, 47, "Manufacturing"], [48, 51, "Utilities"], [52, 52, "Construction"], [53, 55, "Trade"], [56, 60, "Transport"], [61, 62, "Hotels, food"], [63, 64, "Information"], [65, 68, "Finance"], [69, 70, "Real estate"], [71, 71, "Business services"], [72, 72, "Public admin."], [73, 74, "Education"], [75, 77, "Health"], [78, 79, "Other services"]];
+  const groupOf = new Int8Array(NI);
+  GROUPS.forEach((g, k) => { for (let j = g[0]; j <= g[1]; j++) groupOf[j] = k; });
+
+  // STUDY results (from table2.csv, search.csv, chosen_stock.csv)
+  const GRID = [
+    { w: 2, pesos: 0.702857, fin: 95, low: 0.078345, high: 0.114755, wait: 0.8617 },
+    { w: 4, pesos: 1.40571, fin: 458, low: 0.427339, high: 0.488983, wait: 0.550274 },
+    { w: 9, pesos: 3.16286, fin: 919, low: 0.900442, high: 0.934351, wait: 0.165856 },
+    { w: 13, pesos: 4.56857, fin: 850, low: 0.826531, high: 0.87079, wait: 0.0957405 },
+    { w: 17, pesos: 5.97428, fin: 1000, low: 0.996173, high: 1, wait: 0.0153158 },
+    { w: 22, pesos: 7.73143, fin: 1000, low: 0.996173, high: 1, wait: 0.00202172 },
+    { w: 26, pesos: 9.13714, fin: 995, low: 0.988349, high: 0.997862, wait: 0.00217431 },
+    { w: 35, pesos: 12.3, fin: 1000, low: 0.996173, high: 1, wait: 0 },
+    { w: 52, pesos: 18.2743, fin: 1000, low: 0.996173, high: 1, wait: 0 },
+  ];
+  const SEARCH = [30.5, 28.25, 27.125, 26.5625, 26.28125, 26.140625];
+  const wk2 = w => String(+w.toFixed(2));
+
+  const Run = (function () {
+    const canvas = $("#run-canvas"), spark = $("#run-spark"), wrap = $("#run-gridwrap"), tip = $("#run-tip");
+    const ctx = canvas.getContext("2d"), sctx = spark.getContext("2d");
+    let weeks = 52, seed = 1, res = null, t = 0, playing = false, raf = 0, speed = 24;
+    const cellStep = new Int32Array(NI * NB).fill(-1);
+    const doneCount = new Int16Array(NI);
+    let impDone = 0, maxWait = 0, G = null, sparkCols = null;
+
+    function layout() {
+      const W = Math.max(260, wrap.clientWidth);
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const wide = W >= 520;
+      const labelW = wide ? Math.round(104 * dpr) : 0;
+      const Wd = Math.round(W * dpr);
+      const cw = Math.max(2, Math.floor((Wd - labelW) / NB));
+      const rowH = Math.max(3, Math.round((wide ? 5 : 3) * dpr));
+      const sep = Math.max(1, Math.round((wide ? 2 : 1) * dpr));
+      const gap = Math.max(1, Math.round(dpr));
+      const rowY = new Int32Array(NI);
+      for (let j = 0; j < NI; j++) rowY[j] = j * rowH + groupOf[j] * sep;
+      const Hd = rowY[NI - 1] + rowH;
+      canvas.width = Wd; canvas.height = Hd;
+      canvas.style.height = Hd / dpr + "px";
+      const sparkH = Math.round((wide ? 30 : 22) * dpr);
+      spark.width = Wd; spark.height = sparkH; spark.style.height = sparkH / dpr + "px";
+      G = { W, Wd, dpr, labelW, cw, rowH, gap, rowY, Hd, x0: labelW, gw: cw * NB, sparkH };
+      computeSpark();
+    }
+    function computeSpark() {
+      if (!G || !res) return;
+      const cols = new Uint8Array(G.gw);
+      maxWait = 0;
+      for (let s = 0; s < res.steps; s++) {
+        const v = res.waits[s];
+        if (v > maxWait) maxWait = v;
+        const px = Math.min(G.gw - 1, Math.floor((s / TOTAL) * G.gw));
+        if (v > cols[px]) cols[px] = v;
+      }
+      sparkCols = cols;
+      $("#spark-max").textContent = maxWait > 0 ? "(at most " + maxWait + " at once in this year)" : "(none in this year)";
+    }
+    function isWaiting(j, s) { return (res.waitBits[s * res.bytes + (j >> 3)] >> (j & 7)) & 1; }
+
+    function draw() {
+      if (!G || !res) return;
+      const { labelW, cw, rowH, gap, rowY, Hd, dpr } = G;
+      ctx.clearRect(0, 0, G.Wd, Hd);
+      if (labelW > 0) {
+        ctx.font = Math.round(10.5 * dpr) + 'px "IBM Plex Sans Condensed", "Arial Narrow", sans-serif';
+        ctx.textAlign = "right"; ctx.textBaseline = "middle";
+        GROUPS.forEach((g, k) => {
+          const y0 = rowY[g[0]], y1 = rowY[g[1]] + rowH;
+          if (k % 2 === 0) { ctx.fillStyle = C.band; ctx.fillRect(0, y0, labelW - 4 * dpr, y1 - y0); }
+          if (g[1] - g[0] >= 2) { ctx.fillStyle = C.muted; ctx.fillText(g[2], labelW - 8 * dpr, (y0 + y1) / 2); }
+        });
+      }
+      const L = C.lut.length;
+      const ch = rowH - gap, cww = cw - gap;
+      for (let j = 0; j < NI; j++) {
+        const y = rowY[j], base = j * NB;
+        for (let b = 0; b < NB; b++) {
+          const s = cellStep[base + b];
+          ctx.fillStyle = s < 0 ? C.cell : C.lut[Math.min(L - 1, ((s / TOTAL) * L) | 0)];
+          ctx.fillRect(labelW + b * cw, y, cww, ch);
+        }
+      }
+      const atEnd = t >= res.steps;
+      if (!atEnd) {
+        ctx.fillStyle = C.orange;
+        for (let j = 0; j < NI; j++) if (doneCount[j] < NB && isWaiting(j, t)) ctx.fillRect(labelW + doneCount[j] * cw, rowY[j], cww, ch);
+      } else if (!res.finished) {
+        for (let j = 0; j < NI; j++) {
+          if (doneCount[j] >= NB) continue;
+          ctx.fillStyle = C["orange-soft"];
+          if (NB - doneCount[j] - 1 > 0) ctx.fillRect(labelW + (doneCount[j] + 1) * cw, rowY[j], (NB - doneCount[j] - 1) * cw - gap, ch);
+          ctx.fillStyle = C.orange;
+          ctx.fillRect(labelW + doneCount[j] * cw, rowY[j], cww, ch);
+        }
+      }
+      // spark line
+      sctx.clearRect(0, 0, G.Wd, G.sparkH);
+      sctx.fillStyle = C["rule-soft"];
+      sctx.fillRect(labelW, G.sparkH - Math.max(1, dpr), G.gw, Math.max(1, dpr));
+      if (sparkCols) {
+        const top = Math.max(4, maxWait), upto = Math.min(G.gw, Math.ceil((t / TOTAL) * G.gw));
+        sctx.fillStyle = C.orange;
+        for (let x = 0; x < upto; x++) {
+          const v = sparkCols[x];
+          if (!v) continue;
+          const h = Math.max(dpr, (v / top) * (G.sparkH - 2 * dpr));
+          sctx.fillRect(labelW + x, G.sparkH - h, 1, h);
+        }
+        if (!atEnd) { sctx.fillStyle = C.muted; sctx.fillRect(labelW + upto, 0, Math.max(1, dpr), G.sparkH); }
+      }
+      $("#imp-fill").style.width = (100 * impDone / IMP_TOTAL).toFixed(2) + "%";
+      $("#imp-text").textContent = fmt(impDone) + " of " + fmt(IMP_TOTAL);
+      outcome();
+    }
+    function outcome() {
+      const box = $("#run-outcome");
+      if (t < res.steps) {
+        let wn = 0;
+        for (let j = 0; j < NI; j++) if (doneCount[j] < NB && isWaiting(j, t)) wn++;
+        box.innerHTML = '<span class="ic run" aria-hidden="true">…</span><div>Step <b class="mono">' + fmt(t) + "</b> of " + fmt(TOTAL) + " · " + (wn === 1 ? "1 industry waits" : wn + " industries wait") + " now</div>";
+        return;
+      }
+      if (res.finished) {
+        const w = res.blocked === 0 ? "No batch ever waited." :
+          "Some industry waited at " + fmt(res.blocked) + " steps (" + pct(res.blocked / res.steps) + "); at most " + maxWait + " at the same step.";
+        box.innerHTML = '<span class="ic ok" aria-hidden="true">✓</span><div><b>Completed.</b> All ' + fmt(TOTAL) + " firings ran. " + w + "</div>";
+      } else {
+        const lack = res.lackingProducts.slice(0, 3).map(([i, c]) => plan.names[i] + " (" + c + (c === 1 ? " industry" : " industries") + ")").join(", ");
+        box.innerHTML = '<span class="ic no" aria-hidden="true">✕</span><div><b>Stopped</b> after ' + fmt(res.steps) + " of " + fmt(TOTAL) + " steps. " +
+          res.industriesLeft + (res.industriesLeft === 1 ? " industry has" : " industries have") + " batches left and none can run. Lacking: " + lack + ".</div>";
+      }
+    }
+    function header() {
+      $("#run-title").textContent = "Year " + seed + " · " + weeksLabel(weeks) + " of stock";
+      $("#run-sub").textContent = pesosOf(weeks).toFixed(2) + " trillion pesos";
+    }
+    function playButton() {
+      $("#run-play").innerHTML = playing ? '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" fill="currentColor"/><rect x="8.5" y="1" width="3.5" height="12" fill="currentColor"/></svg>Pause'
+        : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1 L13 7 L3 13 z" fill="currentColor"/></svg>' + (t >= (res ? res.steps : 0) ? "Replay" : "Play");
+    }
+    function resetReplay() { cellStep.fill(-1); doneCount.fill(0); impDone = 0; t = 0; }
+    function advance(k) {
+      const end = Math.min(res.steps, t + k);
+      for (; t < end; t++) {
+        const f = res.order[t];
+        if (f < NI) { cellStep[f * NB + doneCount[f]] = t; doneCount[f]++; } else impDone++;
+      }
+    }
+    function stop() { playing = false; cancelAnimationFrame(raf); playButton(); }
+    function loop() {
+      if (!playing) return;
+      advance(speed);
+      draw();
+      if (t >= res.steps) { playing = false; playButton(); return; }
+      raf = requestAnimationFrame(loop);
+    }
+    function play() {
+      if (!res) return;
+      if (t >= res.steps) { resetReplay(); }
+      playing = true; playButton();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(loop);
+    }
+    function toEnd() { stop(); advance(res.steps); draw(); playButton(); }
+    function load(w, sd, autoplay) {
+      stop();
+      weeks = w; seed = sd;
+      res = simulateYear(M, openingStock(M, w), mulberry32(sd), true);
+      resetReplay(); computeSpark(); header(); syncSelect();
+      if (autoplay && !REDUCE) { draw(); play(); } else toEnd();
+    }
+    function syncSelect() {
+      const sel = $("#run-stock");
+      if (!Array.from(sel.options).some(o => Math.abs(+o.value - weeks) < 1e-9)) {
+        const o = document.createElement("option"); o.value = String(weeks); o.textContent = weeksLabel(weeks); sel.appendChild(o);
+      }
+      Array.from(sel.options).forEach(o => { o.selected = Math.abs(+o.value - weeks) < 1e-9; });
+    }
+    function hover(ev) {
+      if (!G || !res) return;
+      const r = canvas.getBoundingClientRect();
+      const x = (ev.clientX - r.left) * G.dpr, y = (ev.clientY - r.top) * G.dpr;
+      const b = Math.floor((x - G.labelW) / G.cw);
+      let j = -1;
+      for (let q = 0; q < NI; q++) if (y >= G.rowY[q] && y < G.rowY[q] + G.rowH) { j = q; break; }
+      if (j < 0 || b < 0 || b >= NB) { tip.hidden = true; return; }
+      const s = cellStep[j * NB + b];
+      let line;
+      if (s >= 0) line = "batch " + (b + 1) + " ran at step " + fmt(s + 1) + " (" + pct(s / TOTAL, 0) + " of the year)";
+      else if (b === doneCount[j] && t < res.steps && isWaiting(j, t)) line = "batch " + (b + 1) + " waits for an input now";
+      else if (b === doneCount[j] && t >= res.steps && !res.finished) line = "batch " + (b + 1) + " cannot run: the year stopped";
+      else line = "batch " + (b + 1) + " has not run yet";
+      tip.innerHTML = "<b>" + plan.names[j] + "</b><br>" + line + "<br>" + doneCount[j] + " of 52 batches done";
+      tip.hidden = false;
+      const wr = wrap.getBoundingClientRect();
+      let left = ev.clientX - wr.left + 14, top = ev.clientY - wr.top + 14;
+      if (left + 240 > wr.width) left = Math.max(0, ev.clientX - wr.left - 250);
+      tip.style.left = left + "px"; tip.style.top = top + "px";
+    }
+    function init() {
+      const sel = $("#run-stock");
+      STOCKS.forEach(w => { const o = document.createElement("option"); o.value = String(w); o.textContent = weeksLabel(w); sel.appendChild(o); });
+      sel.addEventListener("change", () => { const w = +sel.value; load(w, seed, true); Exp.setWeeks(w, true); });
+      $("#run-speed").addEventListener("change", e => { speed = +e.target.value; });
+      $("#run-play").addEventListener("click", () => (playing ? stop() : play()));
+      $("#run-new").addEventListener("click", () => load(weeks, seed + 1, true));
+      $("#run-end").addEventListener("click", toEnd);
+      canvas.addEventListener("pointermove", hover);
+      canvas.addEventListener("pointerdown", hover);
+      canvas.addEventListener("pointerleave", () => { tip.hidden = true; });
+      layout();
+      load(52, 1, false);
+    }
+    function onStep(i) {
+      if (i === 0) load(52, 1, true);
+      else if (i === 1) load(9, 4, true);
+      else if (i === 2) load(2, 1, true);
+      else if (i === 3) load(13, 11, true);
+    }
+    function relayout() { layout(); draw(); }
+    function getWeeks() { return weeks; }
+    return { init, onStep, load, relayout, draw, getWeeks, get seed() { return seed; } };
+  })();
+
+  // ======================================================================
+  // Many years in the browser
+  // ======================================================================
+  function wilson(k, n) {
+    if (n === 0) return [0, 1];
+    const zz = 1.959964, p = k / n, d = 1 + zz * zz / n, c = p + zz * zz / (2 * n), h = zz * Math.sqrt(p * (1 - p) / n + zz * zz / (4 * n * n));
+    return [Math.max(0, (c - h) / d), Math.min(1, (c + h) / d)];
+  }
+  const Exp = (function () {
+    const MAXY = 1000;
+    const canvas = $("#exp-canvas"), ctx = canvas.getContext("2d");
+    let weeks = 9, results = [], gen = 0, running = false, target = 0, G = null;
+    function layout() {
+      const W = Math.max(240, canvas.parentElement.clientWidth);
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const Wd = Math.round(W * dpr), cols = 50, cs = Math.max(3, Math.floor(Wd / cols));
+      G = { cols, cs, dpr, Wd, rows: 0 };
+    }
+    function draw() {
+      if (!G) return;
+      const { cols, cs, dpr } = G, gap = Math.max(1, Math.round(dpr));
+      const rows = Math.ceil(Math.max(200, target, results.length) / cols);
+      if (rows !== G.rows || canvas.width !== G.Wd) {
+        G.rows = rows; canvas.width = G.Wd; canvas.height = rows * cs; canvas.style.height = (rows * cs) / dpr + "px";
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let k = 0; k < MAXY; k++) {
+        const x = (k % cols) * cs, y = Math.floor(k / cols) * cs;
+        const r = results[k];
+        ctx.fillStyle = !r ? (k < target ? C["rule-soft"] : C.cell) : r.f ? C.blue : C.orange;
+        if (!r && k >= Math.max(target, 200)) continue;
+        ctx.fillRect(x, y, cs - gap, cs - gap);
+        if (r && !r.f && cs - gap >= 6) {
+          ctx.strokeStyle = C.sheet; ctx.lineWidth = Math.max(1, dpr);
+          const a = cs - gap;
+          ctx.beginPath(); ctx.moveTo(x + a * 0.25, y + a * 0.25); ctx.lineTo(x + a * 0.75, y + a * 0.75);
+          ctx.moveTo(x + a * 0.75, y + a * 0.25); ctx.lineTo(x + a * 0.25, y + a * 0.75); ctx.stroke();
+        }
+      }
+    }
+    function studyLine() {
+      const g = GRID.find(q => Math.abs(q.w - weeks) < 1e-9);
+      if (g) return "Study, 1,000 years at this stock: <b>" + pct(g.fin / 1000) + "</b> completed (95%: " + pct(g.low) + " to " + pct(g.high) + "); steps with a waiting industry: " + pct(g.wait) + ".";
+      if (Math.abs(weeks - WSTAR) < 1e-9) return "Study, 1,000 new years at w*: <b>100%</b> completed (none stopped).";
+      return "The study has no result at this stock.";
+    }
+    function summary() {
+      const n = results.length, box = $("#exp-sum"), lackBox = $("#exp-lack");
+      const head = "<b>" + weeksLabel(weeks) + "</b> of stock (" + pesosOf(weeks).toFixed(2) + " trillion pesos). ";
+      if (n === 0) {
+        box.innerHTML = head + "No years run yet. " + studyLine();
+        lackBox.innerHTML = "";
+        return;
+      }
+      const k = results.filter(r => r.f).length, ci = wilson(k, n);
+      let sb = 0, ss = 0;
+      results.forEach(r => { sb += r.b; ss += r.s; });
+      box.innerHTML = head + "Browser: <b>" + fmt(k) + " of " + fmt(n) + "</b> years completed (" + pct(k / n) + "; 95%: " + pct(ci[0]) + " to " + pct(ci[1]) +
+        "); steps with a waiting industry: " + pct(sb / ss) + (running ? " · running…" : "") + ".<br>" + studyLine() +
+        ' <span class="mini-label" style="display:inline-flex; margin-left: 4px"><span class="sw sw-blue"></span>completed <span class="sw sw-orange" style="margin-left: 8px"></span>stopped</span>';
+      const stopped = results.filter(r => !r.f);
+      if (stopped.length) {
+        const cnt = new Map();
+        stopped.forEach(r => r.lack.forEach(i => cnt.set(i, (cnt.get(i) || 0) + 1)));
+        const top = Array.from(cnt.entries()).sort((a, b) => b[1] - a[1]).slice(0, 5);
+        lackBox.innerHTML = "Products lacking when a year stopped (number of the " + fmt(stopped.length) + " stopped years):<ol>" +
+          top.map(([i, c]) => "<li>" + plan.names[i] + ": " + fmt(c) + "</li>").join("") + "</ol>";
+      } else lackBox.innerHTML = "";
+    }
+    function buttons() {
+      const b = $("#exp-run");
+      b.textContent = running ? "Stop" : results.length >= MAXY ? "1,000 years done" : results.length ? "Run 200 more years" : "Run 200 years";
+      b.disabled = !running && results.length >= MAXY;
+    }
+    function run() {
+      if (running) { gen++; running = false; target = results.length; buttons(); summary(); draw(); return; }
+      if (results.length >= MAXY) return;
+      running = true; target = Math.min(MAXY, results.length + 200);
+      const my = ++gen, z0 = openingStock(M, weeks);
+      buttons();
+      function chunk() {
+        if (my !== gen) return;
+        const t0 = performance.now();
+        while (results.length < target && performance.now() - t0 < 28) {
+          const r = simulateYear(M, z0, mulberry32(100000 + results.length), false);
+          results.push({ f: r.finished, b: r.blocked, s: r.steps, lack: r.finished ? null : r.lackingProducts.map(x => x[0]) });
+        }
+        draw(); summary();
+        if (results.length < target) setTimeout(chunk, 0);
+        else { running = false; buttons(); summary(); }
+      }
+      chunk();
+    }
+    function clear() { gen++; running = false; results = []; target = 0; buttons(); summary(); draw(); }
+    function setWeeks(w, fromFigure) {
+      weeks = w;
+      $("#exp-range").value = String(Math.min(52, Math.max(1, w)));
+      $("#exp-weeks").textContent = weeksLabel(w);
+      document.querySelectorAll("#exp-chips .chip").forEach(c => c.setAttribute("aria-pressed", Math.abs(+c.dataset.w - w) < 1e-9 ? "true" : "false"));
+      clear();
+      if (!fromFigure) Run.load(w, Run.seed, true);
+    }
+    function init() {
+      const chips = $("#exp-chips");
+      STOCKS.forEach(w => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "chip"; b.dataset.w = String(w); b.textContent = Math.abs(w - WSTAR) < 1e-9 ? "w* 26.14" : String(w);
+        b.addEventListener("click", () => setWeeks(w, false));
+        chips.appendChild(b);
+      });
+      const range = $("#exp-range");
+      range.addEventListener("input", () => { $("#exp-weeks").textContent = weeksLabel(+range.value); });
+      range.addEventListener("change", () => setWeeks(+range.value, false));
+      $("#exp-run").addEventListener("click", run);
+      $("#exp-clear").addEventListener("click", clear);
+      layout();
+      setWeeks(9, true);
+    }
+    function relayout() { layout(); draw(); }
+    return { init, setWeeks, relayout, draw };
+  })();
+
+  // ======================================================================
+  // Q1 chart
+  // ======================================================================
+  const Q1 = (function () {
+    const box = $("#q1-chart"), read = $("#q1-read"), tipEl = document.createElement("div");
+    tipEl.className = "tip"; tipEl.hidden = true;
+    box.style.position = "relative";
+    let st = { step: 0, d0: 0, d1: 54, tries: 0, check: false };
+    let anim = 0, gen = 0;
+    const FULL = [0, 54], ZOOM = [24.6, 36.4];
+    const HIGHLIGHT = { 1: [2, 4], 2: [9, 13], 3: [17, 22, 26], 4: [26, 35], 5: [26, 35] };
+
+    function ticks(d0, d1) {
+      const span = d1 - d0, stepT = span > 20 ? 13 : span > 8 ? 2 : 1, out = [];
+      for (let v = Math.ceil(d0 / stepT) * stepT; v <= d1 + 1e-9; v += stepT) out.push(v);
+      return out;
+    }
+    function tipText(g) {
+      return "<b>" + weeksLabel(g.w) + "</b> · " + g.pesos.toFixed(2) + " trillion pesos<br>" + fmt(g.fin) + " of 1,000 years completed (" + pct(g.fin / 1000) +
+        "; 95%: " + pct(g.low) + " to " + pct(g.high) + ")<br>steps with a waiting industry: " + pct(g.wait, g.wait < 0.01 && g.wait > 0 ? 2 : 1);
+    }
+    function render() {
+      const W = Math.max(280, box.clientWidth), small = W < 520;
+      const m = { l: 44, r: 16, t: 26 }, hA = small ? 170 : 210, hB = small ? 84 : 104, gapAB = 44;
+      const yA0 = m.t, yB0 = m.t + hA + gapAB, H = yB0 + hB + 46;
+      const pw = W - m.l - m.r;
+      const X = v => m.l + ((v - st.d0) / (st.d1 - st.d0)) * pw;
+      const YA = p => yA0 + (1 - p) * hA, YB = p => yB0 + (1 - p) * hB;
+      const hl = HIGHLIGHT[st.step] || null;
+      const isHl = w => !hl || hl.indexOf(w) >= 0;
+      let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">`;
+      s += `<defs><clipPath id="clipA"><rect x="${m.l - 8}" y="${yA0 - 12}" width="${pw + 16}" height="${hA + 24}"/></clipPath><clipPath id="clipB"><rect x="${m.l - 8}" y="${yB0 - 12}" width="${pw + 16}" height="${hB + 24}"/></clipPath></defs>`;
+      s += `<text x="${m.l}" y="${yA0 - 12}" class="ptitle">Share of years completed</text>`;
+      s += `<text x="${m.l}" y="${yB0 - 12}" class="ptitle">Share of steps at which some industry waited</text>`;
+      [0, 0.5, 1].forEach(p => {
+        s += `<line x1="${m.l}" x2="${m.l + pw}" y1="${YA(p)}" y2="${YA(p)}" class="${p === 0 ? "ax0" : "ax"}"/><text x="${m.l - 8}" y="${YA(p) + 4}" text-anchor="end" class="tick">${p * 100}%</text>`;
+        s += `<line x1="${m.l}" x2="${m.l + pw}" y1="${YB(p)}" y2="${YB(p)}" class="${p === 0 ? "ax0" : "ax"}"/><text x="${m.l - 8}" y="${YB(p) + 4}" text-anchor="end" class="tick">${p * 100}%</text>`;
+      });
+      ticks(st.d0, st.d1).forEach(v => {
+        const x = X(v);
+        s += `<line x1="${x}" x2="${x}" y1="${yB0 + hB}" y2="${yB0 + hB + 5}" class="ax0"/><text x="${x}" y="${yB0 + hB + 19}" text-anchor="middle" class="tick">${v}</text>`;
+        s += `<line x1="${x}" x2="${x}" y1="${yA0 + hA}" y2="${yA0 + hA + 4}" class="ax0"/>`;
+      });
+      s += `<text x="${m.l + pw / 2}" y="${H - 6}" text-anchor="middle" class="tick">opening stock, in weeks of input use</text>`;
+      // w* line
+      const showW = st.step >= 5 || (st.step === 4 && st.tries >= SEARCH.length);
+      if (showW) {
+        const x = X(WSTAR);
+        s += `<line x1="${x}" x2="${x}" y1="${yA0 - 2}" y2="${yB0 + hB}" class="wstar"/>`;
+      }
+      // panel B line + dots
+      s += `<g clip-path="url(#clipB)">`;
+      s += `<path class="lineB" d="${GRID.map((g, k) => (k ? "L" : "M") + X(g.w) + "," + YB(g.wait)).join(" ")}"/>`;
+      GRID.forEach(g => { s += `<circle cx="${X(g.w)}" cy="${YB(g.wait)}" r="4.5" class="dotB ${isHl(g.w) ? "" : "faded"}"/>`; });
+      s += `</g>`;
+      // panel A: whiskers + dots
+      s += `<g clip-path="url(#clipA)">`;
+      GRID.forEach(g => {
+        const x = X(g.w), f = isHl(g.w) ? "" : "faded";
+        s += `<line x1="${x}" x2="${x}" y1="${YA(g.low)}" y2="${YA(g.high)}" class="whisk ${f}"/>`;
+        s += `<circle cx="${x}" cy="${YA(g.fin / 1000)}" r="5.5" class="dotA ${f}"/>`;
+      });
+      // search tries
+      if (st.step >= 4) {
+        const n = Math.min(st.tries, SEARCH.length);
+        let lo = 26, hi = 35;
+        for (let k = 0; k < n; k++) hi = SEARCH[k];
+        if (st.step === 4 && n < SEARCH.length) {
+          const mid = (lo + hi) / 2, yb = YA(0.5);
+          s += `<line x1="${X(lo)}" x2="${X(hi)}" y1="${yb}" y2="${yb}" class="brk"/><line x1="${X(lo)}" x2="${X(lo)}" y1="${yb - 6}" y2="${yb + 6}" class="brk"/><line x1="${X(hi)}" x2="${X(hi)}" y1="${yb - 6}" y2="${yb + 6}" class="brk"/>`;
+          s += `<text x="${X(lo)}" y="${yb + 22}" text-anchor="start" class="ann">search interval: ${lo} to ${wk2(hi)} weeks</text>`;
+          s += `<line x1="${X(mid)}" x2="${X(mid)}" y1="${yb}" y2="${YA(0.82) + 8}" class="ann-line" stroke-dasharray="2 3"/>`;
+        }
+        for (let k = 0; k < n; k++) {
+          const x = X(SEARCH[k]), y = YA(0.82);
+          s += `<path d="M${x},${y - 6} L${x + 6},${y} L${x},${y + 6} L${x - 6},${y} z" class="try"/>`;
+          if (k < 3 || k === n - 1) s += `<text x="${x}" y="${y - 10}" text-anchor="middle" class="ann-m">${k + 1}</text>`;
+        }
+        if (n > 0) s += `<text x="${X(SEARCH[0]) + 10}" y="${YA(0.82) + 4}" class="ann-m">search tries: 0 of 1,000 stopped each</text>`;
+      }
+      s += `</g>`;
+      // annotations per step
+      const ann = (x, y, txt, anchor, cls) => `<text x="${x}" y="${y}" text-anchor="${anchor || "start"}" class="${cls || "ann"}">${txt}</text>`;
+      if (st.step === 1) {
+        s += ann(X(2) + 10, YA(0.095) + 4, "2 weeks: 9.5%");
+        s += ann(X(4) + 10, YA(0.458) + 4, "4 weeks: 45.8%");
+        s += ann(X(2) + 10, YB(0.8617) + 4, "86%");
+      } else if (st.step === 2) {
+        s += ann(X(9) - 10, YA(0.919) + 4, "91.9%", "end");
+        s += ann(X(13) + 10, YA(0.85) + 4, "85.0%");
+        s += `<line x1="${X(9)}" y1="${YA(0.919) + 12}" x2="${X(13)}" y2="${YA(0.85) + 12}" class="ann-line" stroke-dasharray="3 3"/>`;
+        s += ann(X(13) + 10, YA(0.85) + 24, "more stock, fewer completed years", "start", "ann-m");
+      } else if (st.step === 3) {
+        s += ann(X(17), YA(1) + 22, "0 stopped", "middle", "ann-m");
+        s += ann(X(22), YA(1) + 36, "0 stopped", "middle", "ann-m");
+        s += ann(X(26) + 8, YA(0.995) + 52, "26 weeks: 5 of 1,000 stopped", "middle");
+      } else if (st.step >= 4 && showW) {
+        const x = X(WSTAR), ya = YA(0.6);
+        s += ann(x + 8, ya, "w* = 26.14 weeks");
+        s += ann(x + 8, ya + 16, "9.19 trillion pesos", "start", "ann-m");
+        if (st.step >= 5) {
+          s += `<circle cx="${x}" cy="${YA(1)}" r="7" fill="none" stroke="var(--ink)" stroke-width="2"/>`;
+          s += ann(x + 8, ya + 38, "1,000 new years: 0 stopped");
+          s += ann(x + 8, ya + 54, "share that stops: below 0.3% (95%)", "start", "ann-m");
+        }
+      }
+      // hit targets
+      GRID.forEach((g, k) => {
+        if (g.w < st.d0 - 0.5 || g.w > st.d1 + 0.5) return;
+        s += `<circle cx="${X(g.w)}" cy="${YA(g.fin / 1000)}" r="14" fill="transparent" data-k="${k}" tabindex="0" class="hit" role="img" aria-label="${weeksLabel(g.w)}: ${pct(g.fin / 1000)} completed"/>`;
+        s += `<circle cx="${X(g.w)}" cy="${YB(g.wait)}" r="12" fill="transparent" data-k="${k}" class="hit"/>`;
+      });
+      s += `</svg>`;
+      box.innerHTML = s;
+      box.appendChild(tipEl);
+      box.querySelectorAll(".hit").forEach(c => {
+        const show = () => {
+          const g = GRID[+c.dataset.k];
+          tipEl.innerHTML = tipText(g); tipEl.hidden = false;
+          const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy");
+          tipEl.style.left = Math.min(Math.max(0, cx - 120), W - 250) + "px";
+          tipEl.style.top = (cy + 16) + "px";
+        };
+        c.addEventListener("pointerenter", show);
+        c.addEventListener("pointerdown", show);
+        c.addEventListener("focus", show);
+        c.addEventListener("pointerleave", () => { tipEl.hidden = true; });
+        c.addEventListener("blur", () => { tipEl.hidden = true; });
+      });
+    }
+    function readout() {
+      const r = {
+        0: "Hover over or tap a point for its numbers.",
+        1: "2 weeks: 95 of 1,000 years completed. 4 weeks: 458 of 1,000.",
+        2: "9 weeks: 919 of 1,000 completed. 13 weeks: 850 of 1,000.",
+        3: "17 and 22 weeks: 1,000 of 1,000 completed. 26 weeks: 995 of 1,000.",
+      };
+      if (st.step <= 3) { read.textContent = r[st.step]; return; }
+      if (st.step === 4) {
+        const n = st.tries;
+        if (n === 0) read.textContent = "Start: 26 weeks had a stop, 35 weeks had none.";
+        else if (n <= SEARCH.length) {
+          const w = SEARCH[n - 1];
+          read.textContent = "Try " + n + " of 6: " + wk2(w) + " weeks. 0 of 1,000 years stopped, so " + wk2(w) + " weeks becomes the new upper end." + (n === SEARCH.length ? " After 6 tries the search ends: w* = 26.14 weeks." : "");
+        }
+        return;
+      }
+      read.textContent = "1,000 new years at w* = 26.14 weeks: all completed.";
+    }
+    function tweenDomain(to, done) {
+      const my = ++gen;
+      const from = [st.d0, st.d1];
+      if (REDUCE || (from[0] === to[0] && from[1] === to[1])) { st.d0 = to[0]; st.d1 = to[1]; render(); if (done) done(); return; }
+      const t0 = performance.now(), dur = 650;
+      cancelAnimationFrame(anim);
+      function f(now) {
+        if (my !== gen) return;
+        const u = Math.min(1, (now - t0) / dur), e = ease(u);
+        st.d0 = from[0] + (to[0] - from[0]) * e; st.d1 = from[1] + (to[1] - from[1]) * e;
+        render();
+        if (u < 1) anim = requestAnimationFrame(f); else if (done) done();
+      }
+      anim = requestAnimationFrame(f);
+    }
+    function runSearch() {
+      const my = gen;
+      st.tries = 0; render(); readout();
+      if (REDUCE) { st.tries = SEARCH.length; render(); readout(); return; }
+      let k = 0;
+      function next() {
+        if (my !== gen || st.step !== 4) return;
+        k++; st.tries = k; render(); readout();
+        if (k < SEARCH.length) setTimeout(next, 900);
+      }
+      setTimeout(next, 700);
+    }
+    function onStep(i) {
+      st.step = i;
+      if (i <= 3) { st.tries = 0; tweenDomain(FULL); readout(); }
+      else if (i === 4) { tweenDomain(ZOOM, runSearch); readout(); }
+      else { st.tries = SEARCH.length; tweenDomain(ZOOM); readout(); }
+    }
+    function table() {
+      const t = $("#q1-table");
+      let h = "<tr><th>Weeks</th><th>Trillion pesos</th><th>Years completed (of 1,000)</th><th>95% interval</th><th>Steps with waiting</th></tr>";
+      GRID.forEach(g => { h += `<tr><td>${g.w}</td><td>${g.pesos.toFixed(2)}</td><td>${g.fin}</td><td>${pct(g.low)} to ${pct(g.high)}</td><td>${pct(g.wait, 2)}</td></tr>`; });
+      SEARCH.forEach((w, k) => { h += `<tr><td>${+w.toFixed(4)}</td><td>–</td><td>1,000 (search try ${k + 1})</td><td>–</td><td>–</td></tr>`; });
+      h += `<tr class="hl"><td>26.1406 (w*)</td><td>9.19</td><td>1,000 (new check runs)</td><td>stops below 0.3%</td><td>–</td></tr>`;
+      t.innerHTML = h;
+    }
+    function init() { table(); render(); readout(); }
+    return { init, onStep, render };
+  })();
+
+  // ======================================================================
+  // Q2: order in the small example (exact)
+  // ======================================================================
+  function orderMini() {
+    const box = $("#order-mini");
+    const a = toyExact([6, 6, 8]).powerBeforeFactory, b = toyExact([10, 10, 13]).powerBeforeFactory;
+    const W = Math.max(260, box.clientWidth), H = 156, l = 54, r = 20, x0 = 0.44, x1 = 0.62;
+    const X = v => l + ((v - x0) / (x1 - x0)) * (W - l - r);
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-label="Power plant before Factory: 57, 53, 53 percent at stock (6, 6, 8); 50 percent at (10, 10, 13)">`;
+    s += `<circle cx="${l + 4}" cy="12" r="5" fill="var(--blue)"/><text x="${l + 14}" y="16" font-size="12" fill="var(--ink-2)">stock (6, 6, 8): some industries wait</text>`;
+    s += `<circle cx="${l + 4}" cy="30" r="5" fill="var(--muted)"/><text x="${l + 14}" y="34" font-size="12" fill="var(--ink-2)">stock (10, 10, 13): no batch waits</text>`;
+    const y0 = 62;
+    [0.45, 0.5, 0.55, 0.6].forEach(v => {
+      s += `<line x1="${X(v)}" x2="${X(v)}" y1="${y0 - 10}" y2="${y0 + 74}" stroke="var(--rule)" ${v === 0.5 ? 'stroke-dasharray="3 3" stroke="var(--muted)"' : ""}/>`;
+      s += `<text x="${X(v)}" y="${y0 + 90}" text-anchor="middle" font-size="11" fill="var(--muted)">${Math.round(v * 100)}%</text>`;
+    });
+    for (let n = 0; n < 3; n++) {
+      const y = y0 + n * 30;
+      s += `<text x="${l - 10}" y="${y + 4}" text-anchor="end" font-size="12" fill="var(--ink)">n = ${n + 1}</text>`;
+      s += `<line x1="${X(b[n])}" x2="${X(a[n])}" y1="${y}" y2="${y}" stroke="var(--rule)" stroke-width="2"/>`;
+      s += `<circle cx="${X(b[n])}" cy="${y}" r="6" fill="var(--muted)" stroke="var(--sheet)" stroke-width="2"/>`;
+      s += `<circle cx="${X(a[n])}" cy="${y}" r="6" fill="var(--blue)" stroke="var(--sheet)" stroke-width="2"/>`;
+      s += `<text x="${X(a[n]) + 11}" y="${y + 4}" font-size="12" fill="var(--ink)" font-family="var(--font-mono)">${pct(a[n], 1)}</text>`;
+    }
+    s += `</svg>`;
+    box.innerHTML = s;
+  }
+
+  // ---------- init ----------
+  Toy.init();
+  Run.init();
+  Exp.init();
+  Q1.init();
+  orderMini();
+  addScrolly("toy-scrolly", Toy.onStep);
+  addScrolly("run-scrolly", Run.onStep);
+  addScrolly("q1-scrolly", Q1.onStep);
+  themeListeners.push(() => { Run.draw(); Exp.draw(); });
+  let rT = 0;
+  window.addEventListener("resize", () => {
+    clearTimeout(rT);
+    rT = setTimeout(() => { Run.relayout(); Exp.relayout(); Q1.render(); orderMini(); checkScrollies(); }, 120);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { Run.relayout(); Q1.render(); });
+  checkScrollies();
+})();
+
+</script>
+
+</body></html>
