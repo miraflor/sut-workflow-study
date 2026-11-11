@@ -1,6 +1,6 @@
 # sut-workflow-study
 
-Code for the CS 296 paper **"Can a Year of Production Always Be Completed, and in What Order? A Petri-Net Simulation of the 2018 Philippine Supply and Use Tables"** (first draft) by James Matthew Miraflor.
+Code for the CS 292 paper **"Can a Year of Production Always Be Completed, and in What Order? A Petri-Net Simulation of the 2018 Philippine Supply and Use Tables"** (first draft) by James Matthew Miraflor.
 
 The paper reads the 2018 Supply and Use Tables of the Philippine Statistics Authority (PSA), collapsed from 240 to 80 products and industries, as a Petri net: products are places, industries are transitions, and stocks of products are tokens. The year of each industry is split into 52 equal batches, and the plan of the year is that every batch fires once. (52 maps easily to weeks, but a batch is only a size, not a date.) The paper asks two questions:
 
